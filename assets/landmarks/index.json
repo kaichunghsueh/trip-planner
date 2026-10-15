@@ -1,0 +1,458 @@
+{
+  "jp-torii": {
+    "file": "jp-torii.webp",
+    "name": {
+      "zh-TW": "鳥居",
+      "en": "Torii Gate"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "JP"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "鳥居柱身與橫樑（最上方笠木為深灰）"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "jp-fuji": {
+    "file": "jp-fuji.webp",
+    "name": {
+      "zh-TW": "富士山",
+      "en": "Mount Fuji"
+    },
+    "match": {
+      "level": "region",
+      "countries": [],
+      "places": [
+        "富士山",
+        "Mount Fuji",
+        "Mt. Fuji",
+        "Fujisan",
+        "ふじさん",
+        "富士五湖",
+        "Fuji Five Lakes",
+        "河口湖",
+        "Kawaguchiko",
+        "Lake Kawaguchi",
+        "かわぐちこ",
+        "富士吉田",
+        "Fujiyoshida",
+        "富士宮",
+        "富士宫",
+        "Fujinomiya",
+        "山梨",
+        "山梨縣",
+        "山梨县",
+        "山梨県",
+        "Yamanashi",
+        "やまなし",
+        "靜岡",
+        "静冈",
+        "静岡",
+        "靜岡縣",
+        "静冈县",
+        "静岡県",
+        "Shizuoka",
+        "しずおか"
+      ],
+      "note": "Only the Mt Fuji area / Yamanashi / Shizuoka. JP anywhere else -> jp-torii (batch 1); never match on country code JP."
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "櫻花樹的花冠 (cherry blossom crown)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "kr-gate": {
+    "file": "kr-gate.webp",
+    "name": {
+      "zh-TW": "韓式宮殿門樓",
+      "en": "Korean Palace Gate"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "KR"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "門樓木構柱列（柱與額枋）"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "kr-busan": {
+    "file": "kr-busan.webp",
+    "name": {
+      "zh-TW": "釜山海岸膠囊列車",
+      "en": "Busan Seaside Capsule Train"
+    },
+    "match": {
+      "level": "city",
+      "countries": [
+        "KR"
+      ],
+      "places": [
+        "Busan",
+        "釜山",
+        "부산"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中間那節膠囊車廂"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "tw": {
+    "file": "tw.webp",
+    "name": {
+      "zh-TW": "台灣",
+      "en": "Taiwan"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "TW"
+      ],
+      "places": [
+        "台灣",
+        "臺灣",
+        "台湾",
+        "Taiwan",
+        "台北",
+        "臺北",
+        "Taipei",
+        "新北",
+        "New Taipei",
+        "平溪",
+        "Pingxi",
+        "台中",
+        "臺中",
+        "Taichung",
+        "台南",
+        "臺南",
+        "Tainan",
+        "高雄",
+        "Kaohsiung",
+        "九份",
+        "Jiufen",
+        "花蓮",
+        "花莲",
+        "Hualien"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "其中一盞天燈 (the nearer sky lantern)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "hk": {
+    "file": "hk.webp",
+    "name": {
+      "zh-TW": "香港",
+      "en": "Hong Kong"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "HK"
+      ],
+      "places": [
+        "香港",
+        "Hong Kong",
+        "九龍",
+        "九龙",
+        "Kowloon",
+        "維多利亞港",
+        "维多利亚港",
+        "Victoria Harbour",
+        "尖沙咀",
+        "Tsim Sha Tsui",
+        "中環",
+        "中环",
+        "Central"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "主帆 (main fan-ribbed sail)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "mo": {
+    "file": "mo.webp",
+    "name": {
+      "zh-TW": "澳門",
+      "en": "Macau"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "MO"
+      ],
+      "places": [
+        "澳門",
+        "澳门",
+        "Macau",
+        "Macao",
+        "氹仔",
+        "Taipa",
+        "路環",
+        "路环",
+        "Coloane"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "頂端三角楣 (crowning triangular pediment)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "th": {
+    "file": "th.webp",
+    "name": {
+      "zh-TW": "泰國",
+      "en": "Thailand"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "TH"
+      ],
+      "places": [
+        "泰國",
+        "泰国",
+        "Thailand",
+        "ประเทศไทย",
+        "曼谷",
+        "Bangkok",
+        "กรุงเทพมหานคร",
+        "清邁",
+        "清迈",
+        "Chiang Mai",
+        "เชียงใหม่",
+        "大城",
+        "Ayutthaya",
+        "อยุธยา",
+        "普吉",
+        "Phuket",
+        "ภูเก็ต"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "小亭的屋頂 (pavilion roof incl. finials)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "vn": {
+    "file": "vn.webp",
+    "name": {
+      "zh-TW": "越南",
+      "en": "Vietnam"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "VN"
+      ],
+      "places": [
+        "越南",
+        "Vietnam",
+        "Việt Nam",
+        "下龍灣",
+        "下龙湾",
+        "Ha Long Bay",
+        "Halong Bay",
+        "Vịnh Hạ Long",
+        "河內",
+        "河内",
+        "Hanoi",
+        "Hà Nội",
+        "胡志明市",
+        "Ho Chi Minh City",
+        "Thành phố Hồ Chí Minh",
+        "峴港",
+        "岘港",
+        "Da Nang",
+        "Đà Nẵng",
+        "會安",
+        "会安",
+        "Hoi An",
+        "Hội An"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "斗笠 (conical hat)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "sg": {
+    "file": "sg.webp",
+    "name": {
+      "zh-TW": "新加坡",
+      "en": "Singapore"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "SG"
+      ],
+      "places": [
+        "新加坡",
+        "Singapore",
+        "Singapura",
+        "சிங்கப்பூர்",
+        "加東",
+        "加东",
+        "Katong",
+        "如切",
+        "Joo Chiat"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中間那戶的百葉窗 (louvred shutters of the middle shophouse)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "cn": {
+    "file": "cn.webp",
+    "name": {
+      "zh-TW": "萬里長城",
+      "en": "Great Wall"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CN"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "烽火台上的無圖案小旗 (plain flag on the beacon tower)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "fr": {
+    "file": "fr.webp",
+    "name": {
+      "zh-TW": "艾菲爾鐵塔",
+      "en": "Eiffel Tower"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "FR"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "塔腳旁咖啡座陽傘的傘面 (cafe parasol canopy by the tower foot)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "gb": {
+    "file": "gb.webp",
+    "name": {
+      "zh-TW": "大笨鐘",
+      "en": "Big Ben"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "GB"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "四面鐘的鐘面 (clock dials)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "it": {
+    "file": "it.webp",
+    "name": {
+      "zh-TW": "羅馬競技場",
+      "en": "Colosseum"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "IT"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "競技場前地中海松的傘狀樹冠 (umbrella pine canopy)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "us": {
+    "file": "us.webp",
+    "name": {
+      "zh-TW": "自由女神像",
+      "en": "Statue of Liberty"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "US"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "火炬的火焰 (torch flame)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "au": {
+    "file": "au.webp",
+    "name": {
+      "zh-TW": "袋鼠",
+      "en": "Kangaroo"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "AU"
+      ],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "無文字無圖案的菱形路標牌面 (blank diamond road-sign plate)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "generic": {
+    "file": "generic.webp",
+    "name": {
+      "zh-TW": "啟程旅行",
+      "en": "Ready to Travel"
+    },
+    "match": {
+      "level": "fallback",
+      "countries": [],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "行李箱本體"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  }
+}
