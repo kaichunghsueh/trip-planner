@@ -1,5 +1,31 @@
 # 更新記錄（Changelog）
 
+## v1.8（2026-10-16）— 雙語 JSON 腳本自動防呆、內行人顆粒感、照片 API 與主軸預覽
+
+### 背景與解決痛點
+在不改動網頁前端範本與 JSON Schema 的前提下，解決 AI 執行過程中常見的 5 個體感與穩定度痛點：
+1. AI 手動對齊兩份大型 JSON（`#trip-data` 與 `#trip-data-en`）時，偶爾遺留全形標點或結構差異，導致打開 HTML 出現頂端雙語警示條。
+2. 景點與餐廳的 `detail` 說明有時過於像旅遊書簡介，缺乏現場動線、必拍點與必點招牌菜等內行人資訊。
+3. AI 用一般搜尋較難一次湊齊 Wikimedia Commons 照片的 4 個必填欄位（縮圖、原始頁、作者、授權），導致景點照片出現率偏低。
+4. 使用者在等待查證前無法先看到每日分區大方向。
+5. 查證期間連續呼叫工具時缺乏階段性回報。
+
+### 更新內容
+1. **`set-cover.ps1`／`set-cover.sh` 內建雙語 JSON 自動清洗與一致性驗證**
+   - 自動將 `#trip-data-en` 非當地文字欄位（排除 `nameLocal`、`addressLocal`）中的常見全形標點（`（）`、`～`、`、`、`，`、`：`、`￦`）正規化為半形。
+   - 自動執行雙語結構對齊檢查（JSON 語法、是否遺留 `trip-template-demo`、`meta.language`、Key 順序與陣列長度、固定欄位一致性、CJK 字元殘留），有誤直接印出前 5 筆錯誤路徑並以 `exit code 3` 攔截，通過時輸出 `bilingual=ok`。
+2. **強化景點與餐廳的「內行人顆粒感」（`references/planning-rules.md` 第 4 節）**
+   - **景點（`sight`、`activity`）**：`detail` 禁止只寫空泛介紹，必須寫出「具體順路走法（如哪個入口進、由高處往下走）＋ 1～2 個必看重點或最佳拍照機位」。
+   - **餐廳（`food`、`cafe`）**：`detail` 必寫「Google 評分與評論則數 ＋ 1～2 道必點招牌菜（附當地菜名意思）」，`tips` 必寫「點餐與結帳方式（如自助點餐機、有無中文菜單、一人一份低消規定）」及「1～2 家同區高分備選餐廳」。
+3. **提供 Wikimedia Commons 免金鑰公開 API 查詢公式（`references/planning-rules.md` 第 8 節、`SKILL.md` 第 3 步）**
+   - 提供標準 API URL，一次取得 800px 縮圖 `thumburl`、原始頁 `descriptionurl`、作者 `Artist` 與授權 `LicenseShortName`，大幅提升景點附圖率。
+4. **開排前確認順便附上「每日分區主軸速覽」（`SKILL.md` 第 2 步、`references/intake-questions.md`）**
+   - 在開排前確認護照／航班的同一則訊息裡，用一天一行預告每日區域與主軸草案，不增加提問輪數即可先對焦大方向。
+5. **查證階段進度回報 Progress Heartbeat（`SKILL.md` 第 3 步）**
+   - 規定每完成一個查證階段即輸出一行簡短進度，避免使用者誤以為畫面卡死。
+
+---
+
 ## v1.7（2026-10-16）— 新增飯店與餐廳 Google 評分篩選與呈現規範
 
 ### 背景與解決痛點

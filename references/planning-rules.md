@@ -47,12 +47,13 @@
 - 每一站都有 `start` 和 `end`。時間切在 15 分鐘的格線上（:00、:15、:30、:45），每站至少 15 分鐘。
 - 每段移動（`move`，從上一站到這一站）都寫方式 `mode`、分鐘數 `minutes`、費用 `cost`。搭大眾運輸再寫路線名 `line`（例如「地鐵 2 號線」）和上車處 `from`；走路寫 `distanceKm`。費用查不到就省略 `cost`，並列進 `unverified`。
 - 每站寫 `detail`（看什麼、做什麼）和 `tips`（小提醒）。有營業時間就寫 `hours`，要預約就寫 `booking`。
+  - **景點與活動（`kind:"sight"`、`"activity"`）的顆粒感**：`detail` 禁止只寫空泛的歷史背景或形容詞（例如「釜山知名文化村，適合散步拍照」），必須寫出 **具體順路走法（例如從哪個入口進、由高處往下走）＋ 1～2 個必看重點或最佳拍照機位**。
 - 同行者的個人資訊（人數、小孩年齡、飲食、行動需求、特殊日子）只寫在 `traveler`，不要寫進 `detail`、`tips`、`summary` 這類自由文字。需要提醒時用不帶個資的說法，例如寫「有兒童票」，不寫「6 歲兒子半價」。原因：網頁的分享版只能從結構化欄位刪掉資料。
 - 用餐（`kind:"food"`、`"cafe"`）：
   - 每天排早、午、晚三餐（抵達日、離開日照第 2、3 節調整）。
   - 餐廳挑在前後兩站的路線上，繞路不超過 10 分鐘。
   - **挑 Google 高分店**：**優先挑選 Google 評分 4.2★ 以上且評論數 > 100 則**的餐廳（避開只有零星幾則評論或低分的觀光店），不要只因為順路就隨便抓一家。
-  - 在 `detail` 或 `tips` 寫出**查證過的 Google 評分與評論則數**（例如「Google 4.4★（約 850 則評論）」）與招牌餐點；查不到 Google 評分就標示「評分未查證」並列進 `unverified`，絕不編造星等。
+  - **必寫招牌菜與點餐方式**：在 `detail` 寫出**查證過的 Google 評分與評論則數**（例如「Google 4.4★（約 850 則評論）」）以及 **1～2 道必點招牌菜（附當地菜名意思）**；在 `tips` 寫清楚**點餐與結帳方式**（例如：自助點餐機、有無中文菜單、一人須點一份低消規定）。查不到 Google 評分就標示「評分未查證」並列進 `unverified`，絕不編造星等。
   - **同區高分備選**：每一餐在 `tips` 附 1～2 家同區域、同樣查過有開且 Google 高分的備選餐廳（附店名與 Google 評分），讓使用者現場排隊太久或想換口味時可以直接替換。
   - 避開熱門時段的排隊：午餐排在 11:30 以前或 13:30 以後，晚餐排在 17:30 以前或 19:30 以後（當地用餐習慣不同就調整）。知名排隊店要寫建議幾點到，而且要有來源。
   - 照 `traveler.diet` 和 `traveler.avoid` 避開使用者不吃的東西。
@@ -143,6 +144,9 @@
   - 預估合計（`per:"person"` 的金額乘上總人數，再換算成本國幣）超過上限時，先調整行程再交件：換便宜一點的住宿或交通，或刪掉付費景點。真的壓不下來，交件訊息寫還差多少，以及有哪些取捨可以選。
 - `photo`：`kind` 為 `sight`、`activity` 的項目，盡量各附 1 張。
   - 只用 Wikimedia Commons。`credit`（作者）、`license`（授權）、`sourceUrl`（原始檔案頁）都要填，`url` 用線上縮圖網址。
+  - **快速查證公式（免金鑰公開 API）**：直接用讀網頁工具查詢：
+    `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=File:<景點英文名>.jpg&gsrlimit=3&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=800&format=json`
+    從回傳的 `imageinfo[0]` 即可一次取得：`thumburl`（填進 `url`）、`descriptionurl`（填進 `sourceUrl`）、`extmetadata.Artist.value`（去除 HTML 標籤後填進 `credit`）、`extmetadata.LicenseShortName.value`（填進 `license`）。
   - 找不到，或作者、授權確認不了，就整個省略 `photo`。不改用其他網站的圖，也不拿不確定是不是這個地方的照片湊數。
 - `checklists.before` 每次都要有下面幾項，內容依目的地查證：
   - 上網方式：eSIM 或 Wi-Fi 機，選一種並寫怎麼買。

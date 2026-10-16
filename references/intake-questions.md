@@ -114,9 +114,9 @@
 
 > One more thing: **how old is your child?** It affects ticket prices, and some attractions have age or height limits.
 
-> 我先假設你們都持香港特區護照（從香港出發），查入境規定和駐外單位用；不對，或同行有人持其他護照，請說。
+> 我先假設你們都持香港特區護照（從香港出發），查入境規定和駐外單位用；不對，或同行有人持其他護照，請說。另外這幾天我預計這樣分區：D1 西面入住與豬肉湯飯 → D2 海雲台與膠囊列車 → D3 甘川洞與南浦洞 → D4 廣安里與百貨 → D5 回程，方向 OK 或想換哪一區也請跟我說。
 
-> I'll assume you all hold Hong Kong SAR passports since you're flying from Hong Kong; I use this for entry rules and consular contacts. If that's wrong, or anyone holds a different passport, let me know.
+> I'll assume you all hold Hong Kong SAR passports since you're flying from Hong Kong; I use this for entry rules and consular contacts. Also, here is the daily area outline I have in mind: D1 Seomyeon check-in & gukbap -> D2 Haeundae & Capsule Train -> D3 Gamcheon & Nampo-dong -> D4 Gwangalli & shopping -> D5 fly home. Let me know if that looks good or if you'd like to swap anything.
 
 出發地不是台灣、香港、澳門時，直接問：
 
