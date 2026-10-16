@@ -172,7 +172,7 @@ mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linea
 .mapslot{position:relative;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--hover);min-height:220px}
 .ovg .mapslot{height:360px}
 .mapel{position:absolute!important;top:0;left:0;width:100%;height:100%}
-.mld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px;pointer-events:none;z-index:1}
+.mld{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:10px;background:var(--surface);color:var(--text2);font-size:13px;z-index:3;overflow:auto}
 .mapslot.off{background:var(--surface);height:auto!important;min-height:0;overflow:auto}
 .blist{list-style:none;margin:0;padding:0}
 .blist li{display:flex;align-items:flex-start;gap:8px;padding:9px 0}
@@ -1958,11 +1958,7 @@ function loadLib() {
   LIBP = new Promise((res, rej) => {
     if (navigator.onLine === false) { rej('offline'); return; }
     const cssUrls = [ML.css, 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css'];
-    const jsUrls = [
-      { u: ML.js, sri: ML.jsSri, co: 'anonymous' },
-      { u: 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js', sri: '', co: '' },
-      { u: ML.js, sri: '', co: '' }
-    ];
+    const jsUrls = [ML.js, 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js'];
     const l = document.createElement('link');
     l.rel = 'stylesheet'; l.href = cssUrls[0];
     l.onerror = () => { const l2 = document.createElement('link'); l2.rel = 'stylesheet'; l2.href = cssUrls[1]; document.head.appendChild(l2); };
@@ -1972,12 +1968,9 @@ function loadLib() {
       if (settled) return;
       if (window.maplibregl) { settled = true; res(window.maplibregl); return; }
       if (idx >= jsUrls.length) { settled = true; rej('error'); return; }
-      const cur = jsUrls[idx++];
       const s = document.createElement('script');
-      s.src = cur.u; s.async = true;
-      if (cur.sri) s.integrity = cur.sri;
-      if (cur.co) s.crossOrigin = cur.co;
-      const tmr = setTimeout(() => { if (!settled && !window.maplibregl) tryJs(); }, 5500);
+      s.src = jsUrls[idx++]; s.async = true;
+      const tmr = setTimeout(() => { if (!settled && !window.maplibregl) tryJs(); }, 3500);
       s.onload = () => { clearTimeout(tmr); if (!settled && window.maplibregl) { settled = true; res(window.maplibregl); } else if (!settled) tryJs(); };
       s.onerror = () => { clearTimeout(tmr); if (!settled) tryJs(); };
       document.head.appendChild(s);
@@ -2171,25 +2164,15 @@ function placeMap() {
   const slot = document.querySelector('.view:not([hidden]) [data-slot]');
   if (!slot || !state.M) return;
   const ctx = slotCtx();
-  if (state.map === 'ready' && MAP && MAPEL) {
-    slot.classList.remove('off');
-    MAPEL.removeAttribute('style');
-    if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); }
-    if (!slot.querySelector('.mapnote')) slot.appendChild(h('div', { class: 'mapnote' }, h('span', { class: 'lg-line', 'aria-hidden': 'true' }), h('span', null, t('mapNote'))));
-    MAP.resize();
-    setFocus(ctx);
-    return;
-  }
-  slot.classList.add('off');
-  slot.textContent = '';
-  slot.appendChild(noMap(ctx));
-  if (state.map !== 'failed') {
-    if (!MAPEL) MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') });
-    MAPEL.setAttribute('style', 'position:absolute;width:320px;height:240px;opacity:0;pointer-events:none;z-index:-1');
-    slot.appendChild(MAPEL);
-    if (MAP) { try { MAP.resize(); } catch (e) {} }
-    if (state.map === 'idle') startMap();
-  }
+  if (state.map === 'failed') { slot.classList.add('off'); slot.textContent = ''; slot.appendChild(noMap(ctx)); return; }
+  slot.classList.remove('off');
+  if (!MAPEL) MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') }, h('div', { class: 'mld' }));
+  if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); }
+  const ld = MAPEL.querySelector('.mld');
+  if (ld && state.map !== 'ready') { ld.textContent = ''; add(ld, [svgMap(ctx), h('div', { class: 'small muted', style: 'text-align:center;margin-top:4px' }, t('mapLoad'))]); }
+  if (state.map === 'ready' && !slot.querySelector('.mapnote')) slot.appendChild(h('div', { class: 'mapnote' }, h('span', { class: 'lg-line', 'aria-hidden': 'true' }), h('span', null, t('mapNote'))));
+  if (state.map === 'idle') { startMap(); return; }
+  if (MAP && state.map === 'ready') { MAP.resize(); setFocus(ctx); }
 }
 function startMap() {
   if (state.map === 'loading' || state.map === 'ready') return;
@@ -2197,18 +2180,12 @@ function startMap() {
   state.map = 'loading';
   let done = false;
   const fail = r => { if (done) return; done = true; clearTimeout(timer); mapFail(r); };
-  const timer = setTimeout(() => fail('timeout'), 15000);
+  const timer = setTimeout(() => fail('timeout'), 6500);
   loadLib().then(lib => {
     if (done) return;
     LIB = lib;
-    let el = MAPEL;
-    if (!el || !el.isConnected) {
-      const slot = document.querySelector('.view:not([hidden]) [data-slot]');
-      if (!slot) { done = true; clearTimeout(timer); state.map = 'idle'; return; }
-      if (!el) el = MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') });
-      el.setAttribute('style', 'position:absolute;width:320px;height:240px;opacity:0;pointer-events:none;z-index:-1');
-      slot.appendChild(el);
-    }
+    const el = MAPEL;
+    if (!el || !el.isConnected) { done = true; clearTimeout(timer); state.map = 'idle'; return; }
     MSTYLE = styleUrl();
     let map;
     try { map = new lib.Map({ container: el, style: MSTYLE, bounds: boundsOf(allPts()), fitBoundsOptions: { padding: 40 }, cooperativeGestures: window.innerWidth < 1024, attributionControl: { compact: true }, dragRotate: false, pitchWithRotate: false }); }
@@ -2216,13 +2193,14 @@ function startMap() {
     MAP = map;
     map.addControl(new lib.NavigationControl({ showCompass: false }), 'top-right');
     map.addControl(new lib.ScaleControl({ unit: 'metric' }), 'bottom-left');
+    map.on('error', () => { if (state.map !== 'ready') fail('error'); });
     map.on('style.load', () => { TF0 = null; mapLabels(); try { addLayers(); paintLayers(); } catch (e) { /* layers optional */ } });
     /* re-cluster only when the zoom really changed (pixel distances depend on zoom only) */
     map.on('zoomend', () => { if (state.map === 'ready' && Math.abs(map.getZoom() - MKZ) > 0.05) drawMarkers(true); });
     map.once('load', () => {
       if (done) return; done = true; clearTimeout(timer);
       state.map = 'ready';
-      el.removeAttribute('style');
+      const ld = el.querySelector('.mld'); if (ld) ld.remove();
       const ab = el.querySelector('.maplibregl-ctrl-attrib-button');
       if (ab) ab.addEventListener('click', () => { ATTR_USER = true; });
       collapseAttr();
@@ -2298,8 +2276,8 @@ function svgMap(ctx) {
   const kids = [];
   for (let i = 1; i <= 3; i++) {
     const gy = Math.round(H * i / 4), gx = Math.round(W * i / 4);
-    kids.push(sEl('line', { x1: 0, y1: gy, x2: W, y2: gy, class: 'grid' }));
-    kids.push(sEl('line', { x1: gx, y1: 0, x2: gx, y2: H, class: 'grid' }));
+    kids.push(S('line', { x1: 0, y1: gy, x2: W, y2: gy, class: 'grid' }));
+    kids.push(S('line', { x1: gx, y1: 0, x2: gx, y2: H, class: 'grid' }));
   }
   M.days.forEach(d => {
     const active = !isDay || d._n === ctx.day;
@@ -2307,19 +2285,19 @@ function svgMap(ctx) {
     if (coords.length > 1) {
       const ptsStr = coords.join(' ');
       if (active) {
-        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-case' }));
-        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-act' }));
+        kids.push(S('polyline', { points: ptsStr, class: 'rt-case' }));
+        kids.push(S('polyline', { points: ptsStr, class: 'rt-act' }));
       } else {
-        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-oth' }));
+        kids.push(S('polyline', { points: ptsStr, class: 'rt-oth' }));
       }
     }
   });
   M.stays.filter(hasLL).forEach(st => {
     const [x, y] = proj(st.lon, st.lat);
-    const g = sEl('g', { class: 'nd', transform: 'translate(' + x + ',' + y + ')' },
-      sEl('rect', { x: -12, y: -11, width: 24, height: 22, rx: 6, fill: 'var(--mk-k)' }),
-      sEl('text', { x: 0, y: 0 }, 'H'));
-    g.appendChild(sEl('title', null, t('hotel') + ': ' + str(st.name)));
+    const g = S('g', { class: 'nd', transform: 'translate(' + x + ',' + y + ')' },
+      S('rect', { x: -12, y: -11, width: 24, height: 22, rx: 6, fill: 'var(--mk-k)' }),
+      S('text', { x: 0, y: 0 }, 'H'));
+    g.appendChild(S('title', null, t('hotel') + ': ' + str(st.name)));
     kids.push(g);
   });
   const activeDays = isDay ? [M.days[ctx.day - 1]].filter(Boolean) : M.days;
@@ -2328,10 +2306,10 @@ function svgMap(ctx) {
   activeDays.forEach(d => {
     d._items.filter(it => hasLL(it.place)).forEach(it => {
       const [x, y] = proj(it.place.lon, it.place.lat), isSel = state.sel === it._id;
-      const g = sEl('g', { class: 'nd act' + (isSel ? ' on' : ''), transform: 'translate(' + x + ',' + y + ')' },
-        sEl('circle', { r: isSel ? 13 : 11, fill: 'var(--acc)' }),
-        sEl('text', { x: 0, y: 0 }, String(it._n)));
-      g.appendChild(sEl('title', null, t('dayS', { n: d._n }) + ' #' + it._n + ' ' + str(it.title)));
+      const g = S('g', { class: 'nd act' + (isSel ? ' on' : ''), transform: 'translate(' + x + ',' + y + ')' },
+        S('circle', { r: isSel ? 13 : 11, fill: 'var(--acc)' }),
+        S('text', { x: 0, y: 0 }, String(it._n)));
+      g.appendChild(S('title', null, t('dayS', { n: d._n }) + ' #' + it._n + ' ' + str(it.title)));
       g.addEventListener('click', e => {
         e.stopPropagation();
         if (state.view === 'overview') nav('#itinerary/' + d._n + '/' + encodeURIComponent(it._id));
@@ -2340,7 +2318,7 @@ function svgMap(ctx) {
       kids.push(g);
     });
   });
-  const svg = sEl('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'svgmap', role: 'img', 'aria-label': t('mapRegion') }, ...kids);
+  const svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'svgmap', role: 'img', 'aria-label': t('mapRegion') }, kids);
   const pop = selIt && selIt.place ? h('div', { class: 'svgpop' },
     h('div', { class: 't1' }, h('span', { class: 'no', style: 'margin-right:6px' }, String(selIt._n)), t('dayS', { n: selIt._d }) + ' · ' + str(selIt.start) + ' ' + str(selIt.title)),
     h('div', { class: 't2' }, addrTxt(selIt.place)),
