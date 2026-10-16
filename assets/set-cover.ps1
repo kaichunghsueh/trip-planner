@@ -234,6 +234,56 @@ if ($mZh.Success) {
         Fail 3 ('bilingual consistency check failed (' + $errs.Count + ' issue(s)): ' + $top5)
       }
       $bilingualStatus = 'ok'
+
+      function Html-Esc([string]$s) {
+        if (-not $s) { return '' }
+        return $s.Replace('&','&amp;').Replace('<','&lt;').Replace('>','&gt;').Replace('"','&quot;')
+      }
+      $uBanner = [regex]::Unescape('\uD83D\uDCE7 \u90F5\u4EF6\u9644\u4EF6\u9810\u89BD\u6A21\u5F0F\uFF08Gmail \u7B49\u90F5\u4EF6 App \u6703\u505C\u7528 JavaScript \u4E92\u52D5\u5206\u9801\u8207\u5730\u5716\uFF09\u3002\u82E5\u8981\u4F7F\u7528\u5B8C\u6574\u4E92\u52D5\u5730\u5716\u8207\u96D9\u8A9E\u5207\u63DB\uFF0C\u8ACB\u9EDE\u53F3\u4E0A\u89D2\u300C\u5206\u4EAB\u300D\u6539\u7528 Teams\u3001\u6A94\u6848\u6216\u700F\u89BD\u5668\u958B\u555F\u3002\u4EE5\u4E0B\u70BA\u5B8C\u6574\u884C\u7A0B\u7E3D\u89BD\uFF1A')
+      $sb = New-Object System.Text.StringBuilder
+      [void]$sb.Append('<div style="max-width:760px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,sans-serif;line-height:1.55">')
+      [void]$sb.Append('<div style="padding:10px 12px;border:1px solid #c08a1e;border-radius:8px;background:#fffbeb;color:#5a4300;font-size:13px;margin-bottom:16px">')
+      [void]$sb.Append($uBanner)
+      [void]$sb.Append('</div>')
+      $mTitle = Html-Esc ([string]$dataZh.meta.title)
+      $mSub = Html-Esc ([string]$dataZh.meta.subtitle)
+      [void]$sb.Append('<h1 style="font-size:22px;margin:0 0 4px">' + $mTitle + '</h1>')
+      if ($mSub) { [void]$sb.Append('<p style="color:#5a5a56;font-size:14px;margin:0 0 16px">' + $mSub + '</p>') }
+      $dIdx = 0
+      foreach ($dy in $dataZh.days) {
+        $dIdx++
+        $dDate = Html-Esc ([string]$dy.date)
+        $dTitle = Html-Esc ([string]$dy.title)
+        $dSum = Html-Esc ([string]$dy.summary)
+        [void]$sb.Append('<section style="border:1px solid #e6e6e2;border-radius:10px;padding:12px 14px;margin-bottom:14px;background:#fff">')
+        [void]$sb.Append('<h2 style="font-size:17px;margin:0 0 4px">D' + $dIdx + ' (' + $dDate + ') - ' + $dTitle + '</h2>')
+        if ($dSum) { [void]$sb.Append('<p style="font-size:13px;color:#5a5a56;margin:0 0 10px">' + $dSum + '</p>') }
+        [void]$sb.Append('<ol style="margin:0;padding-left:20px;font-size:13.5px">')
+        foreach ($it in $dy.items) {
+          $iStart = Html-Esc ([string]$it.start)
+          $iEnd = Html-Esc ([string]$it.end)
+          $iTitle = Html-Esc ([string]$it.title)
+          $iDet = Html-Esc ([string]$it.detail)
+          $pLoc = ''
+          if ($it.place) {
+            $pn = Html-Esc ([string]$it.place.nameLocal)
+            $pa = Html-Esc ([string]$it.place.addressLocal)
+            if (-not $pa) { $pa = Html-Esc ([string]$it.place.address) }
+            $pLoc = (($pn, $pa) | Where-Object { $_ }) -join ' / '
+          }
+          [void]$sb.Append('<li style="margin-bottom:8px"><strong>' + $iStart + '-' + $iEnd + ' ' + $iTitle + '</strong>')
+          if ($pLoc) { [void]$sb.Append('<div style="font-size:12px;color:#5a5a56">' + $pLoc + '</div>') }
+          if ($iDet) { [void]$sb.Append('<div style="font-size:12.5px;margin-top:2px">' + $iDet + '</div>') }
+          [void]$sb.Append('</li>')
+        }
+        [void]$sb.Append('</ol></section>')
+      }
+      [void]$sb.Append('</div>')
+      $rxApp = New-Object System.Text.RegularExpressions.Regex('<div\s+id="app">[\s\S]*?</div>\s*(?=<noscript>)')
+      $mApp = $rxApp.Match($text)
+      if ($mApp.Success) {
+        $text = $text.Substring(0, $mApp.Index) + '<div id="app">' + $sb.ToString() + '</div>' + "`n" + $text.Substring($mApp.Index + $mApp.Length)
+      }
     }
   }
 }

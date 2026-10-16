@@ -529,7 +529,9 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 <script>
 (() => {
 'use strict';
-/* v1.5 share copy: keep the untouched page source (before anything renders) */
+/* v1.5 share copy: keep the untouched page source (clear any static pre-rendered #app fallback first so share copy stays leak-free) */
+const _app0 = document.getElementById('app');
+if (_app0) _app0.innerHTML = '<p style="padding:24px;font-family:system-ui,sans-serif">載入中… Loading…</p>';
 const SRC = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
 const TPL = 'v2.1';
 const ML = {
@@ -2169,13 +2171,25 @@ function placeMap() {
   const slot = document.querySelector('.view:not([hidden]) [data-slot]');
   if (!slot || !state.M) return;
   const ctx = slotCtx();
-  if (state.map === 'failed') { slot.classList.add('off'); slot.textContent = ''; slot.appendChild(noMap(ctx)); return; }
-  slot.classList.remove('off');
-  if (!MAPEL) MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') }, h('div', { class: 'mld' }, t('mapLoading')));
-  if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); if (MAP) { try { MAP.resize(); } catch (e) {} } }
-  if (!slot.querySelector('.mapnote')) slot.appendChild(h('div', { class: 'mapnote' }, h('span', { class: 'lg-line', 'aria-hidden': 'true' }), h('span', null, t('mapNote'))));
-  if (state.map === 'idle') startMap();
-  else if (MAP && state.map === 'ready') { MAP.resize(); setFocus(ctx); }
+  if (state.map === 'ready' && MAP && MAPEL) {
+    slot.classList.remove('off');
+    MAPEL.removeAttribute('style');
+    if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); }
+    if (!slot.querySelector('.mapnote')) slot.appendChild(h('div', { class: 'mapnote' }, h('span', { class: 'lg-line', 'aria-hidden': 'true' }), h('span', null, t('mapNote'))));
+    MAP.resize();
+    setFocus(ctx);
+    return;
+  }
+  slot.classList.add('off');
+  slot.textContent = '';
+  slot.appendChild(noMap(ctx));
+  if (state.map !== 'failed') {
+    if (!MAPEL) MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') });
+    MAPEL.setAttribute('style', 'position:absolute;width:320px;height:240px;opacity:0;pointer-events:none;z-index:-1');
+    slot.appendChild(MAPEL);
+    if (MAP) { try { MAP.resize(); } catch (e) {} }
+    if (state.map === 'idle') startMap();
+  }
 }
 function startMap() {
   if (state.map === 'loading' || state.map === 'ready') return;
@@ -2183,7 +2197,7 @@ function startMap() {
   state.map = 'loading';
   let done = false;
   const fail = r => { if (done) return; done = true; clearTimeout(timer); mapFail(r); };
-  const timer = setTimeout(() => fail('timeout'), 18000);
+  const timer = setTimeout(() => fail('timeout'), 15000);
   loadLib().then(lib => {
     if (done) return;
     LIB = lib;
@@ -2191,8 +2205,9 @@ function startMap() {
     if (!el || !el.isConnected) {
       const slot = document.querySelector('.view:not([hidden]) [data-slot]');
       if (!slot) { done = true; clearTimeout(timer); state.map = 'idle'; return; }
-      if (!el) el = MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') }, h('div', { class: 'mld' }, t('mapLoading')));
-      slot.textContent = ''; slot.appendChild(el);
+      if (!el) el = MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') });
+      el.setAttribute('style', 'position:absolute;width:320px;height:240px;opacity:0;pointer-events:none;z-index:-1');
+      slot.appendChild(el);
     }
     MSTYLE = styleUrl();
     let map;
@@ -2207,7 +2222,7 @@ function startMap() {
     map.once('load', () => {
       if (done) return; done = true; clearTimeout(timer);
       state.map = 'ready';
-      const ld = el.querySelector('.mld'); if (ld) ld.remove();
+      el.removeAttribute('style');
       const ab = el.querySelector('.maplibregl-ctrl-attrib-button');
       if (ab) ab.addEventListener('click', () => { ATTR_USER = true; });
       collapseAttr();
@@ -2243,7 +2258,7 @@ function selectItem(id, o) {
   state.sel = id;
   document.querySelectorAll('[data-item]').forEach(el => el.classList.toggle('sel', el.getAttribute('data-item') === id));
   syncSel();
-  if (state.map === 'failed') placeMap();
+  if (state.map !== 'ready') placeMap();
   if (MAP && state.map === 'ready' && hasLL(it.place)) {
     const ll = [it.place.lon, it.place.lat];
     if (o.fly) MAP.flyTo({ center: ll, zoom: Math.max(MAP.getZoom(), 14.5), duration: reduced() ? 0 : 900, essential: true });
