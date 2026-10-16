@@ -188,8 +188,8 @@ unverified?: string[]
 - `verified`、`sources`：有查證就 `true` 並附來源。
 - `options`（v1.4 新增）：還沒訂房的那一段，附最多 3 家候選飯店（HotelOption），讓使用者選 1 家；已經訂好的那一段不給。
   - 必填：`name`、`lat`、`lon`、`sources`、`verified`。
-  - 選填：`nameLocal`、`address`、`priceNote`（價位帶，例如「每晚約 NT$4,000–5,500」，查不到就不填）、`why`（一句：離哪裡近、適合誰；有小孩時提房型或床型，查不到就不寫）、`url`（官方網站或訂房頁）。
-  - 只寫上網確認過名稱、位置和營業狀態的飯店，所以 `verified` 應該是 `true`。湊不滿 3 家就照實際查到的家數給，不准編造。
+  - 選填：`nameLocal`、`address`、`priceNote`（價位帶，例如「每晚約 NT$4,000–5,500」，查不到就不填）、`why`（一句：包含查證過的 Google 評分與評論則數，如「Google 4.3★（約 1,200 則評論），離哪裡近、適合誰」；有小孩時提房型或床型，查不到就不寫）、`url`（官方網站或訂房頁）。
+  - 優先挑 Google 評分 4.0★ 以上且評論數 > 100 則的飯店，只寫上網確認過名稱、位置、營業狀態與評分的飯店，所以 `verified` 應該是 `true`。湊不滿 3 家就照實際查到的家數給，不准編造。
 
 ### days[]
 
@@ -225,7 +225,7 @@ unverified?: string[]
   - `mode`：`walk`、`subway`、`bus`、`rail`、`light-rail`、`taxi`、`car`、`ferry`、`flight`、`other`。
   - `line`：路線名，搭大眾運輸時要寫，例如「地鐵 2 號線」。
   - `minutes` 是數字；`distanceKm`、`cost`、`note` 選填。估算的數字在 `note` 寫「估算」。
-- `detail`：看什麼、做什麼。`tips`：小提醒，字串陣列。
+- `detail`：看什麼、做什麼。`tips`：小提醒，字串陣列。`kind` 為 `food`、`cafe` 時（優先挑 Google 4.2★ 以上且評論數 > 100 則），在 `detail` 或 `tips` 寫出查證過的 Google 評分與評論則數，並在 `tips` 附 1～2 家同區高分備選餐廳。
 - `hours`：營業時間，文字，例如「10:00–18:00，週一公休」。
 - `booking`：`required` 是否要預約；`how` 怎麼預約；`opensAt` 什麼時候開放預約（文字，寫清楚時區）；`url` 預約網址。
 - `booking.status`（v1.1 新增）：`booked` 已訂好；`todo` 還要去訂。
