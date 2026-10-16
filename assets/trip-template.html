@@ -357,10 +357,28 @@ mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linea
 :root[data-eff=dark] .maplibregl-ctrl-attrib{background:rgba(28,28,28,.85);color:#bbb}
 :root[data-eff=dark] .maplibregl-ctrl-attrib a{color:#ddd}
 :root[data-eff=dark] .maplibregl-ctrl-scale{background:rgba(28,28,28,.8);color:#ddd;border-color:#ddd}
-.nomap{padding:16px 18px}
-.nomap .nh{display:flex;align-items:center;gap:8px;font-weight:650;font-size:15px}
-.nomap p{margin:6px 0 10px;font-size:13px;color:var(--text2)}
-.addr{list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--line)}
+.nomap{padding:14px 16px}
+.nomap .nh{display:flex;align-items:center;gap:8px;font-weight:650;font-size:14.5px;flex-wrap:wrap}
+.nomap .nh .sp{flex:1}
+.nomap p{margin:6px 0 10px;font-size:12.5px;color:var(--text2)}
+.svgmap-w{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:color-mix(in srgb,var(--hover) 70%,var(--surface));margin:0 0 10px}
+.svgmap{display:block;width:100%;height:240px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.mapg .svgmap{height:340px}
+.svgmap .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 3}
+.svgmap .rt-oth{fill:none;stroke:var(--mk-faint);stroke-width:2;stroke-dasharray:4 4;opacity:.55}
+.svgmap .rt-act{fill:none;stroke:var(--acc);stroke-width:2.8;stroke-dasharray:6 4;stroke-linecap:round;stroke-linejoin:round}
+.svgmap .rt-case{fill:none;stroke:var(--surface);stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.svgmap .nd{cursor:pointer;transition:transform .15s}
+.svgmap .nd:hover{filter:brightness(1.08)}
+.svgmap .nd circle,.svgmap .nd rect{stroke:#fff;stroke-width:2}
+:root[data-eff=dark] .svgmap .nd circle,:root[data-eff=dark] .svgmap .nd rect{stroke:#1c1c1c}
+.svgmap .nd.on circle,.svgmap .nd.on rect{stroke:var(--ink);stroke-width:3}
+.svgmap .nd text{fill:#fff;font:700 11px/1 var(--font);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+:root[data-eff=dark] .svgmap .nd.act text{fill:#151515}
+.svgpop{border:1px solid var(--line2);border-radius:8px;padding:9px 12px;margin:0 0 10px;background:var(--surface);font-size:13px}
+.svgpop .t1{font-weight:650;font-size:13.5px}
+.svgpop .t2{color:var(--text2);font-size:12.5px;margin-top:2px}
+.addr{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line)}
 .addr li{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start}
 .addr .t1{font-weight:600;font-size:14px}
 .addr .t2,.addr .nav{grid-column:2}
@@ -1937,14 +1955,32 @@ function loadLib() {
   if (LIBP) return LIBP;
   LIBP = new Promise((res, rej) => {
     if (navigator.onLine === false) { rej('offline'); return; }
+    const cssUrls = [ML.css, 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css'];
+    const jsUrls = [
+      { u: ML.js, sri: ML.jsSri, co: 'anonymous' },
+      { u: 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js', sri: '', co: '' },
+      { u: ML.js, sri: '', co: '' }
+    ];
     const l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = ML.css; l.integrity = ML.cssSri; l.crossOrigin = 'anonymous';
+    l.rel = 'stylesheet'; l.href = cssUrls[0];
+    l.onerror = () => { const l2 = document.createElement('link'); l2.rel = 'stylesheet'; l2.href = cssUrls[1]; document.head.appendChild(l2); };
     document.head.appendChild(l);
-    const s = document.createElement('script');
-    s.src = ML.js; s.integrity = ML.jsSri; s.crossOrigin = 'anonymous'; s.async = true;
-    s.onload = () => (window.maplibregl ? res(window.maplibregl) : rej('error'));
-    s.onerror = () => rej('error');
-    document.head.appendChild(s);
+    let idx = 0, settled = false;
+    const tryJs = () => {
+      if (settled) return;
+      if (window.maplibregl) { settled = true; res(window.maplibregl); return; }
+      if (idx >= jsUrls.length) { settled = true; rej('error'); return; }
+      const cur = jsUrls[idx++];
+      const s = document.createElement('script');
+      s.src = cur.u; s.async = true;
+      if (cur.sri) s.integrity = cur.sri;
+      if (cur.co) s.crossOrigin = cur.co;
+      const tmr = setTimeout(() => { if (!settled && !window.maplibregl) tryJs(); }, 5500);
+      s.onload = () => { clearTimeout(tmr); if (!settled && window.maplibregl) { settled = true; res(window.maplibregl); } else if (!settled) tryJs(); };
+      s.onerror = () => { clearTimeout(tmr); if (!settled) tryJs(); };
+      document.head.appendChild(s);
+    };
+    tryJs();
   });
   LIBP.catch(() => { LIBP = null; });
   return LIBP;
@@ -2136,7 +2172,7 @@ function placeMap() {
   if (state.map === 'failed') { slot.classList.add('off'); slot.textContent = ''; slot.appendChild(noMap(ctx)); return; }
   slot.classList.remove('off');
   if (!MAPEL) MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') }, h('div', { class: 'mld' }, t('mapLoading')));
-  if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); }
+  if (MAPEL.parentNode !== slot) { slot.textContent = ''; slot.appendChild(MAPEL); if (MAP) { try { MAP.resize(); } catch (e) {} } }
   if (!slot.querySelector('.mapnote')) slot.appendChild(h('div', { class: 'mapnote' }, h('span', { class: 'lg-line', 'aria-hidden': 'true' }), h('span', null, t('mapNote'))));
   if (state.map === 'idle') startMap();
   else if (MAP && state.map === 'ready') { MAP.resize(); setFocus(ctx); }
@@ -2147,12 +2183,17 @@ function startMap() {
   state.map = 'loading';
   let done = false;
   const fail = r => { if (done) return; done = true; clearTimeout(timer); mapFail(r); };
-  const timer = setTimeout(() => fail('timeout'), 15000);
+  const timer = setTimeout(() => fail('timeout'), 18000);
   loadLib().then(lib => {
     if (done) return;
     LIB = lib;
-    const el = MAPEL;
-    if (!el || !el.isConnected) { fail('error'); return; }
+    let el = MAPEL;
+    if (!el || !el.isConnected) {
+      const slot = document.querySelector('.view:not([hidden]) [data-slot]');
+      if (!slot) { done = true; clearTimeout(timer); state.map = 'idle'; return; }
+      if (!el) el = MAPEL = h('div', { class: 'mapel', role: 'region', 'aria-label': t('mapRegion') }, h('div', { class: 'mld' }, t('mapLoading')));
+      slot.textContent = ''; slot.appendChild(el);
+    }
     MSTYLE = styleUrl();
     let map;
     try { map = new lib.Map({ container: el, style: MSTYLE, bounds: boundsOf(allPts()), fitBoundsOptions: { padding: 40 }, cooperativeGestures: window.innerWidth < 1024, attributionControl: { compact: true }, dragRotate: false, pitchWithRotate: false }); }
@@ -2202,6 +2243,7 @@ function selectItem(id, o) {
   state.sel = id;
   document.querySelectorAll('[data-item]').forEach(el => el.classList.toggle('sel', el.getAttribute('data-item') === id));
   syncSel();
+  if (state.map === 'failed') placeMap();
   if (MAP && state.map === 'ready' && hasLL(it.place)) {
     const ll = [it.place.lon, it.place.lat];
     if (o.fly) MAP.flyTo({ center: ll, zoom: Math.max(MAP.getZoom(), 14.5), duration: reduced() ? 0 : 900, essential: true });
@@ -2213,12 +2255,90 @@ function selectItem(id, o) {
   if (o.scroll) { const row = document.querySelector('.view:not([hidden]) [data-item="' + cssq(id) + '"]'); if (row) row.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' }); }
   if (state.view === 'itinerary') { CUR = '#itinerary/' + state.day + '/' + encodeURIComponent(id); try { history.replaceState(null, '', CUR); } catch (e) { /* file:// / in-app preview may refuse */ } }
 }
-/* offline: no straight-line sketch — local-script addresses + navigation links instead */
+/* sandbox / offline built-in interactive SVG route map + local-script addresses & navigation links */
+function svgMap(ctx) {
+  const M = state.M, isDay = ctx.mode === 'day' && ctx.day > 0;
+  const focusPts = [];
+  if (isDay) {
+    const d = M.days[ctx.day - 1];
+    if (d) {
+      d._items.forEach(it => { if (hasLL(it.place)) focusPts.push([+it.place.lon, +it.place.lat]); });
+      const st = M.stayById[d.stayId];
+      if (hasLL(st)) focusPts.push([+st.lon, +st.lat]);
+    }
+  }
+  const pts = focusPts.length >= 2 ? focusPts : allPts();
+  if (!pts.length) return null;
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  pts.forEach(([x, y]) => { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; });
+  const midLat = (y0 + y1) / 2, cos = Math.max(0.2, Math.cos(midLat * Math.PI / 180));
+  const dx = Math.max(0.008, (x1 - x0) * cos), dy = Math.max(0.008, y1 - y0);
+  const W = 600, H = 260, padX = 44, padY = 34;
+  const scale = Math.min((W - padX * 2) / dx, (H - padY * 2) / dy);
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const proj = (lon, lat) => [
+    Math.round((W / 2 + (+lon - cx) * cos * scale) * 10) / 10,
+    Math.round((H / 2 - (+lat - cy) * scale) * 10) / 10
+  ];
+  const kids = [];
+  for (let i = 1; i <= 3; i++) {
+    const gy = Math.round(H * i / 4), gx = Math.round(W * i / 4);
+    kids.push(sEl('line', { x1: 0, y1: gy, x2: W, y2: gy, class: 'grid' }));
+    kids.push(sEl('line', { x1: gx, y1: 0, x2: gx, y2: H, class: 'grid' }));
+  }
+  M.days.forEach(d => {
+    const active = !isDay || d._n === ctx.day;
+    const coords = d._items.filter(it => hasLL(it.place)).map(it => proj(it.place.lon, it.place.lat).join(','));
+    if (coords.length > 1) {
+      const ptsStr = coords.join(' ');
+      if (active) {
+        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-case' }));
+        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-act' }));
+      } else {
+        kids.push(sEl('polyline', { points: ptsStr, class: 'rt-oth' }));
+      }
+    }
+  });
+  M.stays.filter(hasLL).forEach(st => {
+    const [x, y] = proj(st.lon, st.lat);
+    const g = sEl('g', { class: 'nd', transform: 'translate(' + x + ',' + y + ')' },
+      sEl('rect', { x: -12, y: -11, width: 24, height: 22, rx: 6, fill: 'var(--mk-k)' }),
+      sEl('text', { x: 0, y: 0 }, 'H'));
+    g.appendChild(sEl('title', null, t('hotel') + ': ' + str(st.name)));
+    kids.push(g);
+  });
+  const activeDays = isDay ? [M.days[ctx.day - 1]].filter(Boolean) : M.days;
+  let selIt = state.sel && M.itemById[state.sel] ? M.itemById[state.sel] : null;
+  if (!selIt && activeDays.length && activeDays[0]._items.length) selIt = activeDays[0]._items[0];
+  activeDays.forEach(d => {
+    d._items.filter(it => hasLL(it.place)).forEach(it => {
+      const [x, y] = proj(it.place.lon, it.place.lat), isSel = state.sel === it._id;
+      const g = sEl('g', { class: 'nd act' + (isSel ? ' on' : ''), transform: 'translate(' + x + ',' + y + ')' },
+        sEl('circle', { r: isSel ? 13 : 11, fill: 'var(--acc)' }),
+        sEl('text', { x: 0, y: 0 }, String(it._n)));
+      g.appendChild(sEl('title', null, t('dayS', { n: d._n }) + ' #' + it._n + ' ' + str(it.title)));
+      g.addEventListener('click', e => {
+        e.stopPropagation();
+        if (state.view === 'overview') nav('#itinerary/' + d._n + '/' + encodeURIComponent(it._id));
+        else selectItem(it._id, { scroll: true, pop: true });
+      });
+      kids.push(g);
+    });
+  });
+  const svg = sEl('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'svgmap', role: 'img', 'aria-label': t('mapRegion') }, ...kids);
+  const pop = selIt && selIt.place ? h('div', { class: 'svgpop' },
+    h('div', { class: 't1' }, h('span', { class: 'no', style: 'margin-right:6px' }, String(selIt._n)), t('dayS', { n: selIt._d }) + ' · ' + str(selIt.start) + ' ' + str(selIt.title)),
+    h('div', { class: 't2' }, addrTxt(selIt.place)),
+    navLinks(M, selIt, null)) : null;
+  return h('div', null, h('div', { class: 'svgmap-w' }, svg), pop);
+}
 function noMap(ctx) {
   const M = state.M, list = state.view === 'map' || ctx.mode === 'day';
-  const head = [h('div', { class: 'nh' }, icon('map'), h('span', null, t('mapNet'))),
-    h('p', null, (state.mapReason ? t('r_' + state.mapReason) + (isZh() ? '。' : '. ') : '') + (list ? t('mapNetSub') : t('mapNetOv'))),
-    h('button', { type: 'button', class: 'btn', onclick: retryMap }, t('retry'))];
+  const head = [
+    svgMap(ctx),
+    h('div', { class: 'nh' }, icon('map'), h('span', null, isZh() ? '內建互動路線圖（點擊編號可切換站點與導航）' : 'Built-in interactive route map (tap a stop number for details & navigation)'), h('span', { class: 'sp' }), h('button', { type: 'button', class: 'btn', onclick: retryMap }, t('retry'))),
+    h('p', null, isZh() ? '提示：手機「檔案／LINE／OneDrive」內建預覽器會封鎖外部街景圖磚，已自動為您切換為內建座標路線圖；點下方 Google / Apple 按鈕可直接開啟導航 App。' : 'Note: In-app file previewers block external street tiles, so the built-in coordinate route map is shown above. Use the Google / Apple buttons below to launch turn-by-turn navigation.')
+  ];
   if (!list) return h('div', { class: 'nomap' }, head, h('ol', { class: 'addr' }, M.stays.map(s => h('li', null, h('span', { class: 'no h' }, glyph('bed')), h('span', { class: 't1' }, str(s.name)), h('span', { class: 't2' }, addrTxt(s)), hasLL(s) ? navLinks(M, { title: s.name, place: { name: s.name, nameLocal: s.nameLocal, lat: s.lat, lon: s.lon } }, null) : null))));
   const days = ctx.mode === 'day' ? [M.days[ctx.day - 1]].filter(Boolean) : M.days;
   return h('div', { class: 'nomap' }, head, days.map(d => [days.length > 1 ? h('h3', null, t('dayS', { n: d._n }) + ' · ' + fmtMD(d.date)) : null,
