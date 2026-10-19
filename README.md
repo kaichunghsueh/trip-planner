@@ -4,6 +4,8 @@
 
 **說一句話，排好整趟旅行 —— 免安裝、真雙語、高口碑篩選的互動式旅遊行程 Skill**
 
+🌐 **[繁體中文](./README.md) ｜ [English](./README.en.md)**
+
 [![Version](https://img.shields.io/badge/version-v1.9-D6246E?style=flat-square)](./CHANGELOG.md)
 [![Bilingual](https://img.shields.io/badge/language-繁中%20%7C%20English-2563EB?style=flat-square)](#)
 [![Zero Dependency](https://img.shields.io/badge/output-Single%20HTML%20(Zero%20Install)-059669?style=flat-square)](#)
@@ -88,7 +90,8 @@
 ```text
 trip-planner/
 ├── SKILL.md                      # Skill 核心流程與觸發定義
-├── README.md                     # 使用說明書
+├── README.md                     # 使用說明書（繁體中文）
+├── README.en.md                  # 使用說明書（English）
 ├── CHANGELOG.md                  # 版本更新記錄
 ├── assets/
 │   ├── trip-template.html        # 雙語互動式行程網頁範本（MapLibre + Open-Meteo）
