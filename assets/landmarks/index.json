@@ -10,7 +10,31 @@
       "countries": [
         "JP"
       ],
-      "places": []
+      "places": [
+        "日本",
+        "Japan",
+        "東京",
+        "东京",
+        "Tokyo",
+        "大阪",
+        "Osaka",
+        "京都",
+        "Kyoto",
+        "北海道",
+        "Hokkaido",
+        "札幌",
+        "Sapporo",
+        "沖繩",
+        "冲绳",
+        "Okinawa",
+        "那霸",
+        "Naha",
+        "福岡",
+        "福冈",
+        "Fukuoka",
+        "名古屋",
+        "Nagoya"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -78,7 +102,27 @@
       "countries": [
         "KR"
       ],
-      "places": []
+      "places": [
+        "韓國",
+        "韩国",
+        "Korea",
+        "South Korea",
+        "首爾",
+        "首尔",
+        "Seoul",
+        "서울",
+        "濟州",
+        "济州",
+        "Jeju",
+        "제주",
+        "大邱",
+        "Daegu",
+        "慶州",
+        "庆州",
+        "Gyeongju",
+        "仁川",
+        "Incheon"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -112,8 +156,8 @@
   "tw": {
     "file": "tw.webp",
     "name": {
-      "zh-TW": "台灣",
-      "en": "Taiwan"
+      "zh-TW": "台灣天燈",
+      "en": "Taiwan Sky Lantern"
     },
     "match": {
       "level": "country",
@@ -156,8 +200,8 @@
   "hk": {
     "file": "hk.webp",
     "name": {
-      "zh-TW": "香港",
-      "en": "Hong Kong"
+      "zh-TW": "香港帆船",
+      "en": "Hong Kong Junk Boat"
     },
     "match": {
       "level": "country",
@@ -189,8 +233,8 @@
   "mo": {
     "file": "mo.webp",
     "name": {
-      "zh-TW": "澳門",
-      "en": "Macau"
+      "zh-TW": "澳門大三巴",
+      "en": "Ruins of St. Paul's"
     },
     "match": {
       "level": "country",
@@ -218,8 +262,8 @@
   "th": {
     "file": "th.webp",
     "name": {
-      "zh-TW": "泰國",
-      "en": "Thailand"
+      "zh-TW": "泰國泰式涼亭",
+      "en": "Thai Pavilion"
     },
     "match": {
       "level": "country",
@@ -255,8 +299,8 @@
   "vn": {
     "file": "vn.webp",
     "name": {
-      "zh-TW": "越南",
-      "en": "Vietnam"
+      "zh-TW": "越南下龍灣與斗笠",
+      "en": "Ha Long Bay & Conical Hat"
     },
     "match": {
       "level": "country",
@@ -298,8 +342,8 @@
   "sg": {
     "file": "sg.webp",
     "name": {
-      "zh-TW": "新加坡",
-      "en": "Singapore"
+      "zh-TW": "新加坡店屋",
+      "en": "Singapore Shophouse"
     },
     "match": {
       "level": "country",
@@ -335,7 +379,27 @@
       "countries": [
         "CN"
       ],
-      "places": []
+      "places": [
+        "中國",
+        "中国",
+        "China",
+        "北京",
+        "Beijing",
+        "上海",
+        "Shanghai",
+        "成都",
+        "Chengdu",
+        "西安",
+        "Xi'an",
+        "Xian",
+        "杭州",
+        "Hangzhou",
+        "廣州",
+        "广州",
+        "Guangzhou",
+        "深圳",
+        "Shenzhen"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -346,7 +410,7 @@
   "fr": {
     "file": "fr.webp",
     "name": {
-      "zh-TW": "艾菲爾鐵塔",
+      "zh-TW": "法國艾菲爾鐵塔",
       "en": "Eiffel Tower"
     },
     "match": {
@@ -354,7 +418,22 @@
       "countries": [
         "FR"
       ],
-      "places": []
+      "places": [
+        "法國",
+        "法国",
+        "France",
+        "巴黎",
+        "Paris",
+        "尼斯",
+        "Nice",
+        "里昂",
+        "Lyon",
+        "馬賽",
+        "马赛",
+        "Marseille",
+        "史特拉斯堡",
+        "Strasbourg"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -365,7 +444,7 @@
   "gb": {
     "file": "gb.webp",
     "name": {
-      "zh-TW": "大笨鐘",
+      "zh-TW": "英國大笨鐘",
       "en": "Big Ben"
     },
     "match": {
@@ -373,7 +452,25 @@
       "countries": [
         "GB"
       ],
-      "places": []
+      "places": [
+        "英國",
+        "英国",
+        "United Kingdom",
+        "UK",
+        "倫敦",
+        "伦敦",
+        "London",
+        "愛丁堡",
+        "爱丁堡",
+        "Edinburgh",
+        "曼徹斯特",
+        "Manchester",
+        "牛津",
+        "Oxford",
+        "劍橋",
+        "剑桥",
+        "Cambridge"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -384,7 +481,7 @@
   "it": {
     "file": "it.webp",
     "name": {
-      "zh-TW": "羅馬競技場",
+      "zh-TW": "義大利羅馬競技場",
       "en": "Colosseum"
     },
     "match": {
@@ -392,7 +489,31 @@
       "countries": [
         "IT"
       ],
-      "places": []
+      "places": [
+        "義大利",
+        "意大利",
+        "Italy",
+        "Italia",
+        "羅馬",
+        "罗马",
+        "Rome",
+        "Roma",
+        "米蘭",
+        "米兰",
+        "Milan",
+        "Milano",
+        "威尼斯",
+        "Venice",
+        "Venezia",
+        "佛羅倫斯",
+        "佛罗伦萨",
+        "Florence",
+        "Firenze",
+        "拿坡里",
+        "那不勒斯",
+        "Naples",
+        "Napoli"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -403,7 +524,7 @@
   "us": {
     "file": "us.webp",
     "name": {
-      "zh-TW": "自由女神像",
+      "zh-TW": "美國自由女神像",
       "en": "Statue of Liberty"
     },
     "match": {
@@ -411,7 +532,29 @@
       "countries": [
         "US"
       ],
-      "places": []
+      "places": [
+        "美國",
+        "美国",
+        "United States",
+        "USA",
+        "紐約",
+        "纽约",
+        "New York",
+        "NYC",
+        "洛杉磯",
+        "洛杉矶",
+        "Los Angeles",
+        "舊金山",
+        "旧金山",
+        "San Francisco",
+        "西雅圖",
+        "西雅图",
+        "Seattle",
+        "夏威夷",
+        "Hawaii",
+        "拉斯維加斯",
+        "Las Vegas"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -422,7 +565,7 @@
   "au": {
     "file": "au.webp",
     "name": {
-      "zh-TW": "袋鼠",
+      "zh-TW": "澳洲袋鼠",
       "en": "Kangaroo"
     },
     "match": {
@@ -430,7 +573,26 @@
       "countries": [
         "AU"
       ],
-      "places": []
+      "places": [
+        "澳洲",
+        "澳大利亞",
+        "澳大利亚",
+        "Australia",
+        "雪梨",
+        "悉尼",
+        "Sydney",
+        "墨爾本",
+        "墨尔本",
+        "Melbourne",
+        "布里斯本",
+        "布里斯班",
+        "Brisbane",
+        "黃金海岸",
+        "黄金海岸",
+        "Gold Coast",
+        "伯斯",
+        "Perth"
+      ]
     },
     "accent": {
       "color": "#D6246E",
@@ -441,7 +603,7 @@
   "dk": {
     "file": "dk.webp",
     "name": {
-      "zh-TW": "哥本哈根新港",
+      "zh-TW": "丹麥哥本哈根新港",
       "en": "Nyhavn Canal"
     },
     "match": {
@@ -550,7 +712,7 @@
   "fi": {
     "file": "fi.webp",
     "name": {
-      "zh-TW": "赫爾辛基大教堂",
+      "zh-TW": "芬蘭赫爾辛基大教堂",
       "en": "Helsinki Cathedral"
     },
     "match": {
@@ -587,7 +749,7 @@
   "is": {
     "file": "is.webp",
     "name": {
-      "zh-TW": "雷克雅維克哈爾格林姆教堂",
+      "zh-TW": "冰島哈爾格林姆教堂",
       "en": "Hallgrímskirkja"
     },
     "match": {
@@ -624,7 +786,7 @@
   "de": {
     "file": "de.webp",
     "name": {
-      "zh-TW": "新天鵝堡",
+      "zh-TW": "德國新天鵝堡",
       "en": "Neuschwanstein Castle"
     },
     "match": {
@@ -792,7 +954,7 @@
   "ch": {
     "file": "ch.webp",
     "name": {
-      "zh-TW": "馬特洪峰與冰河列車",
+      "zh-TW": "瑞士馬特洪峰與冰河列車",
       "en": "Matterhorn & Alpine Train"
     },
     "match": {
@@ -842,7 +1004,7 @@
   "at": {
     "file": "at.webp",
     "name": {
-      "zh-TW": "哈修塔特湖畔小鎮",
+      "zh-TW": "奧地利哈修塔特湖畔小鎮",
       "en": "Hallstatt Lakeside Village"
     },
     "match": {
@@ -880,7 +1042,7 @@
   "gr": {
     "file": "gr.webp",
     "name": {
-      "zh-TW": "聖托里尼藍頂教堂",
+      "zh-TW": "希臘聖托里尼藍頂教堂",
       "en": "Santorini Cliffside Dome Church"
     },
     "match": {
