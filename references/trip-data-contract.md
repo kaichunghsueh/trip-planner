@@ -101,7 +101,7 @@ budget?: { lines: [ { category: "transport"|"stay"|"food"|"tickets"|"shopping"|"
 checklists?: { before: [ { when: "T-14"|"T-7"|"T-3"|"T-1"|"D0", text } ], packing?: string[] }
 emergency?: { numbers: [ { label, number } ], consular?: [ { for, name, phone?, address?, note?, source?: SourceRef } ], hospitals?: [ { name, phone?, address?, lat?, lon? } ], note? }
 navigation: { apps: ("naver"|"kakao"|"google"|"apple")[]（順序＝優先）, note? }
-climate?: { basis（例：「2021–2025 年同期平均」）, tempMaxC, tempMinC, precipMm?, rainDays?, source: SourceRef }
+climate: { basis（例：「2021–2025 年同期平均」）, tempMaxC, tempMinC, precipMm?, rainDays?, source: SourceRef }（v1.9 改為必填，`set-cover` 會驗證 tempMaxC 與 tempMinC）
 selfCheck?: [ { rule, result: "pass"|"warn"|"fail"|"n/a"（"n/a" 為 v1.5 新增）, note? } ]
 unverified?: string[]
 ```
@@ -248,7 +248,7 @@ unverified?: string[]
 - `checklists`：`before` 每一條有 `when` 和 `text`。`when` 的意思：`T-14`、`T-7`、`T-3`、`T-1` 是出發前 14、7、3、1 天，`D0` 是出發當天。`packing` 是行李清單。
 - `emergency`：`numbers` 是當地緊急電話（`label`、`number`）；`consular` 是駐外單位，`for` 寫適用哪一本護照（例如 `TW`）；`hospitals` 是附近的大醫院。全部要查證。
 - `navigation`：`apps` 的順序就是優先順序，韓國預設 `["naver", "kakao", "google"]`，其他國家預設 `["google", "apple"]`。`note` 寫導航現況的查證結果和日期。
-- `climate`：歷年同期的氣候。`basis` 寫統計範圍，例如「2021–2025 年同期平均」；`tempMaxC`、`tempMinC`、`precipMm`、`rainDays` 是數字；`source` 一定要有。出發日還在預報範圍外、或離線又沒有存過的預報時，網頁顯示這份資料；沒有這份資料，網頁就顯示沒有天氣資料。
+- `climate`（**必填**，v1.9 起由 `set-cover` 強制驗證 `tempMaxC` 與 `tempMinC`）：歷年同期的平均氣候。`basis` 寫統計範圍，例如「2021–2025 年同期平均」；`tempMaxC`、`tempMinC`、`precipMm`、`rainDays` 是數字；`source` 一定要有。當出發日超過 16 天預報範圍時，網頁開檔除了會自動向 Open-Meteo Historical Archive API 抓取近 3 年同月同日的歷史天氣外，離線又沒有存過快取時即顯示這份 `climate` 保底，確保永遠不會出現「沒有天氣資料」。
 - `selfCheck`：自我檢查結果，每一條有 `rule`、`result`（`pass`、`warn`、`fail`，或 v1.5 新增的 `n/a`）和 `note`。`rule` 一定要**以規則編號開頭**，例如「3. 同一天時間不重疊」；網頁會用這個編號，拿 AI 的自評和網頁自己重算的結果比對，不一致就標出來。目前共 16 條。`n/a` 表示這一條不適用：第 16 條「預算在上限內」沒有 `budget.cap` 時填 `n/a`；其他條遇到不適用的情況也可以用，`note` 補一句原因。
 - `unverified`：沒查證的項目，一條一句，寫清楚哪一天、哪一站、哪一項。
 
@@ -383,6 +383,14 @@ unverified?: string[]
     "hidden": ["換現鈔會比中間價貴，價差請以銀行牌價為準"]
   },
   "navigation": { "apps": ["naver", "kakao", "google"], "note": "範例：韓國以 Naver Map、KakaoMap 為主" },
+  "climate": {
+    "basis": "範例：2021–2025 年 10 月下旬平均（虛構）",
+    "tempMaxC": 21,
+    "tempMinC": 13,
+    "precipMm": 45,
+    "rainDays": 5,
+    "source": { "title": "範例氣候來源（虛構）", "url": "https://example.com/sample-climate", "checked": "2026-10-14" }
+  },
   "selfCheck": [
     { "rule": "1. 每晚都有住宿", "result": "pass" },
     { "rule": "4. 移動接得上", "result": "pass", "note": "範例：19:15＋10 分鐘＝19:25，早於 19:30" },

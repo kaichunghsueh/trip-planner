@@ -116,6 +116,10 @@ if ($doc =~ m{<script\s+type="application/json"\s+id="trip-data"[^>]*>(.*?)</scr
       my $ge = (ref $en->{meta} eq "HASH") ? ($en->{meta}{generator} // "") : "";
       if ($gz !~ /template-demo/) {
         fail(3, "#trip-data-en still contains template demo data (meta.generator is trip-template-demo)") if $ge =~ /template-demo/;
+        my $cl = $zh->{climate};
+        if (ref $cl ne "HASH" || (!defined $cl->{tempMaxC} && !defined $cl->{tempMinC})) {
+          fail(3, "climate: missing climate.tempMaxC / tempMinC (required for >16-day and offline weather display)");
+        }
         $bilingual = "ok";
       }
     }

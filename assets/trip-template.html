@@ -457,6 +457,17 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 .fxbox dd{margin:0;min-width:0}
 .fxbox a{color:var(--text2)}
 .fxbig{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fxc{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line2)}
+.fxc h3{margin:0 0 8px;font-size:13px;color:var(--text2)}
+.fxc-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fxc-in{display:flex;align-items:center;border:1px solid var(--line2);border-radius:8px;padding:4px 10px;background:var(--bg);flex:1 1 130px;min-width:0}
+.fxc-in input{border:0;background:transparent;color:var(--text);font:650 15px/1.3 var(--font);font-variant-numeric:tabular-nums;width:100%;min-width:0;outline:none}
+.fxc-in span{font-size:12px;font-weight:650;color:var(--text2);margin-left:6px;white-space:nowrap}
+.fxc-res{margin:8px 0 0;font-size:13px;color:var(--text2);font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.fxc-res b{color:var(--text)}
+.fxc-q{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.fxc-q button{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--text2);cursor:pointer;font-variant-numeric:tabular-nums}
+.fxc-q button:hover{background:var(--hover);color:var(--text)}
 .btbl td .sub{display:block;font-size:12px;color:var(--text3);margin-top:2px}
 .btbl .per{color:var(--text2);font-size:12.5px;white-space:nowrap}
 .btbl th{white-space:nowrap}
@@ -489,13 +500,13 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"schemaVersion":"1",
 "meta":{"title":"範本示範：釜山 2 天 1 夜","subtitle":"這是範本內建的示範資料，AI 產生行程時會把整段換掉。店名與景點皆為虛構。","language":"zh-TW","userLanguage":"zh-TW","generatedAt":"2026-10-14T10:00:00+08:00","generator":"trip-template-demo","assumptions":["同行者：2 位成人（預設）","步調：適中（預設）","店名與景點皆為虛構"]},
 "traveler":{"party":{"adults":2},"pace":"balanced"},
-"journey":{"origin":{"city":"台北","airport":"TPE"},"destination":{"city":"釜山","country":"KR","lat":35.1796,"lon":129.0756,"timezone":"Asia/Seoul"},"startDate":"2026-10-19","endDate":"2026-10-20","arrival":{"at":"2026-10-19T17:00","airport":"PUS"},"departure":{"at":"2026-10-20T15:00","airport":"PUS","airportArriveBy":"2026-10-20T12:00"},"transport":{"primary":"transit"},"homeCurrency":"TWD","localCurrency":"KRW"},
+"journey":{"origin":{"city":"台北","airport":"TPE"},"destination":{"city":"釜山","country":"KR","lat":35.1796,"lon":129.0756,"timezone":"Asia/Seoul"},"startDate":"2026-10-19","endDate":"2026-10-20","arrival":{"at":"2026-10-19T17:00","airport":"PUS"},"departure":{"at":"2026-10-20T15:00","airport":"PUS","airportArriveBy":"2026-10-20T12:00"},"transport":{"primary":"transit"},"homeCurrency":"TWD","localCurrency":"KRW","fx":{"rate":0.0235,"kind":"mid","asOf":"2026-10-14","source":{"title":"示範匯率資料（虛構）","url":"https://example.com/","checked":"2026-10-14"}}},
 "stays":[{"id":"s1","name":"示範飯店","lat":35.1605,"lon":129.163,"checkIn":"2026-10-19","checkOut":"2026-10-20","booked":true,"verified":false}],
 "days":[
 {"date":"2026-10-19","title":"抵達，海邊晚餐","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"抵達機場、入境、領行李","place":{"name":"金海國際機場","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"入住示範飯店","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"tips":["🎁 必吃小吃／伴手禮：示範魚板串與釜山魚板禮盒（虛構）"],"verified":false}]},
 {"date":"2026-10-20","title":"早餐後回程","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"早餐：示範粥店","place":{"name":"示範粥店","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"退房","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -508,13 +519,13 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"schemaVersion":"1",
 "meta":{"title":"Template demo: Busan, 2 days 1 night","subtitle":"This is the template's built-in demo data; the AI replaces all of it when it makes a trip. Shops and sights are fictional.","language":"en","userLanguage":"zh-TW","generatedAt":"2026-10-14T10:00:00+08:00","generator":"trip-template-demo","assumptions":["Travellers: 2 adults (default)","Pace: balanced (default)","All shops and sights are fictional"]},
 "traveler":{"party":{"adults":2},"pace":"balanced"},
-"journey":{"origin":{"city":"Taipei","airport":"TPE"},"destination":{"city":"Busan","country":"KR","lat":35.1796,"lon":129.0756,"timezone":"Asia/Seoul"},"startDate":"2026-10-19","endDate":"2026-10-20","arrival":{"at":"2026-10-19T17:00","airport":"PUS"},"departure":{"at":"2026-10-20T15:00","airport":"PUS","airportArriveBy":"2026-10-20T12:00"},"transport":{"primary":"transit"},"homeCurrency":"TWD","localCurrency":"KRW"},
+"journey":{"origin":{"city":"Taipei","airport":"TPE"},"destination":{"city":"Busan","country":"KR","lat":35.1796,"lon":129.0756,"timezone":"Asia/Seoul"},"startDate":"2026-10-19","endDate":"2026-10-20","arrival":{"at":"2026-10-19T17:00","airport":"PUS"},"departure":{"at":"2026-10-20T15:00","airport":"PUS","airportArriveBy":"2026-10-20T12:00"},"transport":{"primary":"transit"},"homeCurrency":"TWD","localCurrency":"KRW","fx":{"rate":0.0235,"kind":"mid","asOf":"2026-10-14","source":{"title":"Demo FX data (fictional)","url":"https://example.com/","checked":"2026-10-14"}}},
 "stays":[{"id":"s1","name":"Demo Hotel","lat":35.1605,"lon":129.163,"checkIn":"2026-10-19","checkOut":"2026-10-20","booked":true,"verified":false}],
 "days":[
 {"date":"2026-10-19","title":"Arrival and a seaside dinner","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"Land, clear immigration, collect bags","place":{"name":"Gimhae International Airport","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"Check in at Demo Hotel","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"tips":["🎁 Local snack / souvenir: Demo fish cake skewers and Busan eomuk gift box (fictional)"],"verified":false}]},
 {"date":"2026-10-20","title":"Breakfast, then home","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"Breakfast: Demo Porridge House","place":{"name":"Demo Porridge House","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"Check out","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -545,7 +556,9 @@ const ML = {
 /* the one map accent (route + numbered stops); dark mode gets a lighter tint for contrast on the Fiord basemap */
 const ACC = { light: '#d6246e', dark: '#ff70a8', greyL: '#8f8f8a', greyD: '#8c8c88' };
 const WX_URL = 'https://api.open-meteo.com/v1/forecast';
+const WX_ARCH_URL = 'https://archive-api.open-meteo.com/v1/archive';
 const WX_DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,sunrise,sunset';
+const WX_ARCH_DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,sunrise,sunset';
 const LANGS = ['zh-TW', 'en'];
 const KEY = { lang: 'tripv0.lang', theme: 'tripv0.theme', itv: 'tripv2.itView' };
 const VIEWS = ['overview', 'itinerary', 'map', 'lists', 'budget', 'info'];
@@ -599,6 +612,7 @@ const T = {
   src_live: ['即時', 'Live'], src_past: ['實際', 'Observed'], src_cache: ['快取', 'Cached'], src_climate: ['歷年同期', 'Normal'],
   rainProb: ['降雨', 'Rain'], wind: ['風', 'Wind'], sunrise: ['日出', 'Sunrise'], sunset: ['日落', 'Sunset'],
   rainDays: ['雨日 {n} 天', '{n:rain day}'], climateBasis: ['歷年同期：{b}', 'Climate normals: {b}'],
+  climArchBasis: ['Open-Meteo 近 3 年同日平均', 'Open-Meteo 3-year same-day average'],
   wxAttr: ['天氣資料：Open-Meteo.com（CC BY 4.0）', 'Weather data: Open-Meteo.com (CC BY 4.0)'],
   rainTop: ['可能下雨（{p}%）：先看雨天備案', 'Rain likely ({p}%): rain plan first'], rainDot: ['可能下雨', 'Rain likely'],
   rainPlan: ['雨天備案', 'Rain plan'], rainAlt: ['雨天替代', 'If it rains'],
@@ -695,6 +709,12 @@ const T = {
   qm_optLL: ['住宿「{s}」的候選「{a}」缺座標', 'Stay “{s}”: option “{a}” has no coordinates'],
   walkLbl: ['當天步行量', 'Walking today'], walkAbout: ['約 {k} km', 'about {k} km'],
   qm_sunset: ['{p}：日落約 {s}，這站 {t} 才開始，會錯過夕陽', '{p}: sunset is about {s} but this stop starts at {t}, so the sunset will be missed'],
+  qm_afterDark: ['{p}：日落約 {s}，戶外行程排到 {e}（天黑後若無夜間點燈，建議改排日落前或室內）', '{p}: sunset is about {s}, outdoor stop runs until {e} (move before dark or indoors unless lit at night)'],
+  giftsCard: ['🎁 在地小吃＆伴手禮', '🎁 Local snacks & souvenirs'],
+  giftsNote: ['彙整各站小提醒中的必吃小吃與伴手禮；點站名可跳至該站時間軸。', 'Collected from local snack & souvenir tips across stops; tap a stop name to jump to its timeline.'],
+  fxCalcT: ['💴 隨手換算＆分帳計算機', '💴 Quick converter & bill splitter'],
+  fxSplit: ['每人分攤（÷ {n} 人）：', 'Per person (÷ {n}): '],
+  fxLocalLbl: ['當地金額', 'Local amount'], fxHomeLbl: ['本國金額', 'Home amount'],
   /* contract v1.1 (spec §6b) */
   dt_transit: ['大眾運輸', 'Transit'], dt_car: ['自駕', 'Driving'], dt_taxi: ['計程車', 'Taxi'], dt_mixed: ['混搭', 'Mixed'], dayTr: ['當天交通', 'Getting around today'],
   by_user: ['使用者指定', 'Your choice'], by_ai: ['AI 判斷', 'AI’s call'],
@@ -1172,32 +1192,86 @@ function fillDaily(out, daily, at, today, cached) {
     out[dt] = { src: cached ? 'cache' : (dt < today ? 'past' : 'live'), at, code: v('weather_code'), tmax: v('temperature_2m_max'), tmin: v('temperature_2m_min'), pop: v('precipitation_probability_max'), psum: v('precipitation_sum'), wind: v('wind_speed_10m_max'), sunrise: v('sunrise'), sunset: v('sunset') };
   });
 }
+function shiftYr(s, dy) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(str(s));
+  if (!m) return s;
+  const y = +m[1] + dy, mo = m[2], d = m[3] === '29' && mo === '02' && !(y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0)) ? '28' : m[3];
+  return y + '-' + mo + '-' + d;
+}
 async function fetchGroup(g, M, today) {
   const lo = addDays(today, -92), hi = addDays(today, 15);
   const dates = g.dates.slice().sort();
-  const req = dates.filter(d => d >= lo && d <= hi);
+  const req = dates.filter(d => d >= lo && d <= hi), old = dates.filter(d => d < lo), fut = dates.filter(d => d > hi);
   const key = 'tripv0.wx:' + g.lat.toFixed(3) + ',' + g.lon.toFixed(3) + ':' + dates[0];
   const cache = safeParse(store.get(key)) || { days: {} };
   const out = {};
-  if (!req.length) return { out, status: dates[0] > hi ? 'beyond' : 'climate' };
-  const qs = new URLSearchParams({ latitude: g.lat.toFixed(4), longitude: g.lon.toFixed(4), timezone: g.tz || M.tz, start_date: req[0], end_date: req[req.length - 1], daily: WX_DAILY });
   const ctl = typeof AbortController === 'function' ? new AbortController() : null;
   const timer = setTimeout(() => { if (ctl) ctl.abort(); }, 8000);
   try {
     if (navigator.onLine === false) throw new Error('offline'); /* known offline: go straight to cache / no-data, no doomed request */
-    const res = await fetch(WX_URL + '?' + qs.toString(), { signal: ctl ? ctl.signal : undefined, credentials: 'omit', referrerPolicy: 'no-referrer' });
-    const j = await res.json();
-    if (!res.ok || !j || j.error) throw new Error((j && j.reason) || ('HTTP ' + res.status));
-    const at = Date.now();
-    fillDaily(out, j.daily, at, today, false);
+    const at = Date.now(), tz = g.tz || M.tz, lat = g.lat.toFixed(4), lon = g.lon.toFixed(4);
+    const getJson = async u => {
+      const res = await fetch(u, { signal: ctl ? ctl.signal : undefined, credentials: 'omit', referrerPolicy: 'no-referrer' });
+      const j = await res.json();
+      if (!res.ok || !j || j.error) throw new Error((j && j.reason) || ('HTTP ' + res.status));
+      return j;
+    };
+    if (req.length) {
+      const qs = new URLSearchParams({ latitude: lat, longitude: lon, timezone: tz, start_date: req[0], end_date: req[req.length - 1], daily: WX_DAILY });
+      const j = await getJson(WX_URL + '?' + qs.toString());
+      fillDaily(out, j.daily, at, today, false);
+    }
+    if (old.length) {
+      const qs = new URLSearchParams({ latitude: lat, longitude: lon, timezone: tz, start_date: old[0], end_date: old[old.length - 1], daily: WX_ARCH_DAILY });
+      const j = await getJson(WX_ARCH_URL + '?' + qs.toString());
+      fillDaily(out, j.daily, at, today, false);
+    }
+    if (fut.length) {
+      let dy0 = -1;
+      const cut = addDays(today, -5);
+      while (dy0 > -10 && shiftYr(fut[fut.length - 1], dy0) > cut) dy0--;
+      const yrs = [dy0, dy0 - 1, dy0 - 2];
+      const archs = await Promise.all(yrs.map(dy => {
+        const qs = new URLSearchParams({ latitude: lat, longitude: lon, timezone: tz, start_date: shiftYr(fut[0], dy), end_date: shiftYr(fut[fut.length - 1], dy), daily: WX_ARCH_DAILY });
+        return getJson(WX_ARCH_URL + '?' + qs.toString()).then(j => j.daily || null).catch(() => null);
+      }));
+      const avg = a => a.reduce((s, x) => s + x, 0) / a.length;
+      fut.forEach(dt => {
+        const tmaxs = [], tmins = [], psums = [], winds = [], codes = [], rises = [], sets = [];
+        archs.forEach((dl, yi) => {
+          if (!dl || !Array.isArray(dl.time)) return;
+          const idx = dl.time.indexOf(shiftYr(dt, yrs[yi]));
+          if (idx < 0) return;
+          if (isNum(dl.temperature_2m_max && dl.temperature_2m_max[idx])) tmaxs.push(dl.temperature_2m_max[idx]);
+          if (isNum(dl.temperature_2m_min && dl.temperature_2m_min[idx])) tmins.push(dl.temperature_2m_min[idx]);
+          if (isNum(dl.precipitation_sum && dl.precipitation_sum[idx])) psums.push(dl.precipitation_sum[idx]);
+          if (isNum(dl.wind_speed_10m_max && dl.wind_speed_10m_max[idx])) winds.push(dl.wind_speed_10m_max[idx]);
+          if (isNum(dl.weather_code && dl.weather_code[idx])) codes.push(dl.weather_code[idx]);
+          if (dl.sunrise && dl.sunrise[idx]) rises.push(dl.sunrise[idx]);
+          if (dl.sunset && dl.sunset[idx]) sets.push(dl.sunset[idx]);
+        });
+        if (!tmaxs.length && !tmins.length) return;
+        codes.sort((a, b) => a - b);
+        out[dt] = {
+          src: 'climate', hist: true, at,
+          code: codes.length ? codes[Math.floor(codes.length / 2)] : null,
+          tmax: tmaxs.length ? Math.round(avg(tmaxs) * 10) / 10 : null,
+          tmin: tmins.length ? Math.round(avg(tmins) * 10) / 10 : null,
+          psum: psums.length ? Math.round(avg(psums) * 10) / 10 : null,
+          wind: winds.length ? Math.round(avg(winds) * 10) / 10 : null,
+          sunrise: rises[0] || null, sunset: sets[0] || null
+        };
+      });
+    }
+    if (!Object.keys(out).length) return { out, status: dates[0] > hi ? 'beyond' : 'climate' };
     Object.keys(out).forEach(d => { cache.days[d] = out[d]; });
     cache.at = at;
     store.set(key, JSON.stringify(cache));
-    return { out, status: req.length < dates.length && dates[dates.length - 1] > hi ? 'partial' : 'live', at };
+    return { out, status: req.length ? (fut.length ? 'partial' : 'live') : fut.length ? 'beyond' : 'live', at };
   } catch (e) {
     const days = cache.days || {};
-    dates.forEach(d => { if (days[d]) out[d] = Object.assign({}, days[d], { src: 'cache' }); });
-    return Object.keys(out).length ? { out, status: 'cache', at: cache.at } : { out, status: 'failed', err: String(e && e.message || e) };
+    dates.forEach(d => { if (days[d]) out[d] = Object.assign({}, days[d], { src: days[d].src === 'climate' ? 'climate' : 'cache' }); });
+    return Object.keys(out).length ? { out, status: dates[0] > hi ? 'beyond' : 'cache', at: cache.at } : { out, status: dates[0] > hi ? 'beyond' : 'failed', err: String(e && e.message || e) };
   } finally { clearTimeout(timer); }
 }
 async function loadWeather() {
@@ -1216,12 +1290,12 @@ async function loadWeather() {
   const wx = {};
   res.forEach(r => Object.assign(wx, r.out));
   const sts = res.map(r => r.status);
-  const firstMissing = M.days.map(d => d.date).filter(d => !wx[d]).sort()[0];
+  const firstBeyond = M.days.map(d => d.date).filter(d => d > addDays(today, 15)).sort()[0];
   state.wx = wx;
   state.wxInfo = {
     status: sts.includes('live') || sts.includes('partial') ? 'live' : sts.includes('cache') ? 'cache' : sts.includes('beyond') ? 'beyond' : sts.includes('failed') ? 'failed' : 'climate',
     at: Math.max(0, ...res.map(r => r.at || 0)),
-    beyondN: firstMissing && firstMissing > addDays(today, 15) ? dayDiff(today, firstMissing) - 15 : null,
+    beyondN: firstBeyond ? dayDiff(today, firstBeyond) - 15 : null,
     past: Object.values(wx).some(w => w.src === 'past') && !Object.values(wx).some(w => w.src === 'live')
   };
   refreshWx();
@@ -1359,10 +1433,20 @@ function quality(M) {
   { const bad = {}, ck = m => { if (m && typeof m === 'object' && isNum(+m.amount) && m.currency != null && toH(M, 1, m.currency) == null) { const c = str(m.currency).toUpperCase(); bad[c] = (bad[c] || 0) + 1; } };
     arr(M.D.budget && M.D.budget.lines).forEach(x => ck(x && x.amount)); items.forEach(([, it]) => { ck(it.cost); ck(it.move && it.move.cost); });
     Object.keys(bad).forEach(c => R.fx.push({ x: t('qm_fx', { c, n: bad[c], h: M.HC || '?' }), h: '#budget' })); }
-  /* v1.4 D: a sight/activity about the sunset must start before sunset — listed under #7 (AI-only row), not counted as a check */
+  /* v1.4 D + v1.9: (1) a sight/activity about the sunset must start before sunset;
+     (2) an outdoor sight/activity (indoor === false) starting after sunset or ending > 30 min after sunset without night/illumination keywords is flagged under #7 */
   R.sun = [];
-  items.forEach(([d, it]) => { if (!['sight', 'activity'].includes(it.kind) || !/夕陽|夕阳|日落|sunset/i.test(str(it.title) + ' ' + str(it.detail))) return;
-    const s = sunTimes(M, d); if (s && toMin(it.start) > s.set) R.sun.push(QL(d, it, t('qm_sunset', { p: pfx(d, it), s: hmm(s.set), t: str(it.start) }))); });
+  const NIGHT_OK = /夜景|夜楓|夜間|點燈|燈飾|燈會|夜市|花火|煙火|遊船|夜遊|觀景|展望|塔|摩天輪|溫泉|泡湯|商圈|商店街|地下街|老街|市場|樂園|秀|表演|ライトアップ|夜間特別拝観|night|illuminat|light-?up|evening|observatory|tower|wheel|cruise|market|street|shopping|onsen|spa|show|parade/i;
+  items.forEach(([d, it]) => {
+    if (!['sight', 'activity'].includes(it.kind)) return;
+    const s = sunTimes(M, d); if (!s) return;
+    const st = toMin(it.start), en = toMin(it.end), tx = str(it.title) + ' ' + str(it.detail) + ' ' + str(it.hours) + ' ' + arr(it.tips).join(' ');
+    if (/夕陽|夕阳|日落|sunset/i.test(str(it.title) + ' ' + str(it.detail))) {
+      if (st > s.set) R.sun.push(QL(d, it, t('qm_sunset', { p: pfx(d, it), s: hmm(s.set), t: str(it.start) })));
+    } else if (it.indoor === false && (st >= s.set || en > s.set + 30) && !NIGHT_OK.test(tx)) {
+      R.sun.push(QL(d, it, t('qm_afterDark', { p: pfx(d, it), s: hmm(s.set), e: str(it.end) })));
+    }
+  });
   return R;
 }
 function unverifiedList(M) {
@@ -1758,10 +1842,10 @@ function fillWxStrip() {
   box.textContent = '';
   const R = tRange(M);
   box.appendChild(h('div', { class: 'wxs' }, M.days.map(d => {
-    const w = wxFor(M, d.date), pop = rainPop(M, d.date), clim = !!w && w.src === 'climate', m = w && !clim && w.code != null ? wmo(w.code) : null;
+    const w = wxFor(M, d.date), pop = rainPop(M, d.date), clim = !!w && w.src === 'climate', m = w && w.code != null ? wmo(w.code) : null;
     return h('a', { class: 'wxd', href: '#itinerary/' + d._n },
       h('div', { class: 'dd' }, t('dayS', { n: d._n }) + ' · ' + fmtMD(d.date)),
-      h('div', { class: 'ic' }, w ? wxSvg(clim ? 'climate' : m ? WXK(w.code) : 'cloud') : null, h('span', null, clim ? t('src_climate') : m ? m.tx : '')),
+      h('div', { class: 'ic' }, w ? wxSvg(m ? WXK(w.code) : clim ? 'climate' : 'cloud') : null, h('span', null, m ? m.tx : clim ? t('src_climate') : '')),
       h('div', { class: 'tt' }, w && isNum(w.tmax) ? [h('span', null, Math.round(w.tmax) + '°'), h('span', { class: 'lo' }, '/ ' + (isNum(w.tmin) ? Math.round(w.tmin) + '°' : '—'))] : '—'),
       tBar(w, R),
       h('div', { class: 'pp' }, w && isNum(w.pop) ? t('rainProb') + ' ' + Math.round(w.pop) + '%' : w && isNum(w.psum) ? w.psum + ' mm' : ''),
@@ -1769,17 +1853,17 @@ function fillWxStrip() {
       pop ? dot('rain', t('rainDot')) : null,
       h('span', { class: 'chip' }, w ? t('src_' + w.src) : t('wxNone')));
   })));
-  const C = M.D.climate, showC = C && M.days.some(d => { const w = wxFor(M, d.date); return w && w.src === 'climate'; });
-  box.appendChild(h('div', { class: 'wxa' }, t('wxAttr'), showC ? [zp('｜', ' | '), t('climateBasis', { b: str(C.basis) }), isNum(C.rainDays) ? zp('・', ' · ') + t('rainDays', { n: C.rainDays }) : '', C.source && safeUrl(C.source.url) ? [' ', ext(C.source.url, '↗')] : null] : null));
+  const C = M.D.climate, showC = M.days.some(d => { const w = wxFor(M, d.date); return w && w.src === 'climate'; });
+  box.appendChild(h('div', { class: 'wxa' }, t('wxAttr'), showC ? [zp('｜', ' | '), t('climateBasis', { b: C && C.basis ? str(C.basis) : t('climArchBasis') }), C && isNum(C.rainDays) ? zp('・', ' · ') + t('rainDays', { n: C.rainDays }) : '', C && C.source && safeUrl(C.source.url) ? [' ', ext(C.source.url, '↗')] : null] : null));
 }
 function dayWx(M, d) {
   const w = wxFor(M, d.date);
   if (!w) return [];
   const R = tRange(M), temp = h('span', null, h('b', null, isNum(w.tmax) ? Math.round(w.tmax) + '°' : '—'), ' / ' + (isNum(w.tmin) ? Math.round(w.tmin) + '°' : '—'));
-  if (w.src === 'climate') return h('span', { class: 'dwx' }, h('span', { class: 'g' }, wxSvg('climate'), temp, tBar(w, R)), h('span', { class: 'chip' }, t('src_climate')));
+  if (w.src === 'climate' && w.code == null) return h('span', { class: 'dwx' }, h('span', { class: 'g' }, wxSvg('climate'), temp, tBar(w, R)), h('span', { class: 'chip' }, t('src_climate')));
   const m = wmo(w.code);
   return h('span', { class: 'dwx' }, h('span', { class: 'g' }, wxSvg(WXK(w.code)), temp, tBar(w, R)), m.tx ? h('span', null, m.tx) : null,
-    isNum(w.pop) ? h('span', { class: 'g' }, h('span', { class: 'rtx' }, t('rainProb') + ' ' + Math.round(w.pop) + '%'), popBar(w.pop)) : null, isNum(w.wind) ? h('span', null, t('wind') + ' ' + Math.round(w.wind) + ' km/h') : null,
+    isNum(w.pop) ? h('span', { class: 'g' }, h('span', { class: 'rtx' }, t('rainProb') + ' ' + Math.round(w.pop) + '%'), popBar(w.pop)) : isNum(w.psum) ? h('span', null, w.psum + ' mm') : null, isNum(w.wind) ? h('span', null, t('wind') + ' ' + Math.round(w.wind) + ' km/h') : null,
     h('span', { class: 'chip' }, t('src_' + w.src)));
 }
 function refreshWx() {
@@ -2361,6 +2445,7 @@ function renderMapList() {
 }
 
 /* ---------- lists, budget, info (v1 content, new frame) ---------- */
+const GIFT_P = /^\s*(?:🎁\s*)?(?:(?:必吃|在地|人氣)?小吃[／/・、＆&]?(?:伴手禮|紀念品|名物)?|(?:必買|在地|人氣)?(?:伴手禮|紀念品|名物)[／/・、＆&]?(?:小吃)?|(?:local\s+|must-?try\s+)?(?:snacks?|street\s+food)\s*(?:[/&]|and)\s*(?:souvenirs?|gifts?)|(?:local\s+|must-?buy\s+)?souvenirs?(?:\s*[/&]\s*snacks?)?)\s*[：:]\s*/i;
 function listsView(M) {
   const C = M.D.checklists || {}, key = 'tripv0.ck:' + hash(str(DATA && DATA.meta && DATA.meta.title) + M.start), saved = safeParse(store.get(key)) || {};
   const upd = sec => {
@@ -2373,10 +2458,10 @@ function listsView(M) {
     const cb = h('input', { type: 'checkbox', id: 'ck-' + id });
     cb.checked = !!saved[id];
     cb.addEventListener('change', () => { saved[id] = cb.checked; store.set(key, JSON.stringify(saved)); upd(cb.closest('[data-ckp]')); });
-    return h('li', null, h('label', { for: 'ck-' + id }, cb, h('span', null, str(label))));
+    return h('li', null, h('label', { for: 'ck-' + id }, cb, h('span', null, Array.isArray(label) ? label : str(label))));
   };
   const grp = (title, lis, cls) => h('div', { class: 'ckg', 'data-ckg': '' }, title ? h('div', { class: 'ckh' }, h('span', null, title), h('span', { class: 'ckn', 'data-ckc': '' })) : null, h('ul', { class: 'ck' + (cls ? ' ' + cls : '') }, lis));
-  const card = (title, body, foot) => { const sec = h('section', { class: 'card', 'data-ckp': '' }, h('div', { class: 'sec-h' }, h('h2', null, title), h('span', { class: 'chip num', 'data-ckc': '' })), h('div', { class: 'ckbar', 'aria-hidden': 'true' }, h('i')), body, foot || null); upd(sec); return sec; };
+  const card = (title, body, foot, spanCls) => { const sec = h('section', { class: 'card' + (spanCls ? ' ' + spanCls : ''), 'data-ckp': '' }, h('div', { class: 'sec-h' }, h('h2', null, title), h('span', { class: 'chip num', 'data-ckc': '' })), h('div', { class: 'ckbar', 'aria-hidden': 'true' }, h('i')), body, foot || null); upd(sec); return sec; };
   const before = arr(C.before).filter(x => x && typeof x === 'object').map((x, i) => [x, i]);
   const whens = WHEN.concat(uniq(before.map(([x]) => str(x.when))).filter(w => !WHEN.includes(w)));
   const groups = whens.map(w => [w, before.filter(([x]) => str(x.when) === w)]).filter(([, l]) => l.length)
@@ -2384,10 +2469,84 @@ function listsView(M) {
   const loose = before.filter(([x]) => !str(x.when));
   if (loose.length) groups.push(grp('—', loose.map(([x, i]) => mk('b' + i, x.text))));
   const pack = arr(C.packing);
+  const gifts = [];
+  M.days.forEach(d => d._items.forEach(it => {
+    arr(it.tips).forEach((tp, ti) => {
+      const s = str(tp).trim();
+      if (!s) return;
+      if (s.indexOf('🎁') === 0 || GIFT_P.test(s)) {
+        const body = s.replace(GIFT_P, '').replace(/^\s*🎁\s*/, '').trim();
+        if (body) gifts.push({ id: 'g-' + it._id + '-' + ti, d, it, body });
+      }
+    });
+  }));
   return h('section', { class: 'view', 'data-view': 'lists', 'aria-labelledby': 'h-lists' }, vhead('lists'), h('div', { class: 'cards' },
     before.length ? card(t('checklist'), groups, h('p', { class: 'small muted', style: 'margin:12px 0 0' }, t('ckSaved'))) : null,
     pack.length ? card(t('packing'), grp('', pack.map((x, i) => mk('p' + i, x)), 'cols')) : null,
+    gifts.length ? card(t('giftsCard'), grp('', gifts.map(g => mk(g.id, [
+      h('a', { href: '#itinerary/' + g.d._n + '/' + encodeURIComponent(g.it._id), class: 'when', style: 'text-decoration:none' }, t('dayS', { n: g.d._n }) + ' · ' + str((g.it.place && g.it.place.name) || g.it.title)),
+      g.body
+    ]))), h('p', { class: 'small muted', style: 'margin:12px 0 0' }, t('giftsNote')), 'span') : null,
     h('section', { class: 'card span' }, h('div', { class: 'sec-h' }, h('h2', null, t('needBook'), h('span', { class: 'chip' }, String(bookItems(M).length)))), bookingList(M))));
+}
+function fxCalc(M, F) {
+  let cur = F[0];
+  const HC = M.HC, ppl = shKeys(M).includes('party') ? 1 : Math.max(1, M.people || 1);
+  const steps = r => (r < 0.01 ? [10000, 50000, 100000, 300000, 500000] : r < 0.1 ? [1000, 5000, 10000, 30000, 50000] : r < 1 ? [500, 1000, 3000, 5000, 10000] : [10, 30, 50, 100, 300]);
+  const defAmt = r => steps(r)[1];
+  const inL = h('input', { type: 'number', inputmode: 'decimal', min: '0', step: 'any', 'aria-label': t('fxLocalLbl') });
+  const inH = h('input', { type: 'number', inputmode: 'decimal', min: '0', step: 'any', 'aria-label': t('fxHomeLbl') });
+  const curSpan = h('span', null, cur.code);
+  const resBox = h('div', { class: 'fxc-res' });
+  const qBox = h('div', { class: 'fxc-q' });
+  const fmtN = (v, r) => (v >= 100 || r < 0.1 ? String(Math.round(v)) : (Math.round(v * 100) / 100).toString());
+  const syncFromL = () => {
+    const lv = parseFloat(inL.value);
+    if (!isFinite(lv) || lv < 0) { inH.value = ''; resBox.textContent = ''; return; }
+    const hv = lv * cur.rate;
+    inH.value = fmtN(hv, 1);
+    resBox.textContent = '';
+    add(resBox, [
+      h('span', null, fmtMoney({ amount: lv, currency: cur.code }) + ' ≈ ', h('b', null, fmtMoney({ amount: hv, currency: HC }))),
+      ppl > 1 ? h('span', null, t('fxSplit', { n: ppl }), h('b', null, fmtMoney({ amount: hv / ppl, currency: HC })), paren(fmtMoney({ amount: lv / ppl, currency: cur.code }))) : null
+    ]);
+  };
+  const syncFromH = () => {
+    const hv = parseFloat(inH.value);
+    if (!isFinite(hv) || hv < 0 || !cur.rate) { inL.value = ''; resBox.textContent = ''; return; }
+    const lv = hv / cur.rate;
+    inL.value = fmtN(lv, cur.rate);
+    resBox.textContent = '';
+    add(resBox, [
+      h('span', null, fmtMoney({ amount: lv, currency: cur.code }) + ' ≈ ', h('b', null, fmtMoney({ amount: hv, currency: HC }))),
+      ppl > 1 ? h('span', null, t('fxSplit', { n: ppl }), h('b', null, fmtMoney({ amount: hv / ppl, currency: HC })), paren(fmtMoney({ amount: lv / ppl, currency: cur.code }))) : null
+    ]);
+  };
+  const rebuildQ = () => {
+    qBox.textContent = '';
+    steps(cur.rate).forEach(amt => {
+      qBox.appendChild(h('button', { type: 'button', onclick: () => { inL.value = String(amt); syncFromL(); } }, fmtMoney({ amount: amt, currency: cur.code })));
+    });
+  };
+  inL.addEventListener('input', syncFromL);
+  inH.addEventListener('input', syncFromH);
+  inL.value = String(defAmt(cur.rate));
+  rebuildQ();
+  syncFromL();
+  const sel = F.length > 1 ? h('select', { style: 'margin-left:auto;font-size:12px;padding:2px 6px;border-radius:6px;border:1px solid var(--line2);background:var(--bg);color:var(--text)', onchange: e => {
+    cur = F.find(x => x.code === e.target.value) || F[0];
+    curSpan.textContent = cur.code;
+    inL.value = String(defAmt(cur.rate));
+    rebuildQ();
+    syncFromL();
+  } }, F.map(x => h('option', { value: x.code }, x.code))) : null;
+  return h('div', { class: 'fxc' },
+    h('div', { style: 'display:flex;align-items:center;gap:8px;margin-bottom:8px' }, h('h3', { style: 'margin:0' }, t('fxCalcT')), sel),
+    h('div', { class: 'fxc-row' },
+      h('div', { class: 'fxc-in' }, inL, curSpan),
+      h('span', { class: 'muted', 'aria-hidden': 'true' }, '⇄'),
+      h('div', { class: 'fxc-in' }, inH, h('span', null, HC))),
+    resBox, qBox);
 }
 function fxCard(M) {
   const F = Object.values(M.FX), HC = M.HC, src = x => (x.source && safeUrl(x.source.url) ? ext(x.source.url, str(x.source.title || x.source.url)) : null);
@@ -2396,14 +2555,15 @@ function fxCard(M) {
   if (F.length > 1) return h('section', { class: 'card span' }, h('h2', null, t('fxT')), h('div', { class: 'tblw' }, h('table', { class: 'btbl' },
     h('thead', null, h('tr', null, ['b_cur', 'b_rate', 'b_kind', 'b_asof', 'b_src'].map(k => h('th', null, t(k))))),
     h('tbody', null, F.map(x => { const K = fxKind(x); return h('tr', null, h('td', null, h('strong', null, x.code)), h('td', { class: 'num' }, '1 ' + x.code + ' = ' + x.rate + ' ' + HC),
-      h('td', null, h('span', { class: 'chip' }, K.ok ? null : dot('unv'), K.name)), h('td', { class: 'num' }, str(x.asOf) || '—'), h('td', null, src(x) || '—')); })))));
+      h('td', null, h('span', { class: 'chip' }, K.ok ? null : dot('unv'), K.name)), h('td', { class: 'num' }, str(x.asOf) || '—'), h('td', null, src(x) || '—')); })))), fxCalc(M, F));
   const fx = F[0], K = fxKind(fx);
   return h('section', { class: 'card' }, h('h2', null, t('fxT')),
     h('dl', { class: 'fxbox' },
       h('dt', null, t('b_rate')), h('dd', null, h('span', { class: 'fxbig' }, '1 ' + fx.code + ' = ' + fx.rate + ' ' + HC)),
       h('dt', null, t('b_kind')), h('dd', null, h('span', { class: 'chip' }, K.ok ? null : dot('unv'), K.name), h('div', { class: 'small muted', style: 'margin-top:5px' }, K.desc)),
       h('dt', null, t('b_asof')), h('dd', { class: 'num' }, str(fx.asOf) || '—'),
-      src(fx) ? [h('dt', null, t('b_src')), h('dd', null, src(fx))] : null));
+      src(fx) ? [h('dt', null, t('b_src')), h('dd', null, src(fx))] : null),
+    fxCalc(M, F));
 }
 function budgetView(M) {
   const B = M.D.budget, L = str(M.J.localCurrency).toUpperCase(), HC = M.HC, f = (a, c) => fmtMoney({ amount: a, currency: c });

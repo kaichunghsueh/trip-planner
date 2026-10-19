@@ -168,6 +168,9 @@ if ($mZh.Success) {
       $errs = New-Object System.Collections.Generic.List[string]
       if ($langZh -ne 'zh-TW') { $errs.Add('zh: meta.language must be "zh-TW" (got "' + $langZh + '")') }
       if ($langEn -ne 'en') { $errs.Add('en: meta.language must be "en" (got "' + $langEn + '")') }
+      if (-not $dataZh.climate -or ($null -eq $dataZh.climate.tempMaxC -and $null -eq $dataZh.climate.tempMinC)) {
+        $errs.Add('climate: missing climate.tempMaxC / tempMinC (required for >16-day and offline weather display)')
+      }
       $rxSameK = New-Object System.Text.RegularExpressions.Regex('^(schemaVersion|generatedAt|generator|shareUrl|userLanguage|id|stayId|itemId|passport|pace|budgetLevel|primary|decidedBy|kind|transport|mode|status|per|category|scope|when|apps|result|date|start|end|at|airportArriveBy|checkIn|checkOut|checkInTime|checkOutTime|startDate|endDate|dayStart|dayEnd|asOf|checked|country|timezone|airport|flight|homeCurrency|localCurrency|code|currency|url|licenseUrl|sourceUrl|number|phone|for|license|nameLocal|addressLocal|redacted)$')
       $rxCjkOk = New-Object System.Text.RegularExpressions.Regex('^(nameLocal|addressLocal|url|sourceUrl|licenseUrl|shareUrl)$')
       $rxCjk = New-Object System.Text.RegularExpressions.Regex('[\u1100-\u11FF\u3000-\u303F\u3040-\u30FF\u3130-\u318F\u3400-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF\uFF00-\uFFEF]')
