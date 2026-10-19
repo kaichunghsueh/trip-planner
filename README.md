@@ -8,7 +8,7 @@
 [![Bilingual](https://img.shields.io/badge/language-繁中%20%7C%20English-2563EB?style=flat-square)](#)
 [![Zero Dependency](https://img.shields.io/badge/output-Single%20HTML%20(Zero%20Install)-059669?style=flat-square)](#)
 [![Quality Check](https://img.shields.io/badge/self--check-16%20Rules%20%2B%20Google%20★%20Filter-D97706?style=flat-square)](#)
-[![Origin](https://img.shields.io/badge/from-AI%20First%20Delivery%20%23027-4F46E5?style=flat-square)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-4F46E5?style=flat-square)](./LICENSE)
 
 <br/>
 
@@ -110,7 +110,7 @@ trip-planner/
 把整個 `trip-planner` 資料夾複製到 `~/.copilot/skills/trip-planner/`。
 
 > [!NOTE]
-> 從典藏館網站下載的 `trip-planner.zip` 打開直接是 `SKILL.md`，請先在 `skills` 裡建一個 `trip-planner` 資料夾再解壓進去；電子報附件解壓後已有外層 `trip-planner` 資料夾，直接整個拖過去即可。
+> 若你是從 GitHub 點擊 **Code → Download ZIP** 下載，解壓縮後的資料夾名稱會是 `trip-planner-main`，請先將資料夾改名為 `trip-planner` 再放入 `skills` 目錄（確認路徑為 `skills/trip-planner/SKILL.md`，不要多包一層）。
 
 #### 🪟 Windows
 1. 打開「檔案總管」，在上方網址列輸入 `%USERPROFILE%\.copilot\skills` 並按 `Enter`。
@@ -138,8 +138,7 @@ trip-planner/
 
 Cowork 不讀本機資料夾，需在介面左選 **Customize** → **Skills** → **Add 旁箭頭** → **Upload skill** 上傳無密碼、且 `SKILL.md` 在最外層的 ZIP（[官方說明](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-customize)，單一 ZIP 上限 10 MB、100 個檔案）：
 
-- **典藏館網站下載的 `trip-planner.zip`**：無密碼且 `SKILL.md` 在最外層，可直接上傳。
-- **電子報附件版**：有密碼且多包一層資料夾，請先解壓縮、進入 `trip-planner` 資料夾內，全選 `SKILL.md`、`README.md`、`assets`、`references` 重新壓成無密碼 ZIP 再上傳。
+- 請進入 `trip-planner` 資料夾內，全選 `SKILL.md`、`README.md`、`assets`、`references`，壓縮成 `trip-planner.zip`（確保打開 ZIP 最外層直接看到 `SKILL.md`，而非多包一層資料夾）再上傳。
 
 ---
 
