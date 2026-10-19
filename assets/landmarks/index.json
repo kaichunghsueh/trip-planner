@@ -1,0 +1,1099 @@
+{
+  "jp-torii": {
+    "file": "jp-torii.webp",
+    "name": {
+      "zh-TW": "鳥居",
+      "en": "Torii Gate"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "JP"
+      ],
+      "places": [
+        "日本",
+        "Japan",
+        "東京",
+        "东京",
+        "Tokyo",
+        "大阪",
+        "Osaka",
+        "京都",
+        "Kyoto",
+        "北海道",
+        "Hokkaido",
+        "札幌",
+        "Sapporo",
+        "沖繩",
+        "冲绳",
+        "Okinawa",
+        "那霸",
+        "Naha",
+        "福岡",
+        "福冈",
+        "Fukuoka",
+        "名古屋",
+        "Nagoya"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "鳥居柱身與橫樑（最上方笠木為深灰）"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "jp-fuji": {
+    "file": "jp-fuji.webp",
+    "name": {
+      "zh-TW": "富士山",
+      "en": "Mount Fuji"
+    },
+    "match": {
+      "level": "region",
+      "countries": [],
+      "places": [
+        "富士山",
+        "Mount Fuji",
+        "Mt. Fuji",
+        "Fujisan",
+        "ふじさん",
+        "富士五湖",
+        "Fuji Five Lakes",
+        "河口湖",
+        "Kawaguchiko",
+        "Lake Kawaguchi",
+        "かわぐちこ",
+        "富士吉田",
+        "Fujiyoshida",
+        "富士宮",
+        "富士宫",
+        "Fujinomiya",
+        "山梨",
+        "山梨縣",
+        "山梨县",
+        "山梨県",
+        "Yamanashi",
+        "やまなし",
+        "靜岡",
+        "静冈",
+        "静岡",
+        "靜岡縣",
+        "静冈县",
+        "静岡県",
+        "Shizuoka",
+        "しずおか"
+      ],
+      "note": "Only the Mt Fuji area / Yamanashi / Shizuoka. JP anywhere else -> jp-torii (batch 1); never match on country code JP."
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "櫻花樹的花冠 (cherry blossom crown)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "kr-gate": {
+    "file": "kr-gate.webp",
+    "name": {
+      "zh-TW": "韓式宮殿門樓",
+      "en": "Korean Palace Gate"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "KR"
+      ],
+      "places": [
+        "韓國",
+        "韩国",
+        "Korea",
+        "South Korea",
+        "首爾",
+        "首尔",
+        "Seoul",
+        "서울",
+        "濟州",
+        "济州",
+        "Jeju",
+        "제주",
+        "大邱",
+        "Daegu",
+        "慶州",
+        "庆州",
+        "Gyeongju",
+        "仁川",
+        "Incheon"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "門樓木構柱列（柱與額枋）"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "kr-busan": {
+    "file": "kr-busan.webp",
+    "name": {
+      "zh-TW": "釜山海岸膠囊列車",
+      "en": "Busan Seaside Capsule Train"
+    },
+    "match": {
+      "level": "city",
+      "countries": [
+        "KR"
+      ],
+      "places": [
+        "Busan",
+        "釜山",
+        "부산"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中間那節膠囊車廂"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "tw": {
+    "file": "tw.webp",
+    "name": {
+      "zh-TW": "台灣天燈",
+      "en": "Taiwan Sky Lantern"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "TW"
+      ],
+      "places": [
+        "台灣",
+        "臺灣",
+        "台湾",
+        "Taiwan",
+        "台北",
+        "臺北",
+        "Taipei",
+        "新北",
+        "New Taipei",
+        "平溪",
+        "Pingxi",
+        "台中",
+        "臺中",
+        "Taichung",
+        "台南",
+        "臺南",
+        "Tainan",
+        "高雄",
+        "Kaohsiung",
+        "九份",
+        "Jiufen",
+        "花蓮",
+        "花莲",
+        "Hualien"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "其中一盞天燈 (the nearer sky lantern)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "hk": {
+    "file": "hk.webp",
+    "name": {
+      "zh-TW": "香港帆船",
+      "en": "Hong Kong Junk Boat"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "HK"
+      ],
+      "places": [
+        "香港",
+        "Hong Kong",
+        "九龍",
+        "九龙",
+        "Kowloon",
+        "維多利亞港",
+        "维多利亚港",
+        "Victoria Harbour",
+        "尖沙咀",
+        "Tsim Sha Tsui",
+        "中環",
+        "中环",
+        "Central"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "主帆 (main fan-ribbed sail)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "mo": {
+    "file": "mo.webp",
+    "name": {
+      "zh-TW": "澳門大三巴",
+      "en": "Ruins of St. Paul's"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "MO"
+      ],
+      "places": [
+        "澳門",
+        "澳门",
+        "Macau",
+        "Macao",
+        "氹仔",
+        "Taipa",
+        "路環",
+        "路环",
+        "Coloane"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "頂端三角楣 (crowning triangular pediment)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "th": {
+    "file": "th.webp",
+    "name": {
+      "zh-TW": "泰國泰式涼亭",
+      "en": "Thai Pavilion"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "TH"
+      ],
+      "places": [
+        "泰國",
+        "泰国",
+        "Thailand",
+        "ประเทศไทย",
+        "曼谷",
+        "Bangkok",
+        "กรุงเทพมหานคร",
+        "清邁",
+        "清迈",
+        "Chiang Mai",
+        "เชียงใหม่",
+        "大城",
+        "Ayutthaya",
+        "อยุธยา",
+        "普吉",
+        "Phuket",
+        "ภูเก็ต"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "小亭的屋頂 (pavilion roof incl. finials)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "vn": {
+    "file": "vn.webp",
+    "name": {
+      "zh-TW": "越南下龍灣與斗笠",
+      "en": "Ha Long Bay & Conical Hat"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "VN"
+      ],
+      "places": [
+        "越南",
+        "Vietnam",
+        "Việt Nam",
+        "下龍灣",
+        "下龙湾",
+        "Ha Long Bay",
+        "Halong Bay",
+        "Vịnh Hạ Long",
+        "河內",
+        "河内",
+        "Hanoi",
+        "Hà Nội",
+        "胡志明市",
+        "Ho Chi Minh City",
+        "Thành phố Hồ Chí Minh",
+        "峴港",
+        "岘港",
+        "Da Nang",
+        "Đà Nẵng",
+        "會安",
+        "会安",
+        "Hoi An",
+        "Hội An"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "斗笠 (conical hat)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "sg": {
+    "file": "sg.webp",
+    "name": {
+      "zh-TW": "新加坡店屋",
+      "en": "Singapore Shophouse"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "SG"
+      ],
+      "places": [
+        "新加坡",
+        "Singapore",
+        "Singapura",
+        "சிங்கப்பூர்",
+        "加東",
+        "加东",
+        "Katong",
+        "如切",
+        "Joo Chiat"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中間那戶的百葉窗 (louvred shutters of the middle shophouse)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "cn": {
+    "file": "cn.webp",
+    "name": {
+      "zh-TW": "萬里長城",
+      "en": "Great Wall"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CN"
+      ],
+      "places": [
+        "中國",
+        "中国",
+        "China",
+        "北京",
+        "Beijing",
+        "上海",
+        "Shanghai",
+        "成都",
+        "Chengdu",
+        "西安",
+        "Xi'an",
+        "Xian",
+        "杭州",
+        "Hangzhou",
+        "廣州",
+        "广州",
+        "Guangzhou",
+        "深圳",
+        "Shenzhen"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "烽火台上的無圖案小旗 (plain flag on the beacon tower)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "fr": {
+    "file": "fr.webp",
+    "name": {
+      "zh-TW": "法國艾菲爾鐵塔",
+      "en": "Eiffel Tower"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "FR"
+      ],
+      "places": [
+        "法國",
+        "法国",
+        "France",
+        "巴黎",
+        "Paris",
+        "尼斯",
+        "Nice",
+        "里昂",
+        "Lyon",
+        "馬賽",
+        "马赛",
+        "Marseille",
+        "史特拉斯堡",
+        "Strasbourg"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "塔腳旁咖啡座陽傘的傘面 (cafe parasol canopy by the tower foot)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "gb": {
+    "file": "gb.webp",
+    "name": {
+      "zh-TW": "英國大笨鐘",
+      "en": "Big Ben"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "GB"
+      ],
+      "places": [
+        "英國",
+        "英国",
+        "United Kingdom",
+        "UK",
+        "倫敦",
+        "伦敦",
+        "London",
+        "愛丁堡",
+        "爱丁堡",
+        "Edinburgh",
+        "曼徹斯特",
+        "Manchester",
+        "牛津",
+        "Oxford",
+        "劍橋",
+        "剑桥",
+        "Cambridge"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "四面鐘的鐘面 (clock dials)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "it": {
+    "file": "it.webp",
+    "name": {
+      "zh-TW": "義大利羅馬競技場",
+      "en": "Colosseum"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "IT"
+      ],
+      "places": [
+        "義大利",
+        "意大利",
+        "Italy",
+        "Italia",
+        "羅馬",
+        "罗马",
+        "Rome",
+        "Roma",
+        "米蘭",
+        "米兰",
+        "Milan",
+        "Milano",
+        "威尼斯",
+        "Venice",
+        "Venezia",
+        "佛羅倫斯",
+        "佛罗伦萨",
+        "Florence",
+        "Firenze",
+        "拿坡里",
+        "那不勒斯",
+        "Naples",
+        "Napoli"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "競技場前地中海松的傘狀樹冠 (umbrella pine canopy)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "us": {
+    "file": "us.webp",
+    "name": {
+      "zh-TW": "美國自由女神像",
+      "en": "Statue of Liberty"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "US"
+      ],
+      "places": [
+        "美國",
+        "美国",
+        "United States",
+        "USA",
+        "紐約",
+        "纽约",
+        "New York",
+        "NYC",
+        "洛杉磯",
+        "洛杉矶",
+        "Los Angeles",
+        "舊金山",
+        "旧金山",
+        "San Francisco",
+        "西雅圖",
+        "西雅图",
+        "Seattle",
+        "夏威夷",
+        "Hawaii",
+        "拉斯維加斯",
+        "Las Vegas"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "火炬的火焰 (torch flame)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "au": {
+    "file": "au.webp",
+    "name": {
+      "zh-TW": "澳洲袋鼠",
+      "en": "Kangaroo"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "AU"
+      ],
+      "places": [
+        "澳洲",
+        "澳大利亞",
+        "澳大利亚",
+        "Australia",
+        "雪梨",
+        "悉尼",
+        "Sydney",
+        "墨爾本",
+        "墨尔本",
+        "Melbourne",
+        "布里斯本",
+        "布里斯班",
+        "Brisbane",
+        "黃金海岸",
+        "黄金海岸",
+        "Gold Coast",
+        "伯斯",
+        "Perth"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "無文字無圖案的菱形路標牌面 (blank diamond road-sign plate)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "dk": {
+    "file": "dk.webp",
+    "name": {
+      "zh-TW": "丹麥哥本哈根新港",
+      "en": "Nyhavn Canal"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "DK"
+      ],
+      "places": [
+        "丹麥",
+        "丹麦",
+        "Denmark",
+        "Danmark",
+        "哥本哈根",
+        "Copenhagen",
+        "København",
+        "新港",
+        "Nyhavn",
+        "歐登塞",
+        "Odense",
+        "奧胡斯",
+        "Aarhus"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "新港運河中央那棟山牆老屋立面 (middle Nyhavn stepped-gable townhouse facade)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "no": {
+    "file": "no.webp",
+    "name": {
+      "zh-TW": "挪威木板教堂",
+      "en": "Norwegian Stave Church"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "NO"
+      ],
+      "places": [
+        "挪威",
+        "Norway",
+        "Norge",
+        "奧斯陸",
+        "奥斯陆",
+        "Oslo",
+        "卑爾根",
+        "卑尔根",
+        "Bergen",
+        "特羅姆瑟",
+        "特罗姆瑟",
+        "Tromsø",
+        "Tromso",
+        "羅浮敦",
+        "罗浮敦",
+        "Lofoten",
+        "弗洛姆",
+        "Flåm",
+        "Flam"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "第三層木瓦斜屋頂與中央尖塔頂 (third stave roof tier and spire cap)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "se": {
+    "file": "se.webp",
+    "name": {
+      "zh-TW": "斯德哥爾摩市政廳與達拉木馬",
+      "en": "Stockholm City Hall & Dala Horse"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "SE"
+      ],
+      "places": [
+        "瑞典",
+        "Sweden",
+        "Sverige",
+        "斯德哥爾摩",
+        "斯德哥尔摩",
+        "Stockholm",
+        "哥德堡",
+        "Gothenburg",
+        "Göteborg",
+        "馬爾默",
+        "马尔默",
+        "Malmö",
+        "Malmo",
+        "基律納",
+        "Kiruna",
+        "阿比斯庫",
+        "Abisko"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "市政廳前的瑞典傳統達拉木馬 (traditional Swedish Dala horse)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "fi": {
+    "file": "fi.webp",
+    "name": {
+      "zh-TW": "芬蘭赫爾辛基大教堂",
+      "en": "Helsinki Cathedral"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "FI"
+      ],
+      "places": [
+        "芬蘭",
+        "芬兰",
+        "Finland",
+        "Suomi",
+        "赫爾辛基",
+        "赫尔辛基",
+        "Helsinki",
+        "羅瓦涅米",
+        "罗瓦涅米",
+        "Rovaniemi",
+        "拉普蘭",
+        "拉普兰",
+        "Lapland",
+        "圖爾庫",
+        "Turku",
+        "伊納里",
+        "Inari"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中央主圓穹頂與四座角塔小圓頂 (central main dome and four corner cupolas)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "is": {
+    "file": "is.webp",
+    "name": {
+      "zh-TW": "冰島哈爾格林姆教堂",
+      "en": "Hallgrímskirkja"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "IS"
+      ],
+      "places": [
+        "冰島",
+        "冰岛",
+        "Iceland",
+        "Ísland",
+        "雷克雅維克",
+        "雷克雅未克",
+        "Reykjavik",
+        "Reykjavík",
+        "維克",
+        "Vik",
+        "Vík",
+        "阿克雷里",
+        "Akureyri",
+        "黃金圈",
+        "Golden Circle",
+        "藍湖",
+        "Blue Lagoon"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中央主塔頂部八角尖錐與十字架 (stepped octagonal spire crown and cross)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "de": {
+    "file": "de.webp",
+    "name": {
+      "zh-TW": "德國新天鵝堡",
+      "en": "Neuschwanstein Castle"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "DE"
+      ],
+      "places": [
+        "德國",
+        "德国",
+        "Germany",
+        "Deutschland",
+        "新天鵝堡",
+        "新天鹅堡",
+        "天鵝堡",
+        "天鹅堡",
+        "Neuschwanstein",
+        "慕尼黑",
+        "Munich",
+        "München",
+        "富森",
+        "福森",
+        "Füssen",
+        "Fussen",
+        "柏林",
+        "Berlin",
+        "法蘭克福",
+        "法兰克福",
+        "Frankfurt",
+        "漢堡",
+        "汉堡",
+        "Hamburg",
+        "科隆",
+        "Cologne",
+        "Köln",
+        "海德堡",
+        "Heidelberg"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "城堡主殿陡斜屋頂與圓塔尖錐屋頂 (main Palas steep roof and circular keep conical roof)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "cz": {
+    "file": "cz.webp",
+    "name": {
+      "zh-TW": "布拉格查理大橋與雙塔",
+      "en": "Prague Charles Bridge & Towers"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CZ"
+      ],
+      "places": [
+        "捷克",
+        "Czechia",
+        "Czech Republic",
+        "Česko",
+        "布拉格",
+        "Prague",
+        "Praha",
+        "查理大橋",
+        "查理大桥",
+        "Charles Bridge",
+        "Karlův most",
+        "庫倫洛夫",
+        "克魯姆洛夫",
+        "Český Krumlov",
+        "Cesky Krumlov",
+        "卡羅維瓦利",
+        "Karlovy Vary"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "查理大橋橋塔與提恩教堂哥德雙尖塔屋頂 (bridge tower and Gothic twin spire roofs)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "nl": {
+    "file": "nl.webp",
+    "name": {
+      "zh-TW": "荷蘭風車與鬱金香",
+      "en": "Dutch Windmill & Tulips"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "NL"
+      ],
+      "places": [
+        "荷蘭",
+        "荷兰",
+        "Netherlands",
+        "Holland",
+        "Nederland",
+        "阿姆斯特丹",
+        "Amsterdam",
+        "鹿特丹",
+        "Rotterdam",
+        "海牙",
+        "The Hague",
+        "Den Haag",
+        "羊角村",
+        "Giethoorn",
+        "桑斯安斯",
+        "風車村",
+        "Zaanse Schans",
+        "庫肯霍夫",
+        "Keukenhof",
+        "烏特勒支",
+        "Utrecht"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "風車四片格柵帆翼與前方鬱金香花苞 (four lattice windmill sails and tulip blossoms)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "es": {
+    "file": "es.webp",
+    "name": {
+      "zh-TW": "巴塞隆納聖家堂",
+      "en": "Sagrada Família"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "ES"
+      ],
+      "places": [
+        "西班牙",
+        "Spain",
+        "España",
+        "巴塞隆納",
+        "巴塞罗那",
+        "Barcelona",
+        "聖家堂",
+        "圣家堂",
+        "Sagrada Família",
+        "Sagrada Familia",
+        "馬德里",
+        "马德里",
+        "Madrid",
+        "塞維亞",
+        "塞维利亚",
+        "Seville",
+        "Sevilla",
+        "格拉納達",
+        "Granada",
+        "瓦倫西亞",
+        "Valencia"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "高第玉米穗狀高塔頂端的幾何馬賽克冠冕 (Gaudí mosaic pinnacle crowns atop the spires)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "ch": {
+    "file": "ch.webp",
+    "name": {
+      "zh-TW": "瑞士馬特洪峰與冰河列車",
+      "en": "Matterhorn & Alpine Train"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CH"
+      ],
+      "places": [
+        "瑞士",
+        "Switzerland",
+        "Schweiz",
+        "Suisse",
+        "馬特洪峰",
+        "马特洪峰",
+        "Matterhorn",
+        "策馬特",
+        "采尔马特",
+        "Zermatt",
+        "蘇黎世",
+        "苏黎世",
+        "Zurich",
+        "Zürich",
+        "琉森",
+        "盧塞恩",
+        "Lucerne",
+        "Luzern",
+        "少女峰",
+        "Jungfrau",
+        "茵特拉肯",
+        "因特拉肯",
+        "Interlaken",
+        "格林德瓦",
+        "Grindelwald",
+        "日內瓦",
+        "日内瓦",
+        "Geneva",
+        "伯恩",
+        "Bern"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "石造拱橋上的瑞士冰河景觀列車車廂 (Swiss panoramic Alpine train cars on the viaduct)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "at": {
+    "file": "at.webp",
+    "name": {
+      "zh-TW": "奧地利哈修塔特湖畔小鎮",
+      "en": "Hallstatt Lakeside Village"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "AT"
+      ],
+      "places": [
+        "奧地利",
+        "奥地利",
+        "Austria",
+        "Österreich",
+        "哈修塔特",
+        "哈尔施塔特",
+        "Hallstatt",
+        "維也納",
+        "维也纳",
+        "Vienna",
+        "Wien",
+        "薩爾茨堡",
+        "萨尔茨堡",
+        "薩爾斯堡",
+        "Salzburg",
+        "茵斯布魯克",
+        "因斯布鲁克",
+        "Innsbruck"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "湖畔教堂的高聳八角尖塔 (tall octagonal church spire on the lakeshore)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "gr": {
+    "file": "gr.webp",
+    "name": {
+      "zh-TW": "希臘聖托里尼藍頂教堂",
+      "en": "Santorini Cliffside Dome Church"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "GR"
+      ],
+      "places": [
+        "希臘",
+        "希腊",
+        "Greece",
+        "Ελλάδα",
+        "聖托里尼",
+        "圣托里尼",
+        "Santorini",
+        "Σαντορίνη",
+        "伊亞",
+        "Oia",
+        "費拉",
+        "Fira",
+        "雅典",
+        "Athens",
+        "Αθήνα",
+        "米克諾斯",
+        "米科诺斯",
+        "Mykonos",
+        "克里特",
+        "Crete"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "懸崖教堂的主圓頂與側圓頂 (main and side domes of the cliffside church)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "generic": {
+    "file": "generic.webp",
+    "name": {
+      "zh-TW": "啟程旅行",
+      "en": "Ready to Travel"
+    },
+    "match": {
+      "level": "fallback",
+      "countries": [],
+      "places": []
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "行李箱本體"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  }
+}
