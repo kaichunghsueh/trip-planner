@@ -420,9 +420,16 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 .btbl .r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .btbl tfoot td{font-weight:700;border-bottom:0;border-top:2px solid var(--ink)}
 .bars{display:grid;gap:9px}
-.bar{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;font-size:13px}
+.bar{display:grid;grid-template-columns:72px 1fr auto auto;gap:10px;align-items:center;font:inherit;font-size:13px;width:100%;padding:5px 6px;border:0;border-radius:6px;background:transparent;color:var(--text);text-align:left;cursor:pointer}
+.bar:hover{background:var(--hover)}
 .bar .tr{height:8px;background:var(--hover);border-radius:4px;overflow:hidden}
 .bar .tr i{display:block;height:100%;background:var(--ink);border-radius:4px}
+.bar .chv{font-size:12px;color:var(--text3);transition:transform .15s}
+.bar[aria-expanded="true"] .chv{transform:rotate(90deg);color:var(--text)}
+.bar-d{list-style:none;margin:-4px 0 4px;padding:8px 10px;background:var(--hover);border-radius:8px;font-size:12.5px;color:var(--text2);display:grid;gap:4px}
+.bar-d[hidden]{display:none!important}
+.bar-d li{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.bar-d .num{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--text);font-weight:600}
 .fxline{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--text2);margin:12px 0 0}
 .fxline a{color:var(--text2)}
 .plain{margin:0;padding-left:18px;font-size:13.5px}
@@ -468,6 +475,16 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 .fxc-q{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .fxc-q button{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--text2);cursor:pointer;font-variant-numeric:tabular-nums}
 .fxc-q button:hover{background:var(--hover);color:var(--text)}
+.pbbar{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;padding:8px 10px;margin:0 0 10px;border:1px solid var(--line2);border-radius:10px;background:var(--surface);font-size:12.5px}
+.pbbar .pbl{font-weight:700;color:var(--text);margin-right:2px;white-space:nowrap}
+.pbbar button{font:550 12px/1.3 var(--font);padding:4px 10px;border-radius:999px;border:1px solid var(--line2);background:var(--bg);color:var(--text2);cursor:pointer;white-space:nowrap}
+.pbbar button:hover{background:var(--hover);color:var(--text)}
+.pbbar button[aria-pressed="true"]{background:var(--ink);color:var(--inv);border-color:var(--ink)}
+.pbbar .pbr{border-style:dashed;color:var(--text2)}
+.pbn{font-size:12px;color:var(--text2);margin:-4px 0 10px;padding:0 4px}
+.pb-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.pb-tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:999px;border:1px solid var(--line2);background:var(--hover);color:var(--text)}
+.row.pb-skip .tx,.tbl tr.pb-skip .lnk span{text-decoration:line-through;color:var(--text3)}
 .btbl td .sub{display:block;font-size:12px;color:var(--text3);margin-top:2px}
 .btbl .per{color:var(--text2);font-size:12.5px;white-space:nowrap}
 .btbl th{white-space:nowrap}
@@ -506,7 +523,7 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"date":"2026-10-19","title":"抵達，海邊晚餐","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"抵達機場、入境、領行李","place":{"name":"金海國際機場","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"入住示範飯店","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"tips":["🎁 必吃小吃／伴手禮：示範魚板串與釜山魚板禮盒（虛構）"],"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"indoor":false,"rainAlt":"示範百貨地下美食街（虛構）","tips":["🎁 必吃小吃／伴手禮：示範魚板串與釜山魚板禮盒（虛構）"],"verified":false}]},
 {"date":"2026-10-20","title":"早餐後回程","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"早餐：示範粥店","place":{"name":"示範粥店","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"退房","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -525,7 +542,7 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"date":"2026-10-19","title":"Arrival and a seaside dinner","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"Land, clear immigration, collect bags","place":{"name":"Gimhae International Airport","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"Check in at Demo Hotel","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"tips":["🎁 Local snack / souvenir: Demo fish cake skewers and Busan eomuk gift box (fictional)"],"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"indoor":false,"rainAlt":"Demo Department Store Food Hall (fictional)","tips":["🎁 Local snack / souvenir: Demo fish cake skewers and Busan eomuk gift box (fictional)"],"verified":false}]},
 {"date":"2026-10-20","title":"Breakfast, then home","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"Breakfast: Demo Porridge House","place":{"name":"Demo Porridge House","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"Check out","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -659,7 +676,9 @@ const T = {
   qm_noTime: ['缺少抵達、起飛或到機場時間', 'Arrival, departure or arrive-by time missing'],
   qm_overlap: ['{d}：「{a}」與「{b}」時間重疊', '{d}: “{a}” overlaps “{b}”'],
   qm_tight: ['{d}：去「{b}」要 {m} 分，只留 {g} 分', '{d}: “{b}” needs {m} min, only {g} min left'],
+  qm_noMove: ['{d}：去「{b}」距離 {k} km，但未填交通方式與時間（move）', '{d}: “{b}” is {k} km from the previous stop but has no travel leg (move)'],
   qm_noCoord: ['{d}：「{a}」缺座標', '{d}: “{a}” has no coordinates'],
+  qm_shareLL: ['{d}：「{a}」與「{b}」共用同一座標，地圖無法畫出獨立點位與路線（請填主選店真實座標）', '{d}: “{a}” shares the exact coordinates of “{b}” — give the primary restaurant its own coordinates so the map shows the route'],
   qm_dup: ['「{a}」重複：{d}', '“{a}” repeats: {d}'],
   qm_park: ['租車行程，但「{a}」沒有停車資訊', 'Rental-car trip but “{a}” has no parking info'],
   qm_book: ['「{a}」需預約，但缺{w}', '“{a}” needs booking but lacks {w}'],
@@ -667,14 +686,14 @@ const T = {
   qm_badTime: ['{d}：「{a}」時間格式不對', '{d}: “{a}” has an invalid time'],
   budget: ['預算', 'Budget'], b_item: ['項目', 'Item'], b_local: ['當地幣', 'Local'], b_home: ['本國幣', 'Home'],
   b_total: ['合計（{n} 人）', 'Total ({n:person})'], b_fx: ['匯率：1 {l} = {r} {h}（{d}）', 'FX: 1 {l} = {r} {h} ({d})'], b_noFx: ['未提供匯率，只列當地幣', 'No exchange rate; local currency only'],
-  fxT: ['匯率', 'Exchange rate'], byCat: ['分類小計（{c}）', 'By category ({c})'], hiddenCost: ['容易漏算的花費', 'Easy-to-miss costs'],
+  fxT: ['匯率', 'Exchange rate'], byCat: ['分類小計（{c}）', 'By category ({c})'], byCatHint: ['點擊分類可展開明細', 'Tap a category to see items'], hiddenCost: ['容易漏算的花費', 'Easy-to-miss costs'],
   fxk_mid: ['國際中間價', 'Mid-market rate'], 'fxk_cash-sell': ['銀行現鈔賣出價', 'Bank cash selling rate'], fxk_card: ['信用卡結算匯率', 'Card settlement rate'],
   fxk_none: ['匯率種類未註明', 'Rate type not stated'], fxk_other: ['匯率種類「{k}」無法辨識', 'Unrecognised rate type “{k}”'],
   fxd_mid: ['市場參考價，實際換匯通常比這個價格差', 'A reference rate; real exchanges usually cost more'],
   'fxd_cash-sell': ['在本國向銀行換外幣現金的價格', 'What a bank at home charges for foreign cash'],
   fxd_card: ['刷卡入帳時採用的匯率', 'The rate used when card charges post'],
   fxd_none: ['不同種類的匯率可能相差數個百分點，換算結果僅供參考', 'Rate types can differ by several percent; treat conversions as rough'],
-  bc_transport: ['交通', 'Transport'], bc_stay: ['住宿', 'Stay'], bc_food: ['餐飲', 'Food'], bc_tickets: ['門票', 'Tickets'], bc_shopping: ['購物', 'Shopping'], bc_other: ['其他', 'Other'],
+  bc_flight: ['機票', 'Flights'], bc_transport: ['交通', 'Transport'], bc_stay: ['住宿', 'Stay'], bc_food: ['餐飲', 'Food'], bc_tickets: ['門票', 'Tickets'], bc_shopping: ['購物', 'Shopping'], bc_other: ['其他', 'Other'],
   checklist: ['行前清單', 'Before you go'], packing: ['行李清單', 'Packing list'], ckSaved: ['勾選會記在這台裝置上', 'Ticks are saved on this device'],
   'w_T-14': ['出發前 14 天', '2 weeks before'], 'w_T-7': ['出發前 7 天', '1 week before'], 'w_T-3': ['出發前 3 天', '3 days before'], 'w_T-1': ['出發前 1 天', 'Day before'], w_D0: ['出發當天', 'Departure day'],
   emergency: ['緊急資訊', 'Emergency'], consular: ['駐外單位', 'Consular help'], hospitals: ['醫院', 'Hospitals'],
@@ -715,6 +734,25 @@ const T = {
   fxCalcT: ['💴 隨手換算＆分帳計算機', '💴 Quick converter & bill splitter'],
   fxSplit: ['每人分攤（÷ {n} 人）：', 'Per person (÷ {n}): '],
   fxLocalLbl: ['當地金額', 'Local amount'], fxHomeLbl: ['本國金額', 'Home amount'],
+  pbTitle: ['⚡ 現場應變（Plan B）', '⚡ Live Plan B'],
+  pbDelay30: ['⏱️ 延誤 +30m', '⏱️ Delay +30m'],
+  pbDelay60: ['⏱️ 延誤 +60m', '⏱️ Delay +60m'],
+  pbRain: ['🌧️ 雨備切換', '🌧️ Rain swap'],
+  pbRest: ['🔋 省力緩衝', '🔋 Low-energy'],
+  pbReset: ['↺ 還原', '↺ Reset'],
+  pbShifted: ['⏱️ 順延 +{n}m', '⏱️ +{n}m'],
+  pbLocked: ['🔒 預約鎖定', '🔒 Locked'],
+  pbTrim: ['⚡ 壓縮 {n}m 保住預約', '⚡ Trimmed {n}m for booking'],
+  pbSkip: ['⏭️ 建議略過（保住後續預約）', '⏭️ Skip (keeps booking)'],
+  pbRainSwapped: ['🌧️ 已換雨備（原：{a}）', '🌧️ Rain swap (was: {a})'],
+  pbRestTitle: ['☕ 省力充電緩衝（附近咖啡廳／回飯店小憩）', '☕ Recharge break (nearby cafe / hotel rest)'],
+  pbRestWas: ['🔋 已改為充電休息（原：{a}）', '🔋 Swapped for rest (was: {a})'],
+  pbEstMove: ['直線重算預估 {n} 分', 're-estimated {n} min'],
+  pbActiveNote: ['⚡ 已啟用應變預覽（已鎖定預約與航班，不影響原始行程檔案）', '⚡ Live Plan B active (bookings & flights locked; original schedule untouched)'],
+  enLbl: ['當日體力負荷', 'Daily energy load'],
+  enFmt: ['體力 {p}%（{l}）', 'Energy {p}% ({l})'],
+  enLow: ['輕鬆', 'Light'], enMid: ['適中', 'Moderate'], enHigh: ['偏高', 'High'],
+  qm_stam: ['{p}：連續兩站長時戶外行程（接在「{a}」之後），建議中間穿插用餐或咖啡廳緩衝', '{p}: back-to-back long outdoor stops (right after “{a}”); add a meal or cafe break in between'],
   /* contract v1.1 (spec §6b) */
   dt_transit: ['大眾運輸', 'Transit'], dt_car: ['自駕', 'Driving'], dt_taxi: ['計程車', 'Taxi'], dt_mixed: ['混搭', 'Mixed'], dayTr: ['當天交通', 'Getting around today'],
   by_user: ['使用者指定', 'Your choice'], by_ai: ['AI 判斷', 'AI’s call'],
@@ -1067,6 +1105,25 @@ function walkTag(M, d) {
   const k = walkKm(M, d), P = (M.D.traveler && M.D.traveler.party) || {}, lim = +P.children > 0 || +P.seniors > 0 || arr(P.childAges).length ? 7 : 10;
   return k > 0 ? h('span', { class: 'wk' + (k > lim ? ' hot' : ''), title: t('walkLbl') }, h('span', { 'aria-hidden': 'true' }, '🚶'), h('span', { class: 'sr' }, t('walkLbl')), ' ' + t('walkAbout', { k: k.toFixed(1) })) : null;
 }
+function energyTag(M, d, list) {
+  const L = list || d._items;
+  if (!L || !L.length) return null;
+  const P = (M.D.traveler && M.D.traveler.party) || {}, gentle = +P.children > 0 || +P.seniors > 0 || arr(P.childAges).length > 0 || !!str(P.mobility).trim();
+  const cap = gentle ? 72 : 100;
+  let pts = walkKm(M, d) * 4.2;
+  L.forEach(it => {
+    if (it._simSkipped) return;
+    const s = toMin(it.start), e = toMin(it.end), dur = !isNaN(s) && !isNaN(e) ? Math.min(240, Math.max(0, (e < s ? e + 1440 : e) - s)) : 60;
+    const mv = it.move && isNum(it.move.minutes) && it.move.mode !== 'flight' ? it.move.minutes : 0;
+    pts += mv * 0.14;
+    if (['sight', 'activity'].includes(it.kind)) pts += dur * (it.indoor === false ? 0.16 : 0.10);
+    else if (it.kind === 'shopping') pts += dur * 0.11;
+    else if (['food', 'cafe', 'rest'].includes(it.kind)) pts = Math.max(8, pts - (it._simBadges && it._simBadges.some(b => b.cls === 'pb-rest') ? 14 : 5));
+  });
+  const pct = Math.min(100, Math.max(12, Math.round(pts / cap * 100)));
+  const lv = pct >= 85 ? t('enHigh') : pct >= 55 ? t('enMid') : t('enLow');
+  return h('span', { class: 'wk' + (pct >= 85 ? ' hot' : ''), title: t('enLbl') }, h('span', { 'aria-hidden': 'true' }, '🔋'), ' ' + t('enFmt', { p: pct, l: lv }));
+}
 function optBox(M, s) {
   const L = optsOf(s);
   return L.length ? h('div', { class: 'opts' }, h('h3', null, t('optT', { n: L.length })), h('ol', { class: 'opl' }, L.map(o => h('li', null,
@@ -1353,6 +1410,8 @@ function quality(M) {
       const mv = it.move && isNum(it.move.minutes) ? it.move.minutes : NaN;
       if (bk(it)) anyBk = true;
       if (prev) { const pe = toMin(prev.end), mn = isNaN(mv) ? 0 : mv;
+        const dKm = hasLL(prev.place) && hasLL(it.place) ? havKm(prev.place, it.place) : 0;
+        if (dKm > 0.08 && !(mn > 0)) m4.push(QL(d, it, t('qm_noMove', { d: fmtMD(d.date), b: str(it.title), k: dKm.toFixed(1) })));
         if (s < pe) m3.push(QL(d, it, t('qm_overlap', { d: fmtMD(d.date), a: str(prev.title), b: str(it.title) })));
         /* v1.3 #13: bookings & fixed plans need 15 min in hand; everything else keeps #4's 5-min slack — one stop, one report */
         else if (bk(it)) { if (pe + mn + 15 > s) m13.push(QL(d, it, t('qm_buf', { p: pfx(d, it), e: str(prev.end), m: mn, r: m2t(pe + mn + 15) }))); }
@@ -1362,9 +1421,24 @@ function quality(M) {
         else if (s - mv - 15 < ds) m13.push(QL(d, it, t('qm_b1st', { p: pfx(d, it), r: hmm(s - mv - 15), m: mv, a: str(TRV(M).dayStart) }))); }
       prev = it; }); });
     push(3, m3); push(4, m4); }
-  push(5, items.filter(([, it]) => !(it.place && hasLL(it.place)) && !(it.place == null && SK.includes('stays'))).map(([d, it]) => QL(d, it, t('qm_noCoord', { d: fmtMD(d.date), a: str(it.title || it.id) })))
-    .concat(SK.includes('stays') ? [] : M.stays.filter(s => !hasLL(s)).map(s => ({ x: t('qm_stayLL', { a: str(s.name || s.id) }), h: '#info/stays' })))
-    .concat(...M.stays.map(s => optsOf(s).filter(o => !hasLL(o)).map(o => ({ x: t('qm_optLL', { s: str(s.name), a: str(o.name) }), h: '#info/stays' })))));
+  { const m5 = items.filter(([, it]) => !(it.place && hasLL(it.place)) && !(it.place == null && SK.includes('stays'))).map(([d, it]) => QL(d, it, t('qm_noCoord', { d: fmtMD(d.date), a: str(it.title || it.id) })))
+      .concat(SK.includes('stays') ? [] : M.stays.filter(s => !hasLL(s)).map(s => ({ x: t('qm_stayLL', { a: str(s.name || s.id) }), h: '#info/stays' })))
+      .concat(...M.stays.map(s => optsOf(s).filter(o => !hasLL(o)).map(o => ({ x: t('qm_optLL', { s: str(s.name), a: str(o.name) }), h: '#info/stays' }))));
+    const INHOUSE = /飯店內|館內|館内|ホテル内|樓下|1F|B1|月台|駅構内|站內|機場內|航廈|in-house|hotel restaurant|platform|inside/i;
+    M.days.forEach(d => {
+      const st = M.stayById[d.stayId];
+      d._items.forEach((it, idx) => {
+        if (!['food', 'cafe'].includes(it.kind) || !hasLL(it.place)) return;
+        const tx = str(it.title) + ' ' + str(it.detail) + ' ' + str(it.place.name);
+        if (INHOUSE.test(tx)) return;
+        const pv = d._items[idx - 1], nx = d._items[idx + 1];
+        const hit = [pv && !['food', 'cafe'].includes(pv.kind) && hasLL(pv.place) ? { nm: pv.title || pv.place.name, p: pv.place } : null,
+          nx && !['food', 'cafe'].includes(nx.kind) && hasLL(nx.place) ? { nm: nx.title || nx.place.name, p: nx.place } : null,
+          st && hasLL(st) ? { nm: st.name, p: st } : null].find(o => o && havKm(it.place, o.p) < 0.015);
+        if (hit) m5.push(QL(d, it, t('qm_shareLL', { d: fmtMD(d.date), a: str(it.title), b: str(hit.nm) })));
+      });
+    });
+    push(5, m5); }
   { const seen = {};
     items.forEach(([d, it]) => { if (!['food', 'cafe', 'sight', 'activity', 'shopping'].includes(it.kind)) return; const nm = (it.place && (it.place.nameLocal || it.place.name)) || it.title; const k = norm(nm); if (!k) return; (seen[k] = seen[k] || { nm: (it.place && it.place.name) || it.title, ds: [] }).ds.push(fmtMD(d.date)); });
     push(6, Object.values(seen).filter(v => v.ds.length > 1).map(v => t('qm_dup', { a: str(v.nm), d: v.ds.join(SEP()) }))); }
@@ -1446,6 +1520,21 @@ function quality(M) {
     } else if (it.indoor === false && (st >= s.set || en > s.set + 30) && !NIGHT_OK.test(tx)) {
       R.sun.push(QL(d, it, t('qm_afterDark', { p: pfx(d, it), s: hmm(s.set), e: str(it.end) })));
     }
+  });
+  /* v1.9: #15 stamina browser check — flag back-to-back long outdoor stops (≥ 90 min each, indoor === false) with no meal/cafe/rest break in between */
+  R.stam = [];
+  M.days.forEach(d => {
+    let prevHard = null;
+    d._items.forEach(it => {
+      const s = toMin(it.start), e = toMin(it.end), dur = !isNaN(s) && !isNaN(e) ? (e < s ? e + 1440 : e) - s : 0;
+      const isHard = ['sight', 'activity'].includes(it.kind) && it.indoor === false && dur >= 90;
+      if (isHard) {
+        if (prevHard) R.stam.push(QL(d, it, t('qm_stam', { p: pfx(d, it), a: str(prevHard.title) })));
+        prevHard = it;
+      } else if (['food', 'cafe', 'rest', 'stay'].includes(it.kind)) {
+        prevHard = null;
+      }
+    });
   });
   return R;
 }
@@ -1972,12 +2061,14 @@ function fillDetail(x, M, d, it, i) {
 function rowItem(M, d, it, i, rainy) {
   const kind = KIND_IC[it.kind] ? it.kind : 'other', id = it._id, open = !!state.open[id], [sc, sl] = itemState(d, it, i);
   const x = h('div', { class: 'rx', id: 'x-' + id, hidden: !open });
+  const badges = arr(it._simBadges).length ? h('span', { class: 'pb-tags' }, it._simBadges.map(b => h('span', { class: 'pb-tag ' + b.cls }, b.tx))) : null;
   const btn = h('button', { type: 'button', class: 'rh', 'aria-expanded': String(open), 'aria-controls': 'x-' + id },
     h('span', { class: 'tm' }, h('b', null, str(it.start)), str(it.end)),
     h('span', { class: 'ki gs', 'aria-hidden': 'true', title: t('k_' + kind) }, KIND_IC[kind]),
     h('span', { class: 'mid' },
       h('span', { class: 'nm' }, hasLL(it.place) ? h('span', { class: 'no', 'aria-hidden': 'true' }, String(it._n)) : null, h('span', { class: 'sr' }, t('k_' + kind) + CL()), h('span', { class: 'tx' }, str(it.title || (it.place && it.place.name)))),
-      it.move ? moveSum(it.move) : null),
+      it.move ? moveSum(it.move) : null,
+      badges),
     h('span', { class: 'st' }, bkChip(it), ohChip(M, it), rainy && it.rainAlt ? dot('rain', t('st_rain')) : null, dot(sc, sl), h('span', { class: 'chev', 'aria-hidden': 'true' }, '›')));
   btn.addEventListener('click', () => {
     const o = btn.getAttribute('aria-expanded') !== 'true';
@@ -1986,17 +2077,139 @@ function rowItem(M, d, it, i, rainy) {
     selectItem(id, { fly: true });
   });
   if (open) fillDetail(x, M, d, it, i);
-  return h('li', { class: 'row' + (state.sel === id ? ' sel' : ''), 'data-item': id }, btn, x);
+  return h('li', { class: 'row' + (state.sel === id ? ' sel' : '') + (it._simSkipped ? ' pb-skip' : ''), 'data-item': id }, btn, x);
 }
-function dayTable(M, d, rainy) {
+function isLockedStop(it) {
+  return it.fixed === true || !!(it.booking && (it.booking.required === true || it.booking.status === 'booked')) || it.kind === 'flight' || it.kind === 'transfer';
+}
+function pbStoreKey(M) { return 'tripv2.pb.' + (str(M.dest.city) || 'trip') + '.' + M.start; }
+function getPB(M, d) {
+  if (!state.planB) {
+    state.planB = safeParse(store.get(pbStoreKey(M))) || {};
+  }
+  const c = state.planB[d._n];
+  return c && typeof c === 'object' ? { delay: +c.delay || 0, rain: !!c.rain, rest: !!c.rest } : { delay: 0, rain: false, rest: false };
+}
+function setPB(M, d, patch) {
+  const nxt = Object.assign(getPB(M, d), patch);
+  if (!nxt.delay && !nxt.rain && !nxt.rest) delete state.planB[d._n];
+  else state.planB[d._n] = nxt;
+  store.set(pbStoreKey(M), JSON.stringify(state.planB));
+  renderDay();
+}
+function simItems(M, d) {
+  const pb = getPB(M, d);
+  if (!pb.delay && !pb.rain && !pb.rest) return d._items;
+  const list = d._items.map(it => Object.assign({}, it, {
+    move: it.move ? Object.assign({}, it.move) : undefined,
+    _origStart: it.start, _origEnd: it.end, _origTitle: it.title, _simBadges: [], _simSkipped: false
+  }));
+  if (pb.rain) {
+    list.forEach(it => {
+      const ra = str(it.rainAlt).trim();
+      if (ra) {
+        it.title = ra;
+        it.indoor = true;
+        it._simBadges.push({ cls: 'pb-rain', tx: t('pbRainSwapped', { a: str(it._origTitle) }) });
+      }
+    });
+  }
+  if (pb.rest) {
+    let idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind) && toMin(it.start) >= 750 && toMin(it.start) <= 1080);
+    if (idx < 0) idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind));
+    if (idx < 0) idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay'].includes(it.kind));
+    if (idx >= 0) {
+      const it = list[idx];
+      it.kind = 'cafe';
+      it.title = t('pbRestTitle');
+      it.indoor = true;
+      it._simBadges.push({ cls: 'pb-rest', tx: t('pbRestWas', { a: str(it._origTitle) }) });
+      if (idx > 0 && idx + 1 < list.length && hasLL(list[idx - 1].place) && hasLL(list[idx + 1].place)) {
+        const nxt = list[idx + 1], km = havKm(list[idx - 1].place, nxt.place) * 1.35;
+        const mode = (nxt.move && nxt.move.mode) || 'subway';
+        const est = mode === 'walk' ? Math.max(5, Math.round(km / 0.06)) : (mode === 'car' || mode === 'taxi') ? Math.max(8, Math.round(km / 0.45 + 5)) : Math.max(12, Math.round(km / 0.30 + 8));
+        if (nxt.move) nxt.move.minutes = est;
+        nxt._simBadges.push({ cls: 'pb-est', tx: t('pbEstMove', { n: est }) });
+      }
+    }
+  }
+  if (pb.delay > 0) {
+    const firstFlex = list.findIndex(it => !isLockedStop(it) && it.kind !== 'stay');
+    const startIdx = firstFlex >= 0 ? firstFlex : 0;
+    let carry = pb.delay;
+    for (let i = startIdx; i < list.length; i++) {
+      const it = list[i], s0 = toMin(it.start), e0 = toMin(it.end);
+      if (isNaN(s0) || isNaN(e0)) continue;
+      const dur = Math.max(15, (e0 < s0 ? e0 + 1440 : e0) - s0);
+      const mv = it.move && isNum(it.move.minutes) ? it.move.minutes : 0;
+      const prevEnd = i > 0 ? toMin(list[i - 1].end) : NaN;
+      if (isLockedStop(it)) {
+        it._simBadges.push({ cls: 'pb-lock', tx: t('pbLocked') });
+        if (i > 0 && !isNaN(prevEnd) && prevEnd + mv + 5 > s0) {
+          let k = i - 1, deadline = s0 - mv - 5;
+          if (list[k].kind === 'stay') {
+            const stDur = Math.max(15, toMin(list[k]._origEnd) - toMin(list[k]._origStart));
+            list[k].end = hmm(Math.min(toMin(list[k]._origEnd), deadline));
+            list[k].start = hmm(toMin(list[k].end) - stDur);
+            list[k]._simBadges = [];
+            const stMv = list[k].move && isNum(list[k].move.minutes) ? list[k].move.minutes : 0;
+            deadline = toMin(list[k].start) - stMv - 5;
+            k--;
+          }
+          if (k >= 0 && !isLockedStop(list[k])) {
+            const p = list[k], ps = toMin(p.start), pe = toMin(p.end);
+            if (!isNaN(ps) && pe > deadline) {
+              if (deadline - ps >= 20) {
+                const saved = Math.max(5, pe - deadline);
+                p.end = hmm(deadline);
+                p._simBadges.push({ cls: 'pb-trim', tx: t('pbTrim', { n: saved }) });
+              } else {
+                p._simSkipped = true;
+                p._simBadges.push({ cls: 'pb-skip', tx: t('pbSkip') });
+              }
+            }
+          }
+        }
+        carry = 0;
+      } else {
+        let ns = s0 + carry;
+        if (i > 0 && !isNaN(prevEnd) && !list[i - 1]._simSkipped) ns = Math.max(ns, prevEnd + mv);
+        const shift = ns - s0;
+        if (shift > 0) {
+          it.start = hmm(ns);
+          it.end = hmm(ns + dur);
+          it._simBadges.push({ cls: 'pb-shift', tx: t('pbShifted', { n: shift }) });
+        }
+      }
+    }
+  }
+  return list;
+}
+function planBBar(M, d) {
+  const pb = getPB(M, d), active = !!(pb.delay || pb.rain || pb.rest);
+  const hasRainAlt = d._items.some(it => str(it.rainAlt).trim());
+  return [
+    h('div', { class: 'pbbar', role: 'group', 'aria-label': t('pbTitle') },
+      h('span', { class: 'pbl' }, t('pbTitle')),
+      h('button', { type: 'button', 'aria-pressed': String(pb.delay === 30), onclick: () => setPB(M, d, { delay: pb.delay === 30 ? 0 : 30 }) }, t('pbDelay30')),
+      h('button', { type: 'button', 'aria-pressed': String(pb.delay === 60), onclick: () => setPB(M, d, { delay: pb.delay === 60 ? 0 : 60 }) }, t('pbDelay60')),
+      hasRainAlt ? h('button', { type: 'button', 'aria-pressed': String(pb.rain), onclick: () => setPB(M, d, { rain: !pb.rain }) }, t('pbRain')) : null,
+      h('button', { type: 'button', 'aria-pressed': String(pb.rest), onclick: () => setPB(M, d, { rest: !pb.rest }) }, t('pbRest')),
+      active ? h('button', { type: 'button', class: 'pbr', onclick: () => setPB(M, d, { delay: 0, rain: false, rest: false }) }, t('pbReset')) : null),
+    active ? h('p', { class: 'pbn', role: 'status' }, t('pbActiveNote')) : null
+  ];
+}
+function dayTable(M, d, rainy, items) {
+  const L = items || d._items;
   const th = (g, k) => h('th', { scope: 'col' }, h('span', { class: 'g', 'aria-hidden': 'true' }, g), t(k));
   return h('div', { class: 'tblw' }, h('table', { class: 'tbl' },
     h('thead', null, h('tr', null, th('◷', 'c_time'), th('Aa', 'c_name'), th('◇', 'c_kind'), th('⇢', 'c_move'), th('¤', 'c_cost'), th('◎', 'c_book'), th('●', 'c_status'))),
-    h('tbody', null, d._items.map((it, i) => {
+    h('tbody', null, L.map((it, i) => {
       const kind = KIND_IC[it.kind] ? it.kind : 'other', b = it.booking, [sc, sl] = itemState(d, it, i), id = it._id;
-      const tr = h('tr', { 'data-item': id, class: state.sel === id ? 'sel' : null },
+      const badges = arr(it._simBadges).length ? h('div', { class: 'pb-tags' }, it._simBadges.map(x => h('span', { class: 'pb-tag ' + x.cls }, x.tx))) : null;
+      const tr = h('tr', { 'data-item': id, class: [state.sel === id ? 'sel' : '', it._simSkipped ? 'pb-skip' : ''].filter(Boolean).join(' ') || null },
         h('td', { class: 't' }, str(it.start) + '–' + str(it.end)),
-        h('td', null, h('button', { type: 'button', class: 'lnk', onclick: e => { e.stopPropagation(); selectItem(id, { fly: true }); } }, hasLL(it.place) ? h('span', { class: 'no', 'aria-hidden': 'true' }, String(it._n)) : null, h('span', null, str(it.title)))),
+        h('td', null, h('button', { type: 'button', class: 'lnk', onclick: e => { e.stopPropagation(); selectItem(id, { fly: true }); } }, hasLL(it.place) ? h('span', { class: 'no', 'aria-hidden': 'true' }, String(it._n)) : null, h('span', null, str(it.title))), badges),
         h('td', { class: 'nw' }, h('span', { class: 'chip' }, h('span', { class: 'gs', 'aria-hidden': 'true' }, KIND_IC[kind]), t('k_' + kind))),
         h('td', { class: 'nw' }, it.move ? moveSum(it.move) : '—'),
         h('td', { class: 'nw' }, it.cost ? moneyShort(it.cost) : '—'),
@@ -2013,7 +2226,7 @@ function renderDay() {
   document.querySelectorAll('[data-daytab]').forEach(a => a.setAttribute('aria-current', String(+a.getAttribute('data-daytab') === state.day)));
   box.textContent = '';
   if (!d) return;
-  const stay = M.stayById[d.stayId], rainy = !!rainPop(M, d.date);
+  const stay = M.stayById[d.stayId], rainy = !!rainPop(M, d.date), items = simItems(M, d);
   box.setAttribute('data-rain', rainy ? '1' : '');
   const setV = v => { state.itv = v; store.set(KEY.itv, v); renderDay(); const b = document.querySelector('#daybody .toolbar [aria-pressed=true]'); if (b) b.focus(); };
   add(box, [
@@ -2021,14 +2234,15 @@ function renderDay() {
       h('div', { class: 'eyebrow' }, t('dayN', { n: d._n }) + ' · ' + fmtMD(d.date) + ' · ' + t('stopsN', { n: d._items.length })),
       h('h2', null, str(d.title)),
       h('div', { class: 'dmeta' }, h('span', null, trTag(M, d, true)), d.area ? h('span', null, str(d.area)) : null, stay ? h('span', null, h('span', { class: 'no h', 'aria-hidden': 'true' }, glyph('bed')), str(stay.name)) : null,
-        TRV(M).dayStart || TRV(M).dayEnd ? h('span', null, t('dayHours', { a: str(TRV(M).dayStart) || '—', b: str(TRV(M).dayEnd) || '—' })) : null, tzTag(M, d), sunTag(M, d), walkTag(M, d), h('span', { id: 'daywx' })),
+        TRV(M).dayStart || TRV(M).dayEnd ? h('span', null, t('dayHours', { a: str(TRV(M).dayStart) || '—', b: str(TRV(M).dayEnd) || '—' })) : null, tzTag(M, d), sunTag(M, d), walkTag(M, d), energyTag(M, d, items), h('span', { id: 'daywx' })),
       d.summary ? h('p', { class: 'summary' }, str(d.summary)) : null),
     h('div', { id: 'rainslot' }),
+    planBBar(M, d),
     h('div', { class: 'toolbar' },
       h('div', { class: 'seg', role: 'group', 'aria-label': t('viewAs') }, ['tl', 'tbl'].map(v => h('button', { type: 'button', 'aria-pressed': String(state.itv === v), onclick: () => setV(v) }, t('vw_' + v)))),
       h('span', { class: 'sp' }),
       h('button', { type: 'button', class: 'btn', onclick: () => download(fileBase(M) + '-day' + d._n + '.ics', buildIcs(M, [d]), 'text/calendar;charset=utf-8') }, t('icsDay'))),
-    state.itv === 'tbl' ? dayTable(M, d, rainy) : h('ol', { class: 'tl' }, d._items.map((it, i) => rowItem(M, d, it, i, rainy))),
+    state.itv === 'tbl' ? dayTable(M, d, rainy, items) : h('ol', { class: 'tl' }, items.map((it, i) => rowItem(M, d, it, i, rainy))),
     d.rainPlan ? h('div', { class: 'rainplan' }, h('h3', null, t('rainPlan')), h('p', null, str(d.rainPlan))) : null]);
   fillDayWx();
 }
@@ -2579,12 +2793,15 @@ function budgetView(M) {
     const one = R.every(r => r.cur === L || r.cur === HC), cu = one ? L : HC, K = one && M.FX[L] ? fxKind(M.FX[L]) : null;
     const Ks = uniq(uniq(R.map(r => r.cur)).filter(c => M.FX[c]).map(c => fxKind(M.FX[c]).name));
     let tl = 0, th = 0;
-    const cats = {}, bad = [];
+    const cats = {}, catItems = {}, bad = [];
     const rows = R.map(r => {
       const { x, m, cur, g, hm } = r, v = one ? (cur === L ? g : null) : hm;
       if (cur === L) tl += g;
       if (hm == null) bad.push(r); else th += hm;
-      if (v != null) cats[x.category] = (cats[x.category] || 0) + v;
+      if (v != null) {
+        cats[x.category] = (cats[x.category] || 0) + v;
+        (catItems[x.category] = catItems[x.category] || []).push({ label: str(x.label), val: v });
+      }
       const sub = [T['bc_' + x.category] ? t('bc_' + x.category) : '', m.note ? str(m.note) : ''].filter(Boolean).join(' · ');
       return h('tr', null, h('td', { class: 'lb' }, str(x.label), sub ? h('span', { class: 'sub' }, sub) : null), h('td', { class: 'r' }, fmtMoney(m)),
         h('td', { class: 'per' }, m.per && T['per_' + m.per] ? t('per_' + m.per) : ''), h('td', { class: 'r' }, f(g, cur)),
@@ -2601,8 +2818,21 @@ function budgetView(M) {
       B.note ? h('p', { class: 'small muted', style: 'margin:10px 0 0' }, str(B.note)) : null));
     cards.push(fxCard(M));
     const ks = Object.keys(cats).sort((a, b) => cats[b] - cats[a]), max = Math.max(1, ...ks.map(k => cats[k]));
-    if (ks.length) cards.push(h('section', { class: 'card' }, h('h2', null, t('byCat', { c: cu })), h('div', { class: 'bars' }, ks.map(k => h('div', { class: 'bar' },
-      h('span', null, T['bc_' + k] ? t('bc_' + k) : str(k)), h('span', { class: 'tr' }, h('i', { style: 'width:' + Math.max(2, Math.round(cats[k] / max * 100)) + '%' })), h('span', { class: 'num' }, f(cats[k], cu)))))));
+    if (ks.length) cards.push(h('section', { class: 'card' },
+      h('div', { class: 'sec-h' }, h('h2', null, t('byCat', { c: cu })), h('span', { class: 'small muted' }, t('byCatHint'))),
+      h('div', { class: 'bars' }, ks.map(k => {
+        const ul = h('ul', { class: 'bar-d', hidden: true }, (catItems[k] || []).map(it => h('li', null, h('span', null, it.label), h('span', { class: 'num' }, f(it.val, cu)))));
+        const btn = h('button', { type: 'button', class: 'bar', 'aria-expanded': 'false', onclick: () => {
+          const open = btn.getAttribute('aria-expanded') !== 'true';
+          btn.setAttribute('aria-expanded', String(open));
+          ul.hidden = !open;
+        } },
+          h('span', null, T['bc_' + k] ? t('bc_' + k) : str(k)),
+          h('span', { class: 'tr' }, h('i', { style: 'width:' + Math.max(2, Math.round(cats[k] / max * 100)) + '%' })),
+          h('span', { class: 'num' }, f(cats[k], cu)),
+          h('span', { class: 'chv', 'aria-hidden': 'true' }, '›'));
+        return h('div', null, btn, ul);
+      }))));
     if (arr(B.hidden).length) cards.push(h('section', { class: 'card' }, h('h2', null, t('hiddenCost')), h('ul', { class: 'plain' }, arr(B.hidden).map(x => h('li', null, str(x))))));
   } else { if (capBox) cards.push(h('section', { class: 'card span' }, h('h2', null, t('budget')), capBox)); cards.push(fxCard(M)); }
   return h('section', { class: 'view', 'data-view': 'budget', 'aria-labelledby': 'h-budget' }, vhead('budget'), h('div', { class: 'cards' }, cards));
@@ -2619,7 +2849,7 @@ function qualityCard(M, Q, U) {
     q.msgs.length ? h('ul', null, q.msgs.slice(0, 8).map(lnk), q.msgs.length > 8 ? h('li', null, '… +' + (q.msgs.length - 8)) : null) : null),
     h('div', { class: 'qs' }, h('span', { class: 'chip' }, t('qBrowser') + CL() + t(ST[q.s])), aiChip(q.id)));
   /* AI-only rows; the browser adds warnings to #7 (sunset) and #9 (amounts without a rate) — not counted in the badge */
-  const X = { 7: Q.sun || [], 9: Q.fx || [] }, manual = [7, 9, 15].filter(n => ai[n] || (X[n] && X[n].length)).map(n => { const a = ai[n] || {}, w = X[n] && X[n].length;
+  const X = { 7: Q.sun || [], 9: Q.fx || [], 15: Q.stam || [] }, manual = [7, 9, 15].filter(n => ai[n] || (X[n] && X[n].length)).map(n => { const a = ai[n] || {}, w = X[n] && X[n].length;
     return h('li', null, dot(w || a.result === 'fail' ? 'bad' : a.result === 'pass' ? 'ok' : a.result === 'n/a' ? '' : 'unv'),
       h('div', null, h('strong', null, '#' + n + ' ' + t('q' + n)), a.note ? h('ul', null, h('li', null, str(a.note))) : null, w ? h('ul', null, X[n].map(lnk)) : null),
       h('div', { class: 'qs' }, w ? h('span', { class: 'chip' }, t('qBrowser') + CL() + t('qW')) : null, aiChip(n))); });

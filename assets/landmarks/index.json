@@ -438,6 +438,485 @@
     },
     "origin": "original, procedurally modeled in Blender, no third-party assets"
   },
+  "dk": {
+    "file": "dk.webp",
+    "name": {
+      "zh-TW": "哥本哈根新港",
+      "en": "Nyhavn Canal"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "DK"
+      ],
+      "places": [
+        "丹麥",
+        "丹麦",
+        "Denmark",
+        "Danmark",
+        "哥本哈根",
+        "Copenhagen",
+        "København",
+        "新港",
+        "Nyhavn",
+        "歐登塞",
+        "Odense",
+        "奧胡斯",
+        "Aarhus"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "新港運河中央那棟山牆老屋立面 (middle Nyhavn stepped-gable townhouse facade)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "no": {
+    "file": "no.webp",
+    "name": {
+      "zh-TW": "挪威木板教堂",
+      "en": "Norwegian Stave Church"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "NO"
+      ],
+      "places": [
+        "挪威",
+        "Norway",
+        "Norge",
+        "奧斯陸",
+        "奥斯陆",
+        "Oslo",
+        "卑爾根",
+        "卑尔根",
+        "Bergen",
+        "特羅姆瑟",
+        "特罗姆瑟",
+        "Tromsø",
+        "Tromso",
+        "羅浮敦",
+        "罗浮敦",
+        "Lofoten",
+        "弗洛姆",
+        "Flåm",
+        "Flam"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "第三層木瓦斜屋頂與中央尖塔頂 (third stave roof tier and spire cap)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "se": {
+    "file": "se.webp",
+    "name": {
+      "zh-TW": "斯德哥爾摩市政廳與達拉木馬",
+      "en": "Stockholm City Hall & Dala Horse"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "SE"
+      ],
+      "places": [
+        "瑞典",
+        "Sweden",
+        "Sverige",
+        "斯德哥爾摩",
+        "斯德哥尔摩",
+        "Stockholm",
+        "哥德堡",
+        "Gothenburg",
+        "Göteborg",
+        "馬爾默",
+        "马尔默",
+        "Malmö",
+        "Malmo",
+        "基律納",
+        "Kiruna",
+        "阿比斯庫",
+        "Abisko"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "市政廳前的瑞典傳統達拉木馬 (traditional Swedish Dala horse)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "fi": {
+    "file": "fi.webp",
+    "name": {
+      "zh-TW": "赫爾辛基大教堂",
+      "en": "Helsinki Cathedral"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "FI"
+      ],
+      "places": [
+        "芬蘭",
+        "芬兰",
+        "Finland",
+        "Suomi",
+        "赫爾辛基",
+        "赫尔辛基",
+        "Helsinki",
+        "羅瓦涅米",
+        "罗瓦涅米",
+        "Rovaniemi",
+        "拉普蘭",
+        "拉普兰",
+        "Lapland",
+        "圖爾庫",
+        "Turku",
+        "伊納里",
+        "Inari"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中央主圓穹頂與四座角塔小圓頂 (central main dome and four corner cupolas)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "is": {
+    "file": "is.webp",
+    "name": {
+      "zh-TW": "雷克雅維克哈爾格林姆教堂",
+      "en": "Hallgrímskirkja"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "IS"
+      ],
+      "places": [
+        "冰島",
+        "冰岛",
+        "Iceland",
+        "Ísland",
+        "雷克雅維克",
+        "雷克雅未克",
+        "Reykjavik",
+        "Reykjavík",
+        "維克",
+        "Vik",
+        "Vík",
+        "阿克雷里",
+        "Akureyri",
+        "黃金圈",
+        "Golden Circle",
+        "藍湖",
+        "Blue Lagoon"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "中央主塔頂部八角尖錐與十字架 (stepped octagonal spire crown and cross)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "de": {
+    "file": "de.webp",
+    "name": {
+      "zh-TW": "新天鵝堡",
+      "en": "Neuschwanstein Castle"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "DE"
+      ],
+      "places": [
+        "德國",
+        "德国",
+        "Germany",
+        "Deutschland",
+        "新天鵝堡",
+        "新天鹅堡",
+        "天鵝堡",
+        "天鹅堡",
+        "Neuschwanstein",
+        "慕尼黑",
+        "Munich",
+        "München",
+        "富森",
+        "福森",
+        "Füssen",
+        "Fussen",
+        "柏林",
+        "Berlin",
+        "法蘭克福",
+        "法兰克福",
+        "Frankfurt",
+        "漢堡",
+        "汉堡",
+        "Hamburg",
+        "科隆",
+        "Cologne",
+        "Köln",
+        "海德堡",
+        "Heidelberg"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "城堡主殿陡斜屋頂與圓塔尖錐屋頂 (main Palas steep roof and circular keep conical roof)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "cz": {
+    "file": "cz.webp",
+    "name": {
+      "zh-TW": "布拉格查理大橋與雙塔",
+      "en": "Prague Charles Bridge & Towers"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CZ"
+      ],
+      "places": [
+        "捷克",
+        "Czechia",
+        "Czech Republic",
+        "Česko",
+        "布拉格",
+        "Prague",
+        "Praha",
+        "查理大橋",
+        "查理大桥",
+        "Charles Bridge",
+        "Karlův most",
+        "庫倫洛夫",
+        "克魯姆洛夫",
+        "Český Krumlov",
+        "Cesky Krumlov",
+        "卡羅維瓦利",
+        "Karlovy Vary"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "查理大橋橋塔與提恩教堂哥德雙尖塔屋頂 (bridge tower and Gothic twin spire roofs)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "nl": {
+    "file": "nl.webp",
+    "name": {
+      "zh-TW": "荷蘭風車與鬱金香",
+      "en": "Dutch Windmill & Tulips"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "NL"
+      ],
+      "places": [
+        "荷蘭",
+        "荷兰",
+        "Netherlands",
+        "Holland",
+        "Nederland",
+        "阿姆斯特丹",
+        "Amsterdam",
+        "鹿特丹",
+        "Rotterdam",
+        "海牙",
+        "The Hague",
+        "Den Haag",
+        "羊角村",
+        "Giethoorn",
+        "桑斯安斯",
+        "風車村",
+        "Zaanse Schans",
+        "庫肯霍夫",
+        "Keukenhof",
+        "烏特勒支",
+        "Utrecht"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "風車四片格柵帆翼與前方鬱金香花苞 (four lattice windmill sails and tulip blossoms)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "es": {
+    "file": "es.webp",
+    "name": {
+      "zh-TW": "巴塞隆納聖家堂",
+      "en": "Sagrada Família"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "ES"
+      ],
+      "places": [
+        "西班牙",
+        "Spain",
+        "España",
+        "巴塞隆納",
+        "巴塞罗那",
+        "Barcelona",
+        "聖家堂",
+        "圣家堂",
+        "Sagrada Família",
+        "Sagrada Familia",
+        "馬德里",
+        "马德里",
+        "Madrid",
+        "塞維亞",
+        "塞维利亚",
+        "Seville",
+        "Sevilla",
+        "格拉納達",
+        "Granada",
+        "瓦倫西亞",
+        "Valencia"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "高第玉米穗狀高塔頂端的幾何馬賽克冠冕 (Gaudí mosaic pinnacle crowns atop the spires)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "ch": {
+    "file": "ch.webp",
+    "name": {
+      "zh-TW": "馬特洪峰與冰河列車",
+      "en": "Matterhorn & Alpine Train"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "CH"
+      ],
+      "places": [
+        "瑞士",
+        "Switzerland",
+        "Schweiz",
+        "Suisse",
+        "馬特洪峰",
+        "马特洪峰",
+        "Matterhorn",
+        "策馬特",
+        "采尔马特",
+        "Zermatt",
+        "蘇黎世",
+        "苏黎世",
+        "Zurich",
+        "Zürich",
+        "琉森",
+        "盧塞恩",
+        "Lucerne",
+        "Luzern",
+        "少女峰",
+        "Jungfrau",
+        "茵特拉肯",
+        "因特拉肯",
+        "Interlaken",
+        "格林德瓦",
+        "Grindelwald",
+        "日內瓦",
+        "日内瓦",
+        "Geneva",
+        "伯恩",
+        "Bern"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "石造拱橋上的瑞士冰河景觀列車車廂 (Swiss panoramic Alpine train cars on the viaduct)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "at": {
+    "file": "at.webp",
+    "name": {
+      "zh-TW": "哈修塔特湖畔小鎮",
+      "en": "Hallstatt Lakeside Village"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "AT"
+      ],
+      "places": [
+        "奧地利",
+        "奥地利",
+        "Austria",
+        "Österreich",
+        "哈修塔特",
+        "哈尔施塔特",
+        "Hallstatt",
+        "維也納",
+        "维也纳",
+        "Vienna",
+        "Wien",
+        "薩爾茨堡",
+        "萨尔茨堡",
+        "薩爾斯堡",
+        "Salzburg",
+        "茵斯布魯克",
+        "因斯布鲁克",
+        "Innsbruck"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "湖畔教堂的高聳八角尖塔 (tall octagonal church spire on the lakeshore)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
+  "gr": {
+    "file": "gr.webp",
+    "name": {
+      "zh-TW": "聖托里尼藍頂教堂",
+      "en": "Santorini Cliffside Dome Church"
+    },
+    "match": {
+      "level": "country",
+      "countries": [
+        "GR"
+      ],
+      "places": [
+        "希臘",
+        "希腊",
+        "Greece",
+        "Ελλάδα",
+        "聖托里尼",
+        "圣托里尼",
+        "Santorini",
+        "Σαντορίνη",
+        "伊亞",
+        "Oia",
+        "費拉",
+        "Fira",
+        "雅典",
+        "Athens",
+        "Αθήνα",
+        "米克諾斯",
+        "米科诺斯",
+        "Mykonos",
+        "克里特",
+        "Crete"
+      ]
+    },
+    "accent": {
+      "color": "#D6246E",
+      "part": "懸崖教堂的主圓頂與側圓頂 (main and side domes of the cliffside church)"
+    },
+    "origin": "original, procedurally modeled in Blender, no third-party assets"
+  },
   "generic": {
     "file": "generic.webp",
     "name": {
