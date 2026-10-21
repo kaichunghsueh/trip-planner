@@ -83,16 +83,17 @@ journey: {
   currencies?: [ { code（ISO 4217）, rate（1 單位該幣＝多少 homeCurrency）, kind?: "mid"|"cash-sell"|"card", asOf: date, source: SourceRef } ]（v1.5 新增）
 }
 stays: [ { id, name, nameLocal?, address?, addressLocal?, lat, lon, checkIn: date, checkOut: date, checkInTime?: time, checkOutTime?: time, booked: boolean, area?, why?, parking?, sources?: SourceRef[], verified: boolean, options?: HotelOption[]（v1.4 新增，最多 3 筆） } ]
-days: [ { date, title, area?, stayId?（當晚住哪；最後一天可省略）, summary?, rainPlan?, transport?: "transit"|"car"|"taxi"|"mixed"（v1.1 新增；沒填就沿用 journey.transport.primary）, timezone?（v1.5 新增；沒填就用 journey.destination.timezone）, items: Item[] } ]
+days: [ { date, title, area?, stayId?（當晚住哪；最後一天可省略）, summary?, rainPlan?, transport?: "transit"|"car"|"taxi"|"mixed"（v1.1 新增；沒填就沿用 journey.transport.primary）, timezone?（v1.5 新增；沒填就用 journey.destination.timezone）, items: Item[], stash?: StashItem[]（v1.9 新增：每日 2～4 個同區就近口袋備案） } ]
 Item: {
   id（全域唯一）, start: time, end: time,
   kind: "flight"|"transfer"|"sight"|"food"|"cafe"|"shopping"|"activity"|"stay"|"rest"|"other",
   title, place?: { name, nameLocal?, address?, addressLocal?, lat, lon },
   move?: { mode: "walk"|"subway"|"bus"|"rail"|"light-rail"|"taxi"|"car"|"ferry"|"flight"|"other", line?, from?, minutes, distanceKm?, cost?: Money, note? },   // 從上一站到這一站
-  detail?, tips?: string[], hours?, booking?: { required: boolean, how?, opensAt?, url?, status?: "booked"|"todo"（v1.1 新增） },
+  detail?, tips?: string[], hours?（含營業區間、L.O. 最後點餐／最後入場與公休日，例："11:00–21:00（L.O. 20:30，週三公休）"）, booking?: { required: boolean, how?, opensAt?, url?, status?: "booked"|"todo"（v1.1 新增） },
   cost?: Money, photo?: { url, credit, license, licenseUrl?, sourceUrl }, rainAlt?, indoor?: boolean,
   fixed?: boolean（v1.1 新增）, sources?: SourceRef[], verified: boolean
 }
+StashItem: { id（全域唯一）, kind: "sight"|"food"|"cafe"|"shopping"|"activity"|"other", title, place: Place, hours?（含 L.O. 與公休）, detail?, cost?: Money, indoor?: boolean, sources?: SourceRef[], verified: boolean }（v1.9 新增：供現場「📍 附近備案」依距離與營業時段過濾並一鍵換入主時間軸）
 Money: { amount, currency（ISO 4217）, per: "person"|"group"|"car", note? }
 SourceRef: { title, url, checked: date }
 Place: { name, nameLocal?, address?, addressLocal?, lat, lon }（v1.1 新增；格式同 Item.place）
