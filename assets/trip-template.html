@@ -753,6 +753,10 @@ const T = {
   enFmt: ['體力 {p}%（{l}）', 'Energy {p}% ({l})'],
   enLow: ['輕鬆', 'Light'], enMid: ['適中', 'Moderate'], enHigh: ['偏高', 'High'],
   qm_stam: ['{p}：連續兩站長時戶外行程（接在「{a}」之後），建議中間穿插用餐或咖啡廳緩衝', '{p}: back-to-back long outdoor stops (right after “{a}”); add a meal or cafe break in between'],
+  lugDrop: ['🧳 寄放／托運', '🧳 Bag drop'],
+  lugPick: ['🧳 領取行李', '🧳 Bag pickup'],
+  qm_lugCarry: ['{p}：處於「帶大件行李」狀態卻直接排景點／逛街（請先排飯店寄放、車站置物櫃或當日行李托運）', '{p}: sightseeing/shopping scheduled while still carrying luggage (add a hotel bag drop, coin locker, or luggage delivery first)'],
+  qm_lugRet: ['{p}：已於「{a}」寄放行李，但後續前往機場或新飯店前漏排「折返領取行李」節點', '{p}: luggage stored at “{a}”, but no bag pickup stop is scheduled before heading to the airport or new hotel'],
   /* contract v1.1 (spec §6b) */
   dt_transit: ['大眾運輸', 'Transit'], dt_car: ['自駕', 'Driving'], dt_taxi: ['計程車', 'Taxi'], dt_mixed: ['混搭', 'Mixed'], dayTr: ['當天交通', 'Getting around today'],
   by_user: ['使用者指定', 'Your choice'], by_ai: ['AI 判斷', 'AI’s call'],
@@ -1068,6 +1072,28 @@ function outHours(M, it) {
   return '';
 }
 const ohChip = (M, it) => { const w = outHours(M, it); return w ? h('span', { class: 'chip oh', title: w }, t('outHrs'), h('span', { class: 'sr' }, CL() + w)) : null; };
+const LUG_PICK_RE = /(?:領取|取回|領回|拿回|(?:取|領|拿)(?!(?:消|決|得|隊|導|著|完)))(?:[^\n，。；,.;]{0,8})?(?:行李|寄物|寄放)(?!(?:去|到|至|往|寄))|取回寄放|(?:luggage|bag(?:gage)?) ?pick-?up|(?:pick ?up|collect|retrieve|reclaim) (?:(?:stored|our|the|my|left) )*(?:bags?|luggage|suitcases?)/i;
+const LUG_DROP_RE = /寄放行李|行李寄放|寄放於|寄放在|寄行李|放行李|櫃台寄放|寄物|置物櫃|コインロッカー|手荷物預|人工寄物|行李託運|行李托運|行李宅配|當日配送|手ぶら|Airporter|LuggAgent|Zimcarry|T-Luggage|ecbo ?cloak|(?:luggage|bag(?:gage)?) ?(?:drop(?:-?off)?|storage|locker|delivery)|(?:drop(?: ?off)?|store|storing|leave|leaving) (?:(?:our|the|my) )*(?:bags?|luggage|suitcases?)|left luggage|coin ?locker/i;
+const LUG_DELIV_RE = /行李託運|行李托運|行李宅配|當日配送|直送飯店|手ぶら|Airporter|LuggAgent|Zimcarry|T-Luggage|(?:luggage|bag(?:gage)?) delivery|send (?:(?:our|the|my) )*(?:bags?|luggage|suitcases?)/i;
+const LUG_DROP_THEN_PICK_RE = /(?:寄放|置物櫃|コインロッカー|手荷物預|人工寄物|ecbo ?cloak|寄物|放行李|寄行李)[\s\S]*?(?:再|晚點|傍晚|下午|離開前|逛完|結束後|回程前)[^\n，。；,.;]{0,12}?(?:領|取|拿)|(?:(?:luggage|bag(?:gage)?) ?(?:drop(?:-?off)?|storage|locker)|(?:drop(?: ?off)?|store|storing|leave|leaving) (?:(?:our|the|my) )*(?:bags?|luggage|suitcases?)|left luggage|coin ?locker)[\s\S]*?\b(?:before (?:leaving|heading|going)|later|in the (?:afternoon|evening)|afterward)/i;
+function lugText(it) { return str(it.title) + ' ' + str(it.detail) + ' ' + arr(it.tips).join(' '); }
+function lugKind(it) {
+  if (!it || ['flight', 'sight', 'food', 'cafe', 'shopping', 'activity'].includes(it.kind)) return '';
+  const ttl = str(it.title), tx = lugText(it);
+  const preCheckInDrop = /先[^\n，。；,.;]*?(?:寄放|寄行李|放行李)|未到入住|入住前|before check-?in/i.test(ttl) && !LUG_PICK_RE.test(ttl);
+  const isCheckIn = it.kind === 'stay' && /入住|check-?in/i.test(ttl) && !/退房|check-?out/i.test(ttl) && !preCheckInDrop;
+  if (isCheckIn) return '';
+  if (/退房|check-?out/i.test(ttl) && LUG_DROP_RE.test(tx)) return 'drop';
+  if (!/退房|check-?out/i.test(ttl) && LUG_PICK_RE.test(ttl) && !LUG_DROP_THEN_PICK_RE.test(ttl)) return 'pick';
+  if (LUG_DROP_RE.test(ttl)) return 'drop';
+  if (!/退房|check-?out/i.test(ttl) && LUG_PICK_RE.test(tx) && !LUG_DROP_THEN_PICK_RE.test(tx)) return 'pick';
+  if (LUG_DROP_RE.test(tx)) return 'drop';
+  return '';
+}
+function lugChip(it) {
+  const k = lugKind(it);
+  return k ? h('span', { class: 'chip', title: t(k === 'pick' ? 'lugPick' : 'lugDrop') }, t(k === 'pick' ? 'lugPick' : 'lugDrop')) : null;
+}
 /* v1.4: stay options; straight-line km; sunrise/sunset (NOAA simplified, one pass at local solar noon) in destination.timezone; daily walking */
 const optsOf = s => arr(s && s.options).filter(o => o && typeof o === 'object');
 const havKm = (a, b) => { const r = Math.PI / 180, x = Math.sin((b.lat - a.lat) * r / 2), y = Math.sin((b.lon - a.lon) * r / 2); return 12742 * Math.asin(Math.sqrt(x * x + Math.cos(a.lat * r) * Math.cos(b.lat * r) * y * y)); };
@@ -1525,7 +1551,9 @@ function quality(M) {
       R.sun.push(QL(d, it, t('qm_afterDark', { p: pfx(d, it), s: hmm(s.set), e: str(it.end) })));
     }
   });
-  /* v1.9: #15 stamina browser check — flag back-to-back long outdoor stops (≥ 90 min each, indoor === false) with no meal/cafe/rest break in between */
+  /* v1.9: #15 stamina & luggage state-machine browser check:
+     (1) flag back-to-back long outdoor stops (≥ 90 min each, indoor === false) with no meal/cafe/rest break in between;
+     (2) track luggage transit state on arrival, hotel-switch, and departure days (non-car) to catch sightseeing while carrying large bags or forgetting to retrieve stored bags */
   R.stam = [];
   M.days.forEach(d => {
     let prevHard = null;
@@ -1539,6 +1567,48 @@ function quality(M) {
         prevHard = null;
       }
     });
+    if (dayTr(M, d) !== 'car') {
+      const st = M.stayById[d.stayId], pst = d._i > 0 ? M.stayById[M.days[d._i - 1].stayId] : null;
+      const stOpts = st ? [st].concat(optsOf(st)).filter(hasLL) : [];
+      const nearTonightStay = p => (hasLL(p) && (stOpts.some(o => havKm(p, o) < 0.25) || d._items.some(x => x.kind === 'stay' && /入住|check-?in/i.test(str(x.title)) && hasLL(x.place) && havKm(p, x.place) < 0.25))) || (SK.includes('stays') && !hasLL(p));
+      const isArr = d._i === 0 && d._items.some(x => x.kind === 'flight');
+      const isCheckout = !!(pst && (!st || pst.id !== st.id));
+      if (isArr || isCheckout) {
+        const flIdx = isArr ? d._items.findIndex(x => x.kind === 'flight') : -1;
+        const coIdx = isCheckout ? d._items.findIndex(x => ['stay', 'transfer', 'other'].includes(x.kind) && /退房|check-?out/i.test(lugText(x)) && !/退房前|before check-?out/i.test(lugText(x))) : -1;
+        const coMin = pst ? (toMin(pst.checkOutTime) || 660) : 660;
+        let bagState = isArr ? (flIdx >= 0 && LUG_DELIV_RE.test(lugText(d._items[flIdx])) ? 'stored' : 'pre') : 'hotel', flagged = false;
+        d._items.forEach((it, idx) => {
+          if (isArr && idx === flIdx) { if (bagState === 'pre') bagState = 'carrying'; return; }
+          if (!isArr && it.kind === 'flight') { bagState = 'settled'; return; }
+          const ttl = str(it.title), tx = lugText(it), lk = lugKind(it), sMin = toMin(it.start);
+          const isCheckInStop = it.kind === 'stay' && lk !== 'pick' && !/退房|check-?out/i.test(ttl) && ((st && nearTonightStay(it.place)) || /入住|check-?in/i.test(ttl));
+          if (lk === 'drop' || isCheckInStop) {
+            bagState = 'stored';
+          } else if (lk === 'pick') {
+            bagState = 'carrying';
+          } else if (isCheckout && bagState === 'hotel' && (coIdx >= 0 ? idx >= coIdx : (!isNaN(sMin) && sMin >= coMin))) {
+            bagState = 'carrying';
+          }
+          if (!flagged && bagState === 'carrying' && ['sight', 'activity', 'shopping'].includes(it.kind)) {
+            R.stam.push(QL(d, it, t('qm_lugCarry', { p: pfx(d, it) })));
+            flagged = true;
+          }
+        });
+      }
+      d._items.forEach((it, idx) => {
+        const ttl = str(it.title), tx = lugText(it);
+        if (lugKind(it) !== 'drop' || LUG_DELIV_RE.test(tx)) return;
+        const isStationStorage = it.kind !== 'stay' && /置物櫃|コインロッカー|coin ?locker|手荷物預|ecbo ?cloak|人工寄物|left luggage/i.test(tx);
+        const isTonightHotelDrop = st && !isStationStorage && !/退房|check-?out/i.test(ttl) && nearTonightStay(it.place) && !(pst && hasLL(pst) && hasLL(it.place) && havKm(it.place, pst) < 0.25);
+        if (isTonightHotelDrop) return;
+        const rest = d._items.slice(idx + 1);
+        const needPickBeforeEnd = !st || isArr || isCheckout || rest.some(x => x.kind === 'flight');
+        if (!needPickBeforeEnd) return;
+        const retrieved = rest.some((x, rIdx) => lugKind(x) === 'pick' || (!isStationStorage && x.kind === 'stay' && hasLL(it.place) && hasLL(x.place) && havKm(it.place, x.place) < 0.05 && rest.slice(0, rIdx).some(y => hasLL(y.place) && havKm(it.place, y.place) >= 0.25)));
+        if (!retrieved) R.stam.push(QL(d, it, t('qm_lugRet', { p: pfx(d, it), a: str((it.place && it.place.name) || it.title) })));
+      });
+    }
   });
   return R;
 }
@@ -2079,7 +2149,7 @@ function rowItem(M, d, it, i, rainy, list) {
       h('span', { class: 'nm' }, hasLL(it.place) ? h('span', { class: 'no', 'aria-hidden': 'true' }, String(it._n)) : null, h('span', { class: 'sr' }, t('k_' + kind) + CL()), h('span', { class: 'tx' }, str(it.title || (it.place && it.place.name)))),
       it.move ? moveSum(it.move) : null,
       badges),
-    h('span', { class: 'st' }, bkChip(it), ohChip(M, it), rainy && it.rainAlt ? dot('rain', t('st_rain')) : null, dot(sc, sl), h('span', { class: 'chev', 'aria-hidden': 'true' }, '›')));
+    h('span', { class: 'st' }, lugChip(it), bkChip(it), ohChip(M, it), rainy && it.rainAlt ? dot('rain', t('st_rain')) : null, dot(sc, sl), h('span', { class: 'chev', 'aria-hidden': 'true' }, '›')));
   btn.addEventListener('click', () => {
     const o = btn.getAttribute('aria-expanded') !== 'true';
     state.open[id] = o; btn.setAttribute('aria-expanded', String(o)); x.hidden = !o;
@@ -2238,7 +2308,7 @@ function dayTable(M, d, rainy, items) {
         h('td', { class: 'nw' }, h('span', { class: 'chip' }, h('span', { class: 'gs', 'aria-hidden': 'true' }, KIND_IC[kind]), t('k_' + kind))),
         h('td', { class: 'nw' }, it.move ? moveSum(it.move) : '—'),
         h('td', { class: 'nw' }, it.cost ? moneyShort(it.cost) : '—'),
-        h('td', null, bkChip(it) ? [bkChip(it), b && b.opensAt && b.status !== 'booked' && it.fixed !== true ? h('div', { class: 'small muted' }, str(b.opensAt)) : null] : b ? t('bk_no') : '—', ohChip(M, it)),
+        h('td', null, bkChip(it) ? [bkChip(it), b && b.opensAt && b.status !== 'booked' && it.fixed !== true ? h('div', { class: 'small muted' }, str(b.opensAt)) : null] : b ? t('bk_no') : '—', ohChip(M, it), lugChip(it)),
         h('td', { class: 'nw' }, dot(sc), ' ', sl, rainy && it.rainAlt ? [' ', dot('rain', t('st_rain'))] : null));
       tr.addEventListener('click', () => selectItem(id, { fly: true }));
       return tr;
