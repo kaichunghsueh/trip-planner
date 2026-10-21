@@ -206,9 +206,9 @@ Once finished, you get a standalone file like `trip-busan-2026-10-19.html` in yo
 | 🌐 **English / 繁中 toggle** | Click `繁 / EN` at the top right to switch the entire UI and itinerary content. Every stop displays local script (`Korean: …`, `Japanese: …`) underneath so you can point at it in person. |
 | 🗺️ **Interactive map & 1-tap navigation** | View the whole trip or filter by day. Each stop has direct navigation buttons (Naver Map & KakaoMap first for South Korea; Google Maps & Apple Maps elsewhere). When offline or inside a sandboxed previewer, it falls back to a **built-in interactive SVG route map** plus local addresses. |
 | 🌤️ **Live forecast + 3-year archive weather** | Pulls live 16-day forecasts from Open-Meteo when online; **for trips >16 days out, automatically averages the past 3 years' same-day historical weather from the Open-Meteo Archive API**, with a mandatory built-in `climate` fallback for offline use. |
-| ⚡ **Live Plan B & 🔋 Energy meter** | One-click **Delay +30m/+60m**, **Rain swap**, and **Low-energy recharge** buttons on every day (locks booked meals/flights, trims buffers, and re-estimates travel time). The day header shows a live **🔋 Daily Energy Load %**. |
+| ⚡ **Live Plan B, 📍 Near Me Stash & 🔋 Energy meter** | One-click **Delay +30m/+60m**, **Rain swap**, **Low-energy recharge**, and **📍 Near Me Stash** buttons on every day (locks 🔒 booked meals/flights, filters backup spots within a 10-min walk that are open during your target slot, and swaps them in with one tap). The day header shows a live **🔋 Daily Energy Load %**. |
 | 💴 **FX splitter + 🎁 Souvenir checklist** | The Budget tab has an offline 2-way currency converter, per-person bill splitter, and **click-to-expand category bars** showing every line item. The Lists tab gathers all `🎁` local snacks and souvenirs into a checkable shopping list. |
-| ✅ **Browser quality check panel** | Independently audits overlapping times, missing stays, unrealistic travel speeds, **missing transit legs >80m (`#4`)**, **restaurants sharing coordinates with hotels/sights (`#5`)**, **after-dark outdoor sights (`#7`)**, and **back-to-back 90+ min outdoor stops or sightseeing while carrying unstored luggage (`#15`)**. |
+| ✅ **Browser quality check & ⛔ Hours / L.O. guard** | Independently audits overlapping times, missing stays, unrealistic travel speeds, **missing transit legs >80m (`#4`)**, **restaurants sharing coordinates with hotels/sights (`#5`)**, **closed-day / past-Last-Order (`L.O.`) / after-dark outdoor conflicts (`#7`)**, and **back-to-back 90+ min outdoor stops or sightseeing while carrying unstored luggage (`#15`)**. Every stop also includes a 1-tap `🔍 Live status / closures` check. |
 | 🔒 **1-click Shareable copy** | Click **Shareable copy** to strip out **hotel names/options, budget numbers, traveler details, flight numbers, or booking info** and export a clean `-share.html` (redacted fields are completely removed from the file's source code and map). |
 
 ### 🔄 Want to tweak something? Just ask — no need to replan from scratch
@@ -217,7 +217,7 @@ Tell Copilot anytime:
 - 💬 `"Only change Day 3 — I want more shopping"`
 - 💬 `"Switch transport to a rental car"`
 - 💬 `"Change our hotel to [new hotel name or address]"`
-- 💬 `"Re-verify this itinerary"` (great a week before departure: re-checks opening hours and ticket prices without changing your route)
+- 💬 `"Check for last-minute closures"` / `"Re-verify this itinerary"` (great 24–48 hours before departure: checks Google Maps live status and official Instagram/X posts for independent cafés, ramen shops, and key sights, swapping in a nearby Stash backup if a spot is unexpectedly closed)
 - 💬 `"Add an English version to this itinerary"` (upgrades pre-v1.5 single-language HTML files into a bilingual `-v2` file)
 
 ---

@@ -234,6 +234,7 @@ mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linea
 .chip svg{width:12px;height:12px;fill:currentColor;flex:none}
 .chip.lk{border-color:var(--ink);color:var(--text);font-weight:600}
 .chip.oh{border-style:dashed;color:var(--text2)}
+.chip.bad{border-color:var(--bad);color:var(--bad);font-weight:600}
 .ovc{margin-top:16px}
 .mdl{list-style:none;margin:0;padding:0}
 .mdl li{display:grid;grid-template-columns:12px minmax(0,1fr);gap:10px;padding:9px 0;align-items:start}
@@ -485,6 +486,19 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 .pb-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .pb-tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:999px;border:1px solid var(--line2);background:var(--hover);color:var(--text)}
 .row.pb-skip .tx,.tbl tr.pb-skip .lnk span{text-decoration:line-through;color:var(--text3)}
+.stbox{border:1px solid var(--line2);border-radius:10px;padding:10px 12px;margin:0 0 12px;background:var(--surface);font-size:13px}
+.stbox h3{margin:0 0 4px;font-size:14px;display:flex;align-items:center;gap:6px}
+.stbox .st-bar{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:8px 0}
+.stbox select{font:550 12.5px/1.3 var(--font);padding:4px 8px;border-radius:6px;border:1px solid var(--line2);background:var(--bg);color:var(--text)}
+.stgrid{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.stcard{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);display:flex;flex-direction:column;gap:4px}
+.stcard.near{border-color:var(--ink)}
+.stcard .st-h{display:flex;justify-content:space-between;gap:6px;align-items:flex-start;font-weight:650}
+.stcard .st-m{display:flex;flex-wrap:wrap;gap:4px 6px;font-size:11.5px;color:var(--text2)}
+.stcard .st-act{margin-top:auto;padding-top:4px;display:flex;justify-content:flex-end}
+.stcard button{font:600 11.5px/1.3 var(--font);padding:3px 9px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--text);cursor:pointer}
+.stcard button:hover{background:var(--hover)}
+.stcard button.on{background:var(--ink);color:var(--inv);border-color:var(--ink)}
 .btbl td .sub{display:block;font-size:12px;color:var(--text3);margin-top:2px}
 .btbl .per{color:var(--text2);font-size:12.5px;white-space:nowrap}
 .btbl th{white-space:nowrap}
@@ -523,7 +537,9 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"date":"2026-10-19","title":"抵達，海邊晚餐","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"抵達機場、入境、領行李","place":{"name":"金海國際機場","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"入住示範飯店","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"indoor":false,"rainAlt":"示範百貨地下美食街（虛構）","tips":["🎁 必吃小吃／伴手禮：示範魚板串與釜山魚板禮盒（虛構）"],"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"晚餐：示範食堂","place":{"name":"示範食堂","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"hours":"11:00–22:00（L.O. 21:15，週三公休）","indoor":false,"rainAlt":"示範百貨地下美食街（虛構）","tips":["🎁 必吃小吃／伴手禮：示範魚板串與釜山魚板禮盒（虛構）"],"verified":false}],"stash":[
+{"id":"st1","kind":"food","title":"備案晚餐：示範豬肉湯飯（免排隊名店）","place":{"name":"示範湯飯店","nameLocal":"예시 돼지국밥","lat":35.1598,"lon":129.1622},"hours":"09:00–22:30（L.O. 22:00）","detail":"距離原餐廳步行 2 分鐘，濃郁豚骨湯頭（虛構示範）。","indoor":true,"verified":false},
+{"id":"st2","kind":"cafe","title":"備案甜點：示範海景咖啡廳","place":{"name":"示範咖啡","nameLocal":"예시 카페","lat":35.1585,"lon":129.1605},"hours":"10:00–22:00（L.O. 21:30）","detail":"二樓海景座位，招牌海鹽奶油捲（虛構示範）。","indoor":true,"verified":false}]},
 {"date":"2026-10-20","title":"早餐後回程","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"早餐：示範粥店","place":{"name":"示範粥店","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"退房","place":{"name":"示範飯店","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -542,7 +558,9 @@ ul.unv{margin:0;padding-left:18px;font-size:13px;color:var(--text2);columns:2 30
 {"date":"2026-10-19","title":"Arrival and a seaside dinner","stayId":"s1","items":[
 {"id":"a1","start":"17:00","end":"18:00","kind":"flight","title":"Land, clear immigration, collect bags","place":{"name":"Gimhae International Airport","lat":35.1796,"lon":128.9382},"verified":false},
 {"id":"a2","start":"19:10","end":"19:30","kind":"stay","title":"Check in at Demo Hotel","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"subway","minutes":65},"verified":false},
-{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"indoor":false,"rainAlt":"Demo Department Store Food Hall (fictional)","tips":["🎁 Local snack / souvenir: Demo fish cake skewers and Busan eomuk gift box (fictional)"],"verified":false}]},
+{"id":"a3","start":"19:45","end":"21:00","kind":"food","title":"Dinner: Demo Diner","place":{"name":"Demo Diner","nameLocal":"예시 식당","lat":35.159,"lon":129.161},"move":{"mode":"walk","minutes":10},"hours":"11:00-22:00 (L.O. 21:15, closed Wed)","indoor":false,"rainAlt":"Demo Department Store Food Hall (fictional)","tips":["🎁 Local snack / souvenir: Demo fish cake skewers and Busan eomuk gift box (fictional)"],"verified":false}],"stash":[
+{"id":"st1","kind":"food","title":"Backup dinner: Demo Pork Soup House (no-queue local pick)","place":{"name":"Demo Soup House","nameLocal":"예시 돼지국밥","lat":35.1598,"lon":129.1622},"hours":"09:00-22:30 (L.O. 22:00)","detail":"2-min walk from the main dinner spot; rich pork bone broth (fictional demo).","indoor":true,"verified":false},
+{"id":"st2","kind":"cafe","title":"Backup cafe: Demo Sea-View Roastery","place":{"name":"Demo Cafe","nameLocal":"예시 카페","lat":35.1585,"lon":129.1605},"hours":"10:00-22:00 (L.O. 21:30)","detail":"Upstairs sea-view seating; signature sea-salt butter roll (fictional demo).","indoor":true,"verified":false}]},
 {"date":"2026-10-20","title":"Breakfast, then home","items":[
 {"id":"b1","start":"08:30","end":"09:30","kind":"food","title":"Breakfast: Demo Porridge House","place":{"name":"Demo Porridge House","lat":35.162,"lon":129.164},"move":{"mode":"walk","minutes":5},"verified":false},
 {"id":"b2","start":"10:00","end":"10:30","kind":"stay","title":"Check out","place":{"name":"Demo Hotel","lat":35.1605,"lon":129.163},"move":{"mode":"walk","minutes":5},"verified":false},
@@ -757,6 +775,24 @@ const T = {
   lugPick: ['🧳 領取行李', '🧳 Bag pickup'],
   qm_lugCarry: ['{p}：處於「帶大件行李」狀態卻直接排景點／逛街（請先排飯店寄放、車站置物櫃或當日行李托運）', '{p}: sightseeing/shopping scheduled while still carrying luggage (add a hotel bag drop, coin locker, or luggage delivery first)'],
   qm_lugRet: ['{p}：已於「{a}」寄放行李，但後續前往機場或新飯店前漏排「折返領取行李」節點', '{p}: luggage stored at “{a}”, but no bag pickup stop is scheduled before heading to the airport or new hotel'],
+  st_closed: ['⛔ 公休衝突', '⛔ Closed day'],
+  st_lo: ['⛔ 逾 L.O. {l}', '⛔ Past L.O. {l}'],
+  st_hrsOut: ['⛔ 營業時段外', '⛔ Outside hours'],
+  qm_hrsClosed: ['{p}：排在店家公休日（營業時間：{h}）', '{p}: scheduled on a closing day (hours: {h})'],
+  qm_hrsLO: ['{p}：{t} 才入場／點餐，已超過最後點餐或最後入場時間（L.O. {l}）', '{p}: starts at {t}, past last order / last entry (L.O. {l})'],
+  qm_hrsOut: ['{p}：排在 {t}，超出營業時間（{h}）', '{p}: scheduled at {t}, outside opening hours ({h})'],
+  liveCheck: ['🔍 查即時營業／臨時店休 ↗', '🔍 Live status / closures ↗'],
+  preDepSniff: ['出發前 48 小時提醒：獨立咖啡廳、拉麵店或名店偶有臨時店休，可點各站「🔍 查即時營業」或對 Copilot 說「出發前店休快篩」。', '48h pre-trip tip: independent cafes & popular spots may close unexpectedly — tap “🔍 Live status” on stops or ask Copilot to “check for last-minute closures”.'],
+  pbStash: ['📍 附近備案（{n}）', '📍 Near Me Stash ({n})'],
+  stTitle: ['📍 附近口袋備案池（Proximity Stash）', '📍 Near Me Stash Candidates'],
+  stSub: ['當某站提早結束或餐廳排隊過長時，以目標站為圓心過濾「步行 10 分鐘內且該時段營業中」的口袋備案，一鍵替換進主時間軸（🔒 已預約錨點除外）：', 'Finished early or facing a long queue? Filter backup spots within a 10-min walk that are open during your target slot, and swap them into the timeline with one tap (🔒 booked Anchors stay locked):'],
+  stTarget: ['替換目標時段：', 'Target slot to swap: '],
+  stDistWalk: ['🚶 步行約 {m} 分（{d} m）', '🚶 ~{m} min walk ({d} m)'],
+  stOpenOk: ['🟢 該時段營業中', '🟢 Open at this slot'],
+  stOpenBad: ['🔴 該時段休息／逾 L.O.', '🔴 Closed / past L.O.'],
+  stSwapIn: ['⇄ 換進此時段', '⇄ Swap into slot'],
+  stSwappedBtn: ['✓ 已換入（點此還原）', '✓ Swapped in (tap to undo)'],
+  pbStashSwapped: ['📍 已換口袋備案（原：{a}）', '📍 Stash swap (was: {a})'],
   /* contract v1.1 (spec §6b) */
   dt_transit: ['大眾運輸', 'Transit'], dt_car: ['自駕', 'Driving'], dt_taxi: ['計程車', 'Taxi'], dt_mixed: ['混搭', 'Mixed'], dayTr: ['當天交通', 'Getting around today'],
   by_user: ['使用者指定', 'Your choice'], by_ai: ['AI 判斷', 'AI’s call'],
@@ -996,6 +1032,7 @@ function model(D) {
     d._i = i; d._n = i + 1; d._tz = dz(d);
     d._items = arr(d.items).filter(x => x && typeof x === 'object');
     d._items.forEach((it, k) => { it._n = k + 1; it._d = d._n; it._id = it.id != null ? String(it.id) : '_' + d._n + '-' + (k + 1); if (!itemById[it._id]) itemById[it._id] = it; });
+    d._stash = arr(d.stash).filter(x => x && typeof x === 'object').map((s, k) => Object.assign({}, s, { _id: s.id != null ? String(s.id) : 'st_' + d._n + '_' + (k + 1) }));
   });
   const start = str(J.startDate) || (days[0] ? str(days[0].date) : '');
   const end = str(J.endDate) || (days.length ? str(days[days.length - 1].date) : start);
@@ -1072,6 +1109,77 @@ function outHours(M, it) {
   return '';
 }
 const ohChip = (M, it) => { const w = outHours(M, it); return w ? h('span', { class: 'chip oh', title: w }, t('outHrs'), h('span', { class: 'sr' }, CL() + w)) : null; };
+const pfx = (d, it) => t('dayS', { n: d._n }) + ' ' + str(it.start) + ' ' + str(it.title);
+const WD_ZH = { '日': 0, '天': 0, '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '月': 1, '火': 2, '水': 3, '木': 4, '金': 5, '土': 6 };
+const WD_EN = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+function toMin24(s, nextDay) {
+  const v = str(s).trim();
+  if (v === '24:00') return 1440;
+  const m = toMin(v);
+  return isNaN(m) ? NaN : (nextDay ? m + 1440 : m);
+}
+function hoursConflict(d, it) {
+  if (!d || !it || !it.hours || ['flight', 'stay', 'rest', 'transfer'].includes(it.kind)) return null;
+  const s = toMin(it.start), e0 = toMin(it.end), hs = str(it.hours).trim();
+  if (isNaN(s) || isNaN(e0) || !hs) return null;
+  const e = e0 < s ? e0 + 1440 : e0, ms = parseDate(d.date), wd = !isNaN(ms) ? new Date(ms).getUTCDay() : -1;
+  if (wd >= 0 && !/無休|无休|open daily|every day/i.test(hs)) {
+    const cDays = new Set();
+    for (const m of hs.matchAll(/(?:每?週|每周|星期|禮拜|周)([日天一二三四五六])(?:[、，,及與和/\s]*(?:每?週|每周|星期|禮拜|周)?([日天一二三四五六]))?\s*(?:公休|定休|店休|休館|休息)/g)) {
+      if (WD_ZH[m[1]] != null) cDays.add(WD_ZH[m[1]]);
+      if (m[2] && WD_ZH[m[2]] != null) cDays.add(WD_ZH[m[2]]);
+    }
+    for (const m of hs.matchAll(/([日月火水木金土])曜(?:日)?(?:[・、,/\s]*([日月火水木金土])曜(?:日)?)?\s*(?:公休|定休|店休|休館|休)/g)) {
+      if (WD_ZH[m[1]] != null) cDays.add(WD_ZH[m[1]]);
+      if (m[2] && WD_ZH[m[2]] != null) cDays.add(WD_ZH[m[2]]);
+    }
+    for (const m of hs.matchAll(/(?:公休|定休|店休|休館)日?\s*[:：]\s*(?:每?週|每周|星期|禮拜|周)?([日天一二三四五六日月火水木金土])/g)) {
+      if (WD_ZH[m[1]] != null) cDays.add(WD_ZH[m[1]]);
+    }
+    for (const m of hs.matchAll(/\bclosed\s+(?:on\s+|every\s+)?(sun(?:day)?s?|mon(?:day)?s?|tue(?:sday)?s?|wed(?:nesday)?s?|thu(?:rsday)?s?|fri(?:day)?s?|sat(?:urday)?s?)(?:\s*(?:,|and|&|\/)\s*(sun(?:day)?s?|mon(?:day)?s?|tue(?:sday)?s?|wed(?:nesday)?s?|thu(?:rsday)?s?|fri(?:day)?s?|sat(?:urday)?s?))?\b/gi)) {
+      const k1 = m[1].slice(0, 3).toLowerCase(), k2 = m[2] ? m[2].slice(0, 3).toLowerCase() : '';
+      if (WD_EN[k1] != null) cDays.add(WD_EN[k1]);
+      if (k2 && WD_EN[k2] != null) cDays.add(WD_EN[k2]);
+    }
+    for (const m of hs.matchAll(/\b(sun(?:day)?s?|mon(?:day)?s?|tue(?:sday)?s?|wed(?:nesday)?s?|thu(?:rsday)?s?|fri(?:day)?s?|sat(?:urday)?s?)\s+closed\b/gi)) {
+      const k1 = m[1].slice(0, 3).toLowerCase();
+      if (WD_EN[k1] != null) cDays.add(WD_EN[k1]);
+    }
+    if (cDays.has(wd)) return { kind: 'closed', chip: t('st_closed'), msg: t('qm_hrsClosed', { p: pfx(d, it), h: hs }) };
+  }
+  if (/24\s*(?:小時|時間|hours?|hrs?|h\b)/i.test(hs)) return null;
+  const los = [];
+  for (const m of hs.matchAll(/(?:L\.?O\.?|last\s+(?:order|entry|admission)|最後點餐|最後入場|最終入場|最終受付)\s*[:：]?\s*(翌\s*)?(\d{1,2}:\d{2})/gi)) {
+    const lo0 = toMin24(m[2], !!m[1]);
+    if (!isNaN(lo0)) los.push({ min: lo0 < 360 && s >= 720 && !m[1] ? lo0 + 1440 : lo0, raw: m[2] });
+  }
+  const cleanHs = hs.replace(/(?:L\.?O\.?|last\s+(?:order|entry|admission)|最後點餐|最後入場|最終入場|最終受付)\s*[:：]?\s*(?:翌\s*)?\d{1,2}:\d{2}/gi, '');
+  const rngs = [];
+  for (const m of cleanHs.matchAll(/(\d{1,2}:\d{2})\s*(?:[–—~～\-]|至|to)\s*(翌\s*)?(\d{1,2}:\d{2})/gi)) {
+    const o = toMin24(m[1], false), c0 = toMin24(m[3], !!m[2]);
+    if (!isNaN(o) && !isNaN(c0)) {
+      const c = c0 <= o ? c0 + 1440 : c0;
+      const loHit = los.find(l => l.min >= o && l.min <= c);
+      rngs.push({ o, c, lo: loHit || null });
+    }
+  }
+  if (rngs.length) {
+    const matchingRngs = rngs.filter(r => s >= r.o - 5 && e <= r.c + 5);
+    if (!matchingRngs.length) {
+      return { kind: 'out', chip: t('st_hrsOut'), msg: t('qm_hrsOut', { p: pfx(d, it), t: str(it.start) + '–' + str(it.end), h: hs }) };
+    }
+    const okLo = matchingRngs.some(r => !r.lo || s <= r.lo.min);
+    if (!okLo) {
+      const badLo = matchingRngs.find(r => r.lo && s > r.lo.min).lo;
+      return { kind: 'lo', chip: t('st_lo', { l: badLo.raw }), msg: t('qm_hrsLO', { p: pfx(d, it), t: str(it.start), l: badLo.raw }) };
+    }
+  } else if (los.length && los.every(l => s > l.min)) {
+    const badLo = los[los.length - 1];
+    return { kind: 'lo', chip: t('st_lo', { l: badLo.raw }), msg: t('qm_hrsLO', { p: pfx(d, it), t: str(it.start), l: badLo.raw }) };
+  }
+  return null;
+}
+const hrsChip = (d, it) => { const c = hoursConflict(d, it); return c ? h('span', { class: 'chip bad', title: c.msg }, c.chip) : null; };
 const LUG_PICK_RE = /(?:領取|取回|領回|拿回|(?:取|領|拿)(?!(?:消|決|得|隊|導|著|完)))(?:[^\n，。；,.;]{0,8})?(?:行李|寄物|寄放)(?!(?:去|到|至|往|寄))|取回寄放|(?:luggage|bag(?:gage)?) ?pick-?up|(?:pick ?up|collect|retrieve|reclaim) (?:(?:stored|our|the|my|left) )*(?:bags?|luggage|suitcases?)/i;
 const LUG_DROP_RE = /寄放行李|行李寄放|寄放於|寄放在|寄行李|放行李|櫃台寄放|寄物|置物櫃|コインロッカー|手荷物預|人工寄物|行李託運|行李托運|行李宅配|當日配送|手ぶら|Airporter|LuggAgent|Zimcarry|T-Luggage|ecbo ?cloak|(?:luggage|bag(?:gage)?) ?(?:drop(?:-?off)?|storage|locker|delivery)|(?:drop(?: ?off)?|store|storing|leave|leaving) (?:(?:our|the|my) )*(?:bags?|luggage|suitcases?)|left luggage|coin ?locker/i;
 const LUG_DELIV_RE = /行李託運|行李托運|行李宅配|當日配送|直送飯店|手ぶら|Airporter|LuggAgent|Zimcarry|T-Luggage|(?:luggage|bag(?:gage)?) delivery|send (?:(?:our|the|my) )*(?:bags?|luggage|suitcases?)/i;
@@ -1407,7 +1515,7 @@ function quality(M) {
   const push = (id, m, na, u) => { u = u || []; R.push({ id, msgs: m.concat(u), na: !!na, s: na ? 'na' : m.length ? 'bad' : u.length ? 'unv' : 'ok' }); };
   /* item-level messages carry their stop, so the panel can link to #itinerary/day/item */
   const QL = (d, it, x) => ({ x, d: d._n, id: it._id }), bk = it => it.fixed === true || !!(it.booking && it.booking.required === true);
-  const pfx = (d, it) => t('dayS', { n: d._n }) + ' ' + str(it.start) + ' ' + str(it.title), m2t = x => pad(Math.floor(x / 60) % 24) + ':' + pad(x % 60);
+  const m2t = x => pad(Math.floor(x / 60) % 24) + ':' + pad(x % 60);
   let anyBk = false;
   const items = [];
   M.days.forEach(d => d._items.forEach(it => items.push([d, it])));
@@ -1541,6 +1649,8 @@ function quality(M) {
   const TITLE_NIGHT = /夜景|夜楓|夜間|點燈|燈飾|燈會|夜市|花火|煙火|遊船|夜遊|觀景台|展望台|摩天輪|商圈|商店街|地下街|老街|夜市場|主題樂園|燈光秀|表演|ライトアップ|夜間特別拝観|night|illuminat|light-?up|observatory|observation deck|ferris wheel|cruise|night market|shopping street|underground mall|theme park|light show|parade/i;
   const TEXT_NIGHT = /夜景|夜楓|夜間開放|夜間參拜|夜間拜觀|點燈|燈飾|燈會|夜市|花火|煙火|夜遊|ライトアップ|夜間特別拝観|night view|night illuminat|light-?up|night market|open at night|evening illumination|illuminated at night/i;
   items.forEach(([d, it]) => {
+    const hc = hoursConflict(d, it);
+    if (hc) R.sun.push(QL(d, it, hc.msg));
     if (!['sight', 'activity'].includes(it.kind)) return;
     const s = sunTimes(M, d); if (!s) return;
     const st = toMin(it.start), en = toMin(it.end), ttl = str(it.title) + ' ' + str(it.place && it.place.name), tx = ttl + ' ' + str(it.detail) + ' ' + str(it.hours) + ' ' + arr(it.tips).join(' ');
@@ -1748,6 +1858,7 @@ function gNotes(M) {
   EN_OFF.forEach(x => n.push(h('div', { class: 'note', role: 'alert' }, dot('bad'), h('div', null, t(x.k, x.v), x.L ? paths(x.L) : null))));
   if (CONS.length) n.push(h('div', { class: 'note', role: 'alert' }, dot('bad'), h('div', null, t('dataWarn', { n: CONS.length }), paths(CONS))));
   if (M.meta.shared) n.push(h('div', { class: 'note', role: 'note' }, dot(''), t('shBan', { a: shKeys(M).filter(k => T['sh_' + k]).map(k => t('sh_' + k).split('|')[0]).join(SEP()) || '—' })));
+  if (st.kind === 'during' || (st.kind === 'before' && st.n <= 2)) n.push(h('div', { class: 'note', role: 'note' }, dot('ok'), t('preDepSniff')));
   if (st.kind !== 'after' && age > 14) n.push(h('div', { class: 'note', role: 'note' }, dot('unv'), t('stale', { n: age })));
   return n.length ? h('div', { class: 'gn' }, n) : null;
 }
@@ -1783,7 +1894,7 @@ function redact(M, keys, raw, FORCE) {
   const K = arr(D.stays).concat(arr(D.days)).map(x => str(x && x.area)).filter(Boolean);
   /* what must not survive (also what the self-check looks for) */
   const H = { ll: [], urls: new Set(), money: has('budget'), party: has('party'), booking: has('booking') };
-  arr(D.days).forEach(d => arr(d && d.items).forEach(it => { if (it && typeof it === 'object') items.push(it); }));
+  arr(D.days).forEach(d => arr(d && d.items).concat(arr(d && d.stash)).forEach(it => { if (it && typeof it === 'object') items.push(it); }));
   if (has('party') && !has('budget')) { /* the head count goes away: per-person amounts become group totals so the sums stay right */
     const g = m => { if (m && m.per === 'person' && isNum(+m.amount)) { m.amount = +m.amount * M.people; m.per = 'group'; } };
     arr(D.budget && D.budget.lines).forEach(x => g(x && x.amount)); g(D.budget && D.budget.cap); items.forEach(it => { g(it.cost); g(it.move && it.move.cost); }); }
@@ -2078,6 +2189,8 @@ function moveSum(mv) {
 }
 function itemState(d, it, i, list) {
   if (it._simSkipped) return [it.verified === true ? 'ok' : 'unv', it.verified === true ? t('st_ok') : t('st_unv')];
+  const hc = hoursConflict(d, it);
+  if (hc) return ['bad', hc.chip];
   const L = list || d._items;
   let prev = null;
   for (let k = i - 1; k >= 0; k--) { if (!L[k]._simSkipped) { prev = L[k]; break; } }
@@ -2086,8 +2199,9 @@ function itemState(d, it, i, list) {
   if (!bad && prev) { const pe = toMin(prev.end), mv = it.move && isNum(it.move.minutes) ? it.move.minutes : 0; if (!isNaN(pe) && (s < pe || pe + mv > s + 5)) bad = true; }
   return bad ? ['bad', t('st_bad')] : it.verified === true ? ['ok', t('st_ok')] : ['unv', t('st_unv')];
 }
-function prevPlace(M, d, i) {
-  for (let k = i - 1; k >= 0; k--) { const p = d._items[k].place; if (hasLL(p)) return p; }
+function prevPlace(M, d, i, list) {
+  const L = list || d._items;
+  for (let k = i - 1; k >= 0; k--) { if (L[k]._simSkipped) continue; const p = L[k].place; if (hasLL(p)) return p; }
   const ps = d._i > 0 ? M.stayById[M.days[d._i - 1].stayId] : null;
   return hasLL(ps) ? ps : null;
 }
@@ -2112,7 +2226,12 @@ function photoBox(it) {
   fig.appendChild(h('figcaption', null, t('photoBy', { c: str(ph.credit) }), ' · ', lic, safeUrl(ph.sourceUrl) ? [' · ', ext(ph.sourceUrl, '↗')] : null));
   return fig;
 }
-function fillDetail(x, M, d, it, i) {
+function liveStatusLink(M, it) {
+  if (!it || !['food', 'cafe', 'sight', 'activity', 'shopping'].includes(it.kind)) return null;
+  const p = it.place, q = [str(p && (p.nameLocal || p.name)) || str(it.title), str(M && M.dest && M.dest.city), isZh() ? '營業時間 臨時休業 Instagram' : 'hours temporary closure Instagram'].filter(Boolean).join(' ');
+  return q ? h('p', { class: 'small', style: 'margin:6px 0 0' }, ext('https://www.google.com/search?q=' + encodeURIComponent(q), t('liveCheck'))) : null;
+}
+function fillDetail(x, M, d, it, i, list) {
   const p = it.place || null, b = it.booking, mv = it.move, facts = [];
   const f = (k, ...v) => facts.push(h('li', null, h('span', { class: 'fk' }, k), h('span', null, ...v)));
   if (flightOf(M, d, it)) f(t('k_flight'), flightOf(M, d, it));
@@ -2135,7 +2254,8 @@ function fillDetail(x, M, d, it, i) {
       it.rainAlt ? h('p', { class: 'ra' }, dot('rain'), ' ', h('b', null, t('rainAlt') + CL()), str(it.rainAlt)) : null,
       h('div', { class: 'small muted' }, dot(it.verified === true ? 'ok' : 'unv'), ' ', it.verified === true ? t('verified') : t('unverified')),
       sourcesLine(it.sources),
-      navLinks(M, it, prevPlace(M, d, i))),
+      liveStatusLink(M, it),
+      navLinks(M, it, prevPlace(M, d, i, list))),
     ph)]);
 }
 function rowItem(M, d, it, i, rainy, list) {
@@ -2149,14 +2269,14 @@ function rowItem(M, d, it, i, rainy, list) {
       h('span', { class: 'nm' }, hasLL(it.place) ? h('span', { class: 'no', 'aria-hidden': 'true' }, String(it._n)) : null, h('span', { class: 'sr' }, t('k_' + kind) + CL()), h('span', { class: 'tx' }, str(it.title || (it.place && it.place.name)))),
       it.move ? moveSum(it.move) : null,
       badges),
-    h('span', { class: 'st' }, lugChip(it), bkChip(it), ohChip(M, it), rainy && it.rainAlt ? dot('rain', t('st_rain')) : null, dot(sc, sl), h('span', { class: 'chev', 'aria-hidden': 'true' }, '›')));
+    h('span', { class: 'st' }, hrsChip(d, it), lugChip(it), bkChip(it), ohChip(M, it), rainy && it.rainAlt ? dot('rain', t('st_rain')) : null, dot(sc, sl), h('span', { class: 'chev', 'aria-hidden': 'true' }, '›')));
   btn.addEventListener('click', () => {
     const o = btn.getAttribute('aria-expanded') !== 'true';
     state.open[id] = o; btn.setAttribute('aria-expanded', String(o)); x.hidden = !o;
-    if (o && !x.firstChild) fillDetail(x, M, d, it, i);
+    if (o && !x.firstChild) fillDetail(x, M, d, it, i, list);
     selectItem(id, { fly: true });
   });
-  if (open) fillDetail(x, M, d, it, i);
+  if (open) fillDetail(x, M, d, it, i, list);
   return h('li', { class: 'row' + (state.sel === id ? ' sel' : '') + (it._simSkipped ? ' pb-skip' : ''), 'data-item': id }, btn, x);
 }
 function isLockedStop(it) {
@@ -2168,22 +2288,63 @@ function getPB(M, d) {
     state.planB = safeParse(store.get(pbStoreKey(M))) || {};
   }
   const c = state.planB[d._n];
-  return c && typeof c === 'object' ? { delay: +c.delay || 0, rain: !!c.rain, rest: !!c.rest } : { delay: 0, rain: false, rest: false };
+  const sw = c && c.swaps && typeof c.swaps === 'object' ? Object.assign({}, c.swaps) : {};
+  return c && typeof c === 'object' ? { delay: +c.delay || 0, rain: !!c.rain, rest: !!c.rest, swaps: sw } : { delay: 0, rain: false, rest: false, swaps: {} };
 }
 function setPB(M, d, patch) {
   const nxt = Object.assign(getPB(M, d), patch);
-  if (!nxt.delay && !nxt.rain && !nxt.rest) delete state.planB[d._n];
+  const hasSwaps = nxt.swaps && Object.keys(nxt.swaps).length > 0;
+  if (!nxt.delay && !nxt.rain && !nxt.rest && !hasSwaps) delete state.planB[d._n];
   else state.planB[d._n] = nxt;
   store.set(pbStoreKey(M), JSON.stringify(state.planB));
   renderDay();
+  if (MAP && state.map === 'ready') {
+    const src = MAP.getSource('rt');
+    if (src) src.setData(segFC());
+    drawMarkers(true);
+  } else {
+    placeMap();
+  }
 }
 function simItems(M, d) {
-  const pb = getPB(M, d);
-  if (!pb.delay && !pb.rain && !pb.rest) return d._items;
+  const pb = getPB(M, d), swKeys = pb.swaps ? Object.keys(pb.swaps) : [];
+  if (!pb.delay && !pb.rain && !pb.rest && !swKeys.length) return d._items;
   const list = d._items.map(it => Object.assign({}, it, {
     move: it.move ? Object.assign({}, it.move) : undefined,
-    _origStart: it.start, _origEnd: it.end, _origTitle: it.title, _simBadges: [], _simSkipped: false
+    _origStart: it.start, _origEnd: it.end, _origTitle: it.title, _origPlace: it.place, _simBadges: [], _simSkipped: false, _swapped: false
   }));
+  if (swKeys.length && arr(d._stash).length) {
+    const stMap = {};
+    d._stash.forEach(s => { stMap[s._id] = s; });
+    list.forEach((it, idx) => {
+      const sid = pb.swaps[it._id], s = sid && stMap[sid];
+      if (!s || isLockedStop(it)) return;
+      it.kind = s.kind || it.kind;
+      it.title = s.title || (s.place && s.place.name) || it.title;
+      if (s.place) it.place = Object.assign({}, s.place);
+      it.hours = s.hours;
+      it.detail = s.detail;
+      it.cost = s.cost;
+      it.indoor = s.indoor;
+      it.sources = s.sources;
+      it.verified = s.verified === true;
+      it.tips = arr(s.tips).slice();
+      it.rainAlt = s.rainAlt;
+      it.photo = s.photo;
+      it._swapped = true;
+      it._simBadges.push({ cls: 'pb-stash', tx: t('pbStashSwapped', { a: str(it._origTitle) }) });
+      if (idx > 0 && hasLL(list[idx - 1].place) && hasLL(it.place) && it.move) {
+        const km = havKm(list[idx - 1].place, it.place) * 1.35, md = it.move.mode || 'walk';
+        it.move.minutes = md === 'walk' ? Math.max(3, Math.round(km / 0.065)) : Math.max(8, Math.round(km / 0.35 + 5));
+        if (md === 'walk') it.move.distanceKm = Math.round(km * 10) / 10;
+      }
+      if (idx + 1 < list.length && hasLL(it.place) && hasLL(list[idx + 1].place) && list[idx + 1].move) {
+        const nxt = list[idx + 1], km2 = havKm(it.place, nxt.place) * 1.35, md2 = nxt.move.mode || 'walk';
+        nxt.move.minutes = md2 === 'walk' ? Math.max(3, Math.round(km2 / 0.065)) : Math.max(8, Math.round(km2 / 0.35 + 5));
+        if (md2 === 'walk') nxt.move.distanceKm = Math.round(km2 * 10) / 10;
+      }
+    });
+  }
   if (pb.rain) {
     list.forEach(it => {
       const ra = str(it.rainAlt).trim();
@@ -2195,9 +2356,9 @@ function simItems(M, d) {
     });
   }
   if (pb.rest) {
-    let idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind) && toMin(it.start) >= 750 && toMin(it.start) <= 1080);
-    if (idx < 0) idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind));
-    if (idx < 0) idx = list.findIndex(it => !isLockedStop(it) && !['flight', 'transfer', 'stay'].includes(it.kind));
+    let idx = list.findIndex(it => !it._swapped && !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind) && toMin(it.start) >= 750 && toMin(it.start) <= 1080);
+    if (idx < 0) idx = list.findIndex(it => !it._swapped && !isLockedStop(it) && !['flight', 'transfer', 'stay', 'food', 'rest'].includes(it.kind));
+    if (idx < 0) idx = list.findIndex(it => !it._swapped && !isLockedStop(it) && !['flight', 'transfer', 'stay'].includes(it.kind));
     if (idx >= 0) {
       const it = list[idx];
       it.kind = 'cafe';
@@ -2280,9 +2441,55 @@ function simItems(M, d) {
   }
   return list;
 }
-function planBBar(M, d) {
-  const pb = getPB(M, d), active = !!(pb.delay || pb.rain || pb.rest);
+function stashBox(M, d, items) {
+  const stList = arr(d._stash);
+  if (!stList.length || !(state.stashOpen && state.stashOpen[d._n])) return null;
+  const pb = getPB(M, d);
+  const flexStops = d._items.filter(it => !isLockedStop(it) && !['flight', 'transfer', 'stay'].includes(it.kind));
+  if (!flexStops.length) return null;
+  if (!state.stashTarget) state.stashTarget = {};
+  let tid = state.stashTarget[d._n];
+  if (!flexStops.some(x => x._id === tid)) tid = flexStops[0]._id;
+  const origTarget = flexStops.find(x => x._id === tid) || flexStops[0];
+  const simTarget = (items || d._items).find(x => x._id === tid) || origTarget;
+  const refPlace = (origTarget._origPlace || origTarget.place);
+  const sel = h('select', { onchange: e => { state.stashTarget[d._n] = e.target.value; renderDay(); } },
+    flexStops.map(it => h('option', { value: it._id, selected: it._id === tid ? 'selected' : null }, '#' + it._n + ' ' + str(it.start) + '–' + str(it.end) + ' ' + str(it.title))));
+  const cards = stList.map(s => {
+    const km = hasLL(refPlace) && hasLL(s.place) ? havKm(refPlace, s.place) : null;
+    const walkM = km != null ? Math.round(km * 1350) : null;
+    const walkMin = walkM != null ? Math.max(1, Math.round(walkM / 65)) : null;
+    const hc = hoursConflict(d, Object.assign({}, s, { start: simTarget.start, end: simTarget.end }));
+    const isNear = walkMin != null && walkMin <= 12;
+    const isSwapped = pb.swaps && pb.swaps[tid] === s._id;
+    const kind = KIND_IC[s.kind] ? s.kind : 'other';
+    return h('li', { class: 'stcard' + (isNear && !hc ? ' near' : '') },
+      h('div', { class: 'st-h' }, h('span', null, KIND_IC[kind] + ' ' + str(s.title || (s.place && s.place.name))), s.indoor ? h('span', { class: 'chip' }, t('indoor')) : null),
+      s.place ? native(s.place) : null,
+      s.detail ? h('div', { class: 'small muted' }, str(s.detail)) : null,
+      h('div', { class: 'st-m' },
+        walkMin != null ? h('span', { class: 'chip' }, t('stDistWalk', { m: walkMin, d: walkM })) : null,
+        h('span', { class: 'chip' + (hc ? ' bad' : '') }, hc ? t('stOpenBad') : t('stOpenOk')),
+        s.hours ? h('span', null, str(s.hours)) : null),
+      h('div', { class: 'st-act' },
+        h('button', { type: 'button', class: isSwapped ? 'on' : null, onclick: () => {
+          const nextSwaps = Object.assign({}, pb.swaps);
+          if (isSwapped) delete nextSwaps[tid]; else nextSwaps[tid] = s._id;
+          setPB(M, d, { swaps: nextSwaps });
+        } }, isSwapped ? t('stSwappedBtn') : t('stSwapIn'))));
+  });
+  return h('div', { class: 'stbox', role: 'region', 'aria-label': t('stTitle') },
+    h('h3', null, t('stTitle')),
+    h('p', { class: 'small muted', style: 'margin:0' }, t('stSub')),
+    h('div', { class: 'st-bar' }, h('label', null, h('b', null, t('stTarget')), sel)),
+    h('ul', { class: 'stgrid' }, cards));
+}
+function planBBar(M, d, items) {
+  const pb = getPB(M, d), hasSwaps = !!(pb.swaps && Object.keys(pb.swaps).length);
+  const active = !!(pb.delay || pb.rain || pb.rest || hasSwaps);
   const hasRainAlt = d._items.some(it => str(it.rainAlt).trim());
+  const stCount = arr(d._stash).length;
+  const stOpen = !!(state.stashOpen && state.stashOpen[d._n]);
   return [
     h('div', { class: 'pbbar', role: 'group', 'aria-label': t('pbTitle') },
       h('span', { class: 'pbl' }, t('pbTitle')),
@@ -2290,8 +2497,10 @@ function planBBar(M, d) {
       h('button', { type: 'button', 'aria-pressed': String(pb.delay === 60), onclick: () => setPB(M, d, { delay: pb.delay === 60 ? 0 : 60 }) }, t('pbDelay60')),
       hasRainAlt ? h('button', { type: 'button', 'aria-pressed': String(pb.rain), onclick: () => setPB(M, d, { rain: !pb.rain }) }, t('pbRain')) : null,
       h('button', { type: 'button', 'aria-pressed': String(pb.rest), onclick: () => setPB(M, d, { rest: !pb.rest }) }, t('pbRest')),
-      active ? h('button', { type: 'button', class: 'pbr', onclick: () => setPB(M, d, { delay: 0, rain: false, rest: false }) }, t('pbReset')) : null),
-    active ? h('p', { class: 'pbn', role: 'status' }, t('pbActiveNote')) : null
+      stCount ? h('button', { type: 'button', 'aria-pressed': String(stOpen || hasSwaps), onclick: () => { if (!state.stashOpen) state.stashOpen = {}; state.stashOpen[d._n] = !stOpen; renderDay(); } }, t('pbStash', { n: stCount })) : null,
+      active ? h('button', { type: 'button', class: 'pbr', onclick: () => setPB(M, d, { delay: 0, rain: false, rest: false, swaps: {} }) }, t('pbReset')) : null),
+    active ? h('p', { class: 'pbn', role: 'status' }, t('pbActiveNote')) : null,
+    stashBox(M, d, items)
   ];
 }
 function dayTable(M, d, rainy, items) {
@@ -2308,7 +2517,7 @@ function dayTable(M, d, rainy, items) {
         h('td', { class: 'nw' }, h('span', { class: 'chip' }, h('span', { class: 'gs', 'aria-hidden': 'true' }, KIND_IC[kind]), t('k_' + kind))),
         h('td', { class: 'nw' }, it.move ? moveSum(it.move) : '—'),
         h('td', { class: 'nw' }, it.cost ? moneyShort(it.cost) : '—'),
-        h('td', null, bkChip(it) ? [bkChip(it), b && b.opensAt && b.status !== 'booked' && it.fixed !== true ? h('div', { class: 'small muted' }, str(b.opensAt)) : null] : b ? t('bk_no') : '—', ohChip(M, it), lugChip(it)),
+        h('td', null, bkChip(it) ? [bkChip(it), b && b.opensAt && b.status !== 'booked' && it.fixed !== true ? h('div', { class: 'small muted' }, str(b.opensAt)) : null] : b ? t('bk_no') : '—', ohChip(M, it), lugChip(it), hrsChip(d, it)),
         h('td', { class: 'nw' }, dot(sc), ' ', sl, rainy && it.rainAlt ? [' ', dot('rain', t('st_rain'))] : null));
       tr.addEventListener('click', () => selectItem(id, { fly: true }));
       return tr;
@@ -2332,7 +2541,7 @@ function renderDay() {
         TRV(M).dayStart || TRV(M).dayEnd ? h('span', null, t('dayHours', { a: str(TRV(M).dayStart) || '—', b: str(TRV(M).dayEnd) || '—' })) : null, tzTag(M, d), sunTag(M, d), walkTag(M, d, items), energyTag(M, d, items), h('span', { id: 'daywx' })),
       d.summary ? h('p', { class: 'summary' }, str(d.summary)) : null),
     h('div', { id: 'rainslot' }),
-    planBBar(M, d),
+    planBBar(M, d, items),
     h('div', { class: 'toolbar' },
       h('div', { class: 'seg', role: 'group', 'aria-label': t('viewAs') }, ['tl', 'tbl'].map(v => h('button', { type: 'button', 'aria-pressed': String(state.itv === v), onclick: () => setV(v) }, t('vw_' + v)))),
       h('span', { class: 'sp' }),
@@ -2390,8 +2599,8 @@ function segFC() {
   const near = (p, q) => Math.abs(p[0] - q[0]) < 0.004 && Math.abs(p[1] - q[1]) < 0.004;
   M.days.forEach(d => {
     let prev = null;
-    d._items.forEach(it => {
-      if (!hasLL(it.place)) return;
+    simItems(M, d).forEach(it => {
+      if (it._simSkipped || !hasLL(it.place)) return;
       const c = [it.place.lon, it.place.lat];
       if (prev && (Math.abs(prev[0] - c[0]) > 1e-5 || Math.abs(prev[1] - c[1]) > 1e-5)) {
         const air = it.kind === 'flight' || (it.move && it.move.mode === 'flight') || airs.some(a => near(a, prev) || near(a, c));
@@ -2477,8 +2686,8 @@ function drawMarkers(keepPop) {
   M.days.forEach(d => {
     const active = F.mode === 'day' && d._n === F.day;
     if (F.mode === 'day' && !active && F.others === 'hide') return;
-    d._items.forEach(it => {
-      if (!hasLL(it.place)) return;
+    simItems(M, d).forEach(it => {
+      if (it._simSkipped || !hasLL(it.place)) return;
       const ll = [it.place.lon, it.place.lat];
       if (active) E.push({ ll, it });
       else if (!fixed(ll)) small.push({ ll, it, d });
@@ -2623,8 +2832,15 @@ function restyleMap() {
   MSTYLE = u;
   MAP.setStyle(u, { diff: false });
 }
+function findSimItem(M, id) {
+  if (!M || !id) return null;
+  const orig = M.itemById[id];
+  if (!orig) return null;
+  const d = M.days[orig._d - 1];
+  return (d && simItems(M, d).find(x => x._id === id)) || orig;
+}
 function selectItem(id, o) {
-  const M = state.M, it = M && M.itemById[id];
+  const M = state.M, it = findSimItem(M, id);
   if (!it) return;
   state.sel = id;
   document.querySelectorAll('[data-item]').forEach(el => el.classList.toggle('sel', el.getAttribute('data-item') === id));
@@ -2648,7 +2864,7 @@ function svgMap(ctx) {
   if (isDay) {
     const d = M.days[ctx.day - 1];
     if (d) {
-      d._items.forEach(it => { if (hasLL(it.place)) focusPts.push([+it.place.lon, +it.place.lat]); });
+      simItems(M, d).forEach(it => { if (!it._simSkipped && hasLL(it.place)) focusPts.push([+it.place.lon, +it.place.lat]); });
       const st = M.stayById[d.stayId];
       if (hasLL(st)) focusPts.push([+st.lon, +st.lat]);
     }
@@ -2674,7 +2890,7 @@ function svgMap(ctx) {
   }
   M.days.forEach(d => {
     const active = !isDay || d._n === ctx.day;
-    const coords = d._items.filter(it => hasLL(it.place)).map(it => proj(it.place.lon, it.place.lat).join(','));
+    const coords = simItems(M, d).filter(it => !it._simSkipped && hasLL(it.place)).map(it => proj(it.place.lon, it.place.lat).join(','));
     if (coords.length > 1) {
       const ptsStr = coords.join(' ');
       if (active) {
@@ -2694,10 +2910,10 @@ function svgMap(ctx) {
     kids.push(g);
   });
   const activeDays = isDay ? [M.days[ctx.day - 1]].filter(Boolean) : M.days;
-  let selIt = state.sel && M.itemById[state.sel] ? M.itemById[state.sel] : null;
-  if (!selIt && activeDays.length && activeDays[0]._items.length) selIt = activeDays[0]._items[0];
+  let selIt = state.sel ? findSimItem(M, state.sel) : null;
+  if (!selIt && activeDays.length) { const l0 = simItems(M, activeDays[0]); if (l0.length) selIt = l0[0]; }
   activeDays.forEach(d => {
-    d._items.filter(it => hasLL(it.place)).forEach(it => {
+    simItems(M, d).filter(it => !it._simSkipped && hasLL(it.place)).forEach(it => {
       const [x, y] = proj(it.place.lon, it.place.lat), isSel = state.sel === it._id;
       const g = S('g', { class: 'nd act' + (isSel ? ' on' : ''), transform: 'translate(' + x + ',' + y + ')' },
         S('circle', { r: isSel ? 13 : 11, fill: 'var(--acc)' }),
