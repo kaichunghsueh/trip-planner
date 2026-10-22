@@ -20,8 +20,8 @@ v1.1 起新增的欄位都標了版本，全部選填，`schemaVersion` 維持 `
    | 類別 | 欄位 |
    |---|---|
    | 版本與產出 | `schemaVersion`、`meta.generatedAt`、`meta.generator`、`meta.shareUrl`、`meta.userLanguage` |
-   | id 與參照 | `stays[].id`、`days[].stayId`、Item 的 `id`、`traveler.mustDo[].itemId` |
-   | 代碼值（契約裡寫成 `"a"\|"b"` 的欄位） | `traveler.passport`、`pace`、`budgetLevel`；`journey.transport.primary`、`transport.decidedBy`、`carRental.decidedBy`、`fx.kind`、`currencies[].kind`；`days[].transport`；Item 的 `kind`、`move.mode`、`booking.status`；`Money.per`；`budget.lines[].category`、`budget.cap.scope`、`budget.cap.per`；`checklists.before[].when`；`navigation.apps[]`；`selfCheck[].result` |
+   | id 與參照 | `stays[].id`、`days[].stayId`、Item 與 StashItem 的 `id`、`traveler.mustDo[].itemId` |
+   | 代碼值（契約裡寫成 `"a"\|"b"` 的欄位） | `traveler.passport`、`pace`、`budgetLevel`；`journey.transport.primary`、`transport.decidedBy`、`carRental.decidedBy`、`fx.kind`、`currencies[].kind`；`days[].transport`；Item 與 StashItem 的 `kind`、`move.mode`、`booking.status`；`Money.per`；`budget.lines[].category`、`budget.cap.scope`、`budget.cap.per`；`checklists.before[].when`；`hospitals[].for`；`navigation.apps[]`；`selfCheck[].result` |
    | 日期與時間 | 所有 `date`、`time`、`localDateTime` 型別的欄位，包括 `SourceRef.checked`、`fx.asOf`、`currencies[].asOf` |
    | 國家、時區 | `journey.destination.country`，以及所有 `timezone` |
    | 機場與航班號 | `origin.airport`、`arrival.airport`、`departure.airport`、`arrival.flight`、`departure.flight` |
@@ -83,7 +83,7 @@ journey: {
   currencies?: [ { code（ISO 4217）, rate（1 單位該幣＝多少 homeCurrency）, kind?: "mid"|"cash-sell"|"card", asOf: date, source: SourceRef } ]（v1.5 新增）
 }
 stays: [ { id, name, nameLocal?, address?, addressLocal?, lat, lon, checkIn: date, checkOut: date, checkInTime?: time, checkOutTime?: time, booked: boolean, area?, why?, parking?, sources?: SourceRef[], verified: boolean, options?: HotelOption[]（v1.4 新增，最多 3 筆） } ]
-days: [ { date, title, area?, stayId?（當晚住哪；最後一天可省略）, summary?, rainPlan?, transport?: "transit"|"car"|"taxi"|"mixed"（v1.1 新增；沒填就沿用 journey.transport.primary）, timezone?（v1.5 新增；沒填就用 journey.destination.timezone）, items: Item[], stash?: StashItem[]（v1.9 新增：每日 2～4 個同區就近口袋備案） } ]
+days: [ { date, title, area?, stayId?（當晚住哪；最後一天可省略）, summary?, rainPlan?, transport?: "transit"|"car"|"taxi"|"mixed"（v1.1 新增；沒填就沿用 journey.transport.primary）, timezone?（v1.5 新增；沒填就用 journey.destination.timezone）, items: Item[], stash?: StashItem[]（v1.9 新增：每日 2～4 個同區就近口袋備案）, hospitals?: Hospital[]（v1.9 新增：選填，若未填則自動由 emergency.hospitals 依當日座標篩選顯示於當日行程頁底部） } ]
 Item: {
   id（全域唯一）, start: time, end: time,
   kind: "flight"|"transfer"|"sight"|"food"|"cafe"|"shopping"|"activity"|"stay"|"rest"|"other",
@@ -100,7 +100,8 @@ Place: { name, nameLocal?, address?, addressLocal?, lat, lon }（v1.1 新增；�
 HotelOption: { name, nameLocal?, address?, lat, lon, priceNote?, why?, url?, sources: SourceRef[], verified: boolean }（v1.4 新增）
 budget?: { lines: [ { category: "transport"|"stay"|"food"|"tickets"|"shopping"|"other"|"flight"（"flight" 為 v1.5 新增）, label, amount: Money } ], hidden?: string[], note?, cap?: { amount, currency（必須是 homeCurrency）, scope: "trip-excl-flights"|"trip-incl-flights", per: "group"|"person", note? }（v1.5 新增） }
 checklists?: { before: [ { when: "T-14"|"T-7"|"T-3"|"T-1"|"D0", text } ], packing?: string[] }
-emergency?: { numbers: [ { label, number } ], consular?: [ { for, name, phone?, address?, note?, source?: SourceRef } ], hospitals?: [ { name, phone?, address?, lat?, lon? } ], note? }
+emergency?: { numbers: [ { label, number } ], consular?: [ { for, name, phone?, address?, note?, source?: SourceRef } ], hospitals?: Hospital[], note? }
+Hospital: { name, nameLocal?（v1.9 新增：當地語言醫院名）, for?: "adult"|"pediatric"|"both"（v1.9 新增：成人感冒外傷／小兒發燒急診／綜合）, phone?, address?, addressLocal?（v1.9 新增：當地語言地址）, lat?, lon?, note?（診療科別如一般內科感冒、外傷外科、小兒科發燒急診、營業時間與外語服務）, sources?: SourceRef[] }
 navigation: { apps: ("naver"|"kakao"|"google"|"apple")[]（順序＝優先）, note? }
 climate: { basis（例：「2021–2025 年同期平均」）, tempMaxC, tempMinC, precipMm?, rainDays?, source: SourceRef }（v1.9 改為必填，`set-cover` 會驗證 tempMaxC 與 tempMinC）
 selfCheck?: [ { rule, result: "pass"|"warn"|"fail"|"n/a"（"n/a" 為 v1.5 新增）, note? } ]
@@ -226,7 +227,7 @@ unverified?: string[]
   - `mode`：`walk`、`subway`、`bus`、`rail`、`light-rail`、`taxi`、`car`、`ferry`、`flight`、`other`。
   - `line`：路線名，搭大眾運輸時要寫，例如「地鐵 2 號線」。
   - `minutes` 是數字；`distanceKm`、`cost`、`note` 選填。估算的數字在 `note` 寫「估算」。
-- `detail`：看什麼、做什麼。`tips`：小提醒，字串陣列。`kind` 為 `food`、`cafe` 時（優先挑 Google 4.2★ 以上且評論數 > 100 則），在 `detail` 或 `tips` 寫出查證過的 Google 評分與評論則數，並在 `tips` 附 1～2 家同區高分備選餐廳。
+- `detail`：看什麼、做什麼。`tips`：小提醒，字串陣列。`kind` 為 `food`、`cafe` 時（依目的地國家採用當地公信力最高平台與門檻：日本 Tabelog `>= 3.50`、韓國 Naver Map `>= 4.4` 訪客認證評價、港澳 OpenRice、大陸大眾點評 `>= 4.5`／必吃榜、美國 Yelp `>= 4.0★`／Resy、歐洲 TheFork／米其林、泰 Wongnai、越 Foody.vn、其他地區 Google `>= 4.3★` 且評論 > 100 則），在 `detail` 明確註記「來源平台＋分數」與必點招牌菜，並在 `tips` 附 1～2 家同區高分備選餐廳與訂位／點餐方式。
 - `hours`：營業時間，文字，例如「10:00–18:00，週一公休」。
 - `booking`：`required` 是否要預約；`how` 怎麼預約；`opensAt` 什麼時候開放預約（文字，寫清楚時區）；`url` 預約網址。
 - `booking.status`（v1.1 新增）：`booked` 已訂好；`todo` 還要去訂。

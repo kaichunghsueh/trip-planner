@@ -26,7 +26,7 @@
 | 6 | 已訂好的門票、餐廳、演唱會、一日遊 | 寫成 Item，標 `fixed: true`、`booking.status: "booked"` |
 | 7 | 必去、想做；不想去、不吃、飲食限制 | `traveler.mustDo`、`traveler.avoid`、`traveler.diet` |
 | 8 | 交通；自駕的日子與取車、還車地點 | `journey.transport`、`journey.carRental`、`days[].transport` |
-| 9 | 步調、預算、總預算上限（選填）、每天出門和回飯店的時間、夜市夜景 | `traveler.pace`、`budgetLevel`、`budget.cap`、`dayStart`、`dayEnd`、`interests` |
+| 9 | 步調、預算、總預算上限（選填）、每天出門和回飯店的時間、夜生活偏好（夜市／夜景／酒吧小酌／夜店／18+ 成人紅燈區） | `traveler.pace`、`budgetLevel`、`budget.cap`、`dayStart`、`dayEnd`、`interests` |
 | 10 | 護照（同行者有沒有持其他護照）、生日或紀念日；告知網頁附繁中和英文版 | `traveler.passport`（其他護照寫進 `party.note`）、`traveler.specialDates`。`meta.userLanguage` 不用問，看使用者開口用的語言（見 `SKILL.md`「先記住」） |
 
 - 第 8 題：使用者自己選的交通，`journey.transport.decidedBy` 寫 `"user"`；沒回或交給你，寫 `"ai"`。使用者指定開車的日子，`journey.carRental.decidedBy` 寫 `"user"`；回「租車天數交給你」（英文 "you pick the driving days"），寫 `"ai"`。
@@ -46,7 +46,7 @@
 > 6. **有沒有已經訂好的行程？** 門票、餐廳、演唱會、一日遊，請寫日期和時間，這些我不會動。（預設：全部交給我排）
 > 7. **一定要去的地方、想做的事？** 不想去的、不吃的、飲食限制也寫這裡。（預設：由我挑）
 > 8. **在當地怎麼移動？** A 大眾運輸　B 計程車　C 自駕　D 混搭。選 C 或 D，請寫哪幾天開車、在哪裡取車還車，或寫「租車天數交給你」。（預設：A）
-> 9. **步調、預算、作息？** 步調：放鬆／適中／緊湊；預算：省錢／標準／舒適，有總預算上限也可以說（例如一家三口不含機票 NT$80,000）；每天最早幾點出門、最晚幾點回飯店；晚上想不想逛夜市、看夜景。（預設：適中、標準、沒有上限、09:00–21:30）
+> 9. **步調、預算、作息、夜生活？** 步調：放鬆／適中／緊湊；預算：省錢／標準／舒適，有總預算上限也可以說（例如一家三口不含機票 NT$80,000）；每天最早幾點出門、最晚幾點回飯店；晚上想不想排夜市、夜景、酒吧／居酒屋小酌，或滿 18 歲的成人夜生活／紅燈區巡禮？（預設：適中、標準、沒有上限、09:00–21:30、一般夜景／夜市，不主動排 18+ 成人區）
 > 10. **其他：** 用哪一本護照（查入境規定和駐外單位用）？同行者有沒有人持其他護照？旅途中有沒有生日或紀念日？行程網頁會同時附繁中和英文版，可以在網頁上切換，店名和地址也會附當地文字，方便到當地拿給人看。（預設：依出發地推定，開排前我會跟你確認）
 >
 > 回一行就好，例如：
@@ -67,7 +67,7 @@
 > 6. **Anything already booked?** Tickets, restaurants, concerts, day tours. Give me the date and time and I won't move them. (Default: I'll plan everything)
 > 7. **Must-sees or must-dos?** Also anything to skip, food you don't eat, or dietary needs. (Default: I'll pick)
 > 8. **Getting around?** A public transit · B taxis · C driving · D a mix. For C or D, tell me which days you'll drive and where you'll pick up and drop off the car, or say "you pick the driving days". (Default: A)
-> 9. **Pace, budget, daily hours?** Pace: relaxed / balanced / packed. Budget: saver / standard / comfort; a total budget cap works too, e.g. NT$80,000 for a family of three, flights not included. Earliest start and latest return to the hotel each day. Night markets or night views? (Default: balanced, standard, no cap, 09:00–21:30)
+> 9. **Pace, budget, daily hours, nightlife?** Pace: relaxed / balanced / packed. Budget: saver / standard / comfort; a total budget cap works too, e.g. NT$80,000 for a family of three, flights not included. Earliest start and latest return to the hotel each day. Any nightlife preferences — night markets, night views, bars/izakayas, clubs, or 18+ adult entertainment / red-light districts (for all-adult groups)? (Default: balanced, standard, no cap, 09:00–21:30, general night views/markets only)
 > 10. **Anything else?** Which passport (for entry rules and consular contacts), and does anyone in your group hold a different one? Any birthdays or anniversaries on the trip? Your itinerary page comes in both English and Traditional Chinese, and you can switch between them on the page. Place names and addresses also show the local script, so you can show them to a driver or staff on the spot. (Default: I'll go by where you fly from and check with you before planning)
 >
 > One line is enough, e.g.:
@@ -91,7 +91,7 @@
 > 3. **幾個人去？** 有小孩的話幾歲？有沒有長輩、行動不便，或要推嬰兒車？（預設：2 位大人）
 > 4. **有沒有已經訂好的行程？** 門票、餐廳、演唱會、一日遊，請寫日期和時間，這些我不會動。（預設：全部交給我排）
 > 5. **一定要去的地方、想做的事？** 不想去的、不吃的、飲食限制也寫這裡。（預設：由我挑）
-> 6. **步調、預算、作息？** 步調：放鬆／適中／緊湊；預算：省錢／標準／舒適，有總預算上限也可以說（例如一家三口不含機票 NT$80,000）；每天最早幾點出門、最晚幾點回飯店；晚上想不想逛夜市、看夜景。（預設：適中、標準、沒有上限、09:00–21:30）
+> 6. **步調、預算、作息、夜生活？** 步調：放鬆／適中／緊湊；預算：省錢／標準／舒適，有總預算上限也可以說（例如一家三口不含機票 NT$80,000）；每天最早幾點出門、最晚幾點回飯店；晚上想不想排夜市、夜景、酒吧／居酒屋小酌，或滿 18 歲的成人夜生活／紅燈區巡禮？（預設：適中、標準、沒有上限、09:00–21:30、一般夜景／夜市，不主動排 18+ 成人區）
 > 7. **其他：** 用哪一本護照（查入境規定和駐外單位用）？同行者有沒有人持其他護照？旅途中有沒有生日或紀念日？行程網頁會同時附繁中和英文版，可以在網頁上切換，店名和地址也會附當地文字，方便到當地拿給人看。（預設：從台北出發，先當作大家都持台灣護照，開排前我會再確認）
 >
 > 回一行就好，例如：1 還沒訂，想住西面　2 A　3 2 大人　其他交給你
