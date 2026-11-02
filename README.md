@@ -7,10 +7,16 @@
 🌐 **[繁體中文](./README.md) ｜ [English](./README.en.md)**
 
 [![Version](https://img.shields.io/badge/version-v1.9-D6246E?style=flat-square)](./CHANGELOG.md)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-🇯🇵_石垣島_4天3夜-0EA5E9?style=flat-square)](https://kaichunghsueh.github.io/trip-planner/demos/trip-ishigaki-2026-10-24.html)
+[![Template Demo](https://img.shields.io/badge/Template_Demo-🇰🇷_釜山_5天4夜-6366F1?style=flat-square)](https://kaichunghsueh.github.io/trip-planner/assets/trip-template.html)
 [![Bilingual](https://img.shields.io/badge/language-繁中%20%7C%20English-2563EB?style=flat-square)](#)
 [![Zero Dependency](https://img.shields.io/badge/output-Single%20HTML%20(Zero%20Install)-059669?style=flat-square)](#)
 [![Quality Check](https://img.shields.io/badge/self--check-16%20Rules%20%2B%20Google%20★%20Filter-D97706?style=flat-square)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-4F46E5?style=flat-square)](./LICENSE)
+
+<br/>
+
+👉 **線上互動預覽（免安裝，點擊直接開）**：[**🇯🇵 石垣島＆竹富島 4 天 3 夜自駕慢遊 Demo**](https://kaichunghsueh.github.io/trip-planner/demos/trip-ishigaki-2026-10-24.html) ｜ [**🇰🇷 釜山 5 天 4 夜範本預覽**](https://kaichunghsueh.github.io/trip-planner/assets/trip-template.html)
 
 <br/>
 
@@ -105,6 +111,7 @@ trip-planner/
     ├── planning-rules.md         # 12 大排程規則與 16 條自我檢查清單
     └── trip-data-contract.md     # 雙語 JSON 資料契約（schemaVersion "1"）
 ```
+*(註：`demos/` 資料夾存放線上展示用之行程範例，安裝 Skill 時可留可不留)*
 
 ---
 

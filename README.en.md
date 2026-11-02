@@ -7,10 +7,16 @@
 🌐 **[English](./README.en.md) ｜ [繁體中文](./README.md)**
 
 [![Version](https://img.shields.io/badge/version-v1.9-D6246E?style=flat-square)](./CHANGELOG.md)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-🇯🇵_Ishigaki_4D3N-0EA5E9?style=flat-square)](https://kaichunghsueh.github.io/trip-planner/demos/trip-ishigaki-2026-10-24.html)
+[![Template Demo](https://img.shields.io/badge/Template_Demo-🇰🇷_Busan_5D4N-6366F1?style=flat-square)](https://kaichunghsueh.github.io/trip-planner/assets/trip-template.html)
 [![Bilingual](https://img.shields.io/badge/language-English%20%7C%20繁中-2563EB?style=flat-square)](#)
 [![Zero Dependency](https://img.shields.io/badge/output-Single%20HTML%20(Zero%20Install)-059669?style=flat-square)](#)
 [![Quality Check](https://img.shields.io/badge/self--check-16%20Rules%20%2B%20Google%20★%20Filter-D97706?style=flat-square)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-4F46E5?style=flat-square)](./LICENSE)
+
+<br/>
+
+👉 **Live Interactive Demos (no install needed)**: [**🇯🇵 Ishigaki & Taketomi 4D3N Self-Drive Demo**](https://kaichunghsueh.github.io/trip-planner/demos/trip-ishigaki-2026-10-24.html) ｜ [**🇰🇷 Busan 5D4N Template Demo**](https://kaichunghsueh.github.io/trip-planner/assets/trip-template.html)
 
 <br/>
 
@@ -107,6 +113,7 @@ trip-planner/
     ├── planning-rules.md         # 12 planning rules & 16 self-check criteria
     └── trip-data-contract.md     # Bilingual JSON schema contract (schemaVersion "1")
 ```
+*(Note: The `demos/` folder holds sample generated itineraries for live preview and is optional when installing the skill.)*
 
 ---
 
